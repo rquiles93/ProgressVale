@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/playfair-display/400.css";
+
+@theme {
+  --color-cream: #f7f2ea;
+  --color-paper: #fffdf9;
+  --color-navy: #172b42;
+  --color-ink: #2f3943;
+  --color-rust: #365f4a;
+  --color-rust-dark: #365f4a;
+  --color-rust-soft: #e8f0e7;
+  --color-sage: #789b80;
+  --color-line: #e4ddd2;
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --shadow-soft: 0 14px 42px rgba(39, 36, 31, 0.07);
+}
+
+* { box-sizing: border-box; }
+html { background: var(--color-cream); }
+body {
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-navy);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+button, input, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+::selection { background: var(--color-rust-soft); color: var(--color-navy); }
+
+.focus-ring:focus-visible {
+  outline: 3px solid rgba(54, 95, 74, 0.28);
+  outline-offset: 2px;
+}
+
+.grain {
+  background-image: radial-gradient(rgba(24, 38, 56, 0.04) 0.6px, transparent 0.6px);
+  background-size: 7px 7px;
+}

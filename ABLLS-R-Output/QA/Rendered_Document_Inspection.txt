@@ -1,0 +1,5 @@
+RENDER QA NOT COMPLETED
+
+The required packaged LibreOffice renderer was unavailable because soffice.exe is not present in the bundled runtime. A local Microsoft Word COM rendering fallback was attempted but did not produce PDFs in the sandbox and was terminated after no progress.
+
+No claim of successful rendered-document visual inspection is made. The DOCX files received package-level structural validation only. Open and visually inspect every DOCX in Microsoft Word before relying on pagination, wrapping, or layout fidelity.

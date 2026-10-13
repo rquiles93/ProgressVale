@@ -1,0 +1,57 @@
+# Dependencies and framework output
+node_modules/
+.next/
+out/
+build/
+generated/
+*.tsbuildinfo
+next-env.d.ts
+web-app/AGENTS.md
+
+# Local configuration and credentials
+.env*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local databases, dumps, and user-provided data
+*.db
+*.sqlite
+*.sqlite3
+*.dump
+*.backup
+web-app/data/
+web-app/uploads/
+web-app/exports/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Python caches
+**/__pycache__/
+*.py[cod]
+
+# Extraction and rendering intermediates (preserved locally)
+tmp/
+**/cells/
+**/ocr/
+**/rendered/
+**/source_pages/
+**/normalized_pages/
+**/contact_sheets/
+**/overview/
+**/overview_crops/
+**/rotated_crops/
+**/rotated_overview/
+ABLLS-R-Output/Source_Crops/
+*.inspect.ndjson
+*_inspect.ndjson
+*_preview.png
+
+# Generated archives
+*.zip

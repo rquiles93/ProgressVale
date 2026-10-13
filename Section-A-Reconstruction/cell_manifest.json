@@ -1,0 +1,1826 @@
+[
+  {
+    "task": "A1",
+    "field": "task",
+    "page": 13,
+    "box": [
+      207,
+      478,
+      309,
+      662
+    ],
+    "file": "A1_task_p13.png"
+  },
+  {
+    "task": "A1",
+    "field": "score",
+    "page": 13,
+    "box": [
+      317,
+      478,
+      465,
+      662
+    ],
+    "file": "A1_score_p13.png"
+  },
+  {
+    "task": "A1",
+    "field": "task_name",
+    "page": 13,
+    "box": [
+      473,
+      478,
+      714,
+      662
+    ],
+    "file": "A1_task_name_p13.png"
+  },
+  {
+    "task": "A1",
+    "field": "task_objective",
+    "page": 13,
+    "box": [
+      722,
+      478,
+      1158,
+      662
+    ],
+    "file": "A1_task_objective_p13.png"
+  },
+  {
+    "task": "A1",
+    "field": "question",
+    "page": 13,
+    "box": [
+      1166,
+      478,
+      1534,
+      662
+    ],
+    "file": "A1_question_p13.png"
+  },
+  {
+    "task": "A1",
+    "field": "examples",
+    "page": 13,
+    "box": [
+      1542,
+      478,
+      1900,
+      662
+    ],
+    "file": "A1_examples_p13.png"
+  },
+  {
+    "task": "A1",
+    "field": "criteria",
+    "page": 13,
+    "box": [
+      1908,
+      478,
+      2401,
+      662
+    ],
+    "file": "A1_criteria_p13.png"
+  },
+  {
+    "task": "A1",
+    "field": "notes",
+    "page": 13,
+    "box": [
+      2409,
+      478,
+      3101,
+      662
+    ],
+    "file": "A1_notes_p13.png"
+  },
+  {
+    "task": "A2",
+    "field": "task",
+    "page": 13,
+    "box": [
+      207,
+      670,
+      309,
+      898
+    ],
+    "file": "A2_task_p13.png"
+  },
+  {
+    "task": "A2",
+    "field": "score",
+    "page": 13,
+    "box": [
+      317,
+      670,
+      465,
+      898
+    ],
+    "file": "A2_score_p13.png"
+  },
+  {
+    "task": "A2",
+    "field": "task_name",
+    "page": 13,
+    "box": [
+      473,
+      670,
+      714,
+      898
+    ],
+    "file": "A2_task_name_p13.png"
+  },
+  {
+    "task": "A2",
+    "field": "task_objective",
+    "page": 13,
+    "box": [
+      722,
+      670,
+      1158,
+      898
+    ],
+    "file": "A2_task_objective_p13.png"
+  },
+  {
+    "task": "A2",
+    "field": "question",
+    "page": 13,
+    "box": [
+      1166,
+      670,
+      1534,
+      898
+    ],
+    "file": "A2_question_p13.png"
+  },
+  {
+    "task": "A2",
+    "field": "examples",
+    "page": 13,
+    "box": [
+      1542,
+      670,
+      1900,
+      898
+    ],
+    "file": "A2_examples_p13.png"
+  },
+  {
+    "task": "A2",
+    "field": "criteria",
+    "page": 13,
+    "box": [
+      1908,
+      670,
+      2401,
+      898
+    ],
+    "file": "A2_criteria_p13.png"
+  },
+  {
+    "task": "A2",
+    "field": "notes",
+    "page": 13,
+    "box": [
+      2409,
+      670,
+      3101,
+      898
+    ],
+    "file": "A2_notes_p13.png"
+  },
+  {
+    "task": "A3",
+    "field": "task",
+    "page": 13,
+    "box": [
+      207,
+      906,
+      309,
+      1331
+    ],
+    "file": "A3_task_p13.png"
+  },
+  {
+    "task": "A3",
+    "field": "score",
+    "page": 13,
+    "box": [
+      317,
+      906,
+      465,
+      1331
+    ],
+    "file": "A3_score_p13.png"
+  },
+  {
+    "task": "A3",
+    "field": "task_name",
+    "page": 13,
+    "box": [
+      473,
+      906,
+      714,
+      1331
+    ],
+    "file": "A3_task_name_p13.png"
+  },
+  {
+    "task": "A3",
+    "field": "task_objective",
+    "page": 13,
+    "box": [
+      722,
+      906,
+      1158,
+      1331
+    ],
+    "file": "A3_task_objective_p13.png"
+  },
+  {
+    "task": "A3",
+    "field": "question",
+    "page": 13,
+    "box": [
+      1166,
+      906,
+      1534,
+      1331
+    ],
+    "file": "A3_question_p13.png"
+  },
+  {
+    "task": "A3",
+    "field": "examples",
+    "page": 13,
+    "box": [
+      1542,
+      906,
+      1900,
+      1331
+    ],
+    "file": "A3_examples_p13.png"
+  },
+  {
+    "task": "A3",
+    "field": "criteria",
+    "page": 13,
+    "box": [
+      1908,
+      906,
+      2401,
+      1331
+    ],
+    "file": "A3_criteria_p13.png"
+  },
+  {
+    "task": "A3",
+    "field": "notes",
+    "page": 13,
+    "box": [
+      2409,
+      906,
+      3101,
+      1331
+    ],
+    "file": "A3_notes_p13.png"
+  },
+  {
+    "task": "A4",
+    "field": "task",
+    "page": 13,
+    "box": [
+      207,
+      1339,
+      309,
+      1530
+    ],
+    "file": "A4_task_p13.png"
+  },
+  {
+    "task": "A4",
+    "field": "score",
+    "page": 13,
+    "box": [
+      317,
+      1339,
+      465,
+      1530
+    ],
+    "file": "A4_score_p13.png"
+  },
+  {
+    "task": "A4",
+    "field": "task_name",
+    "page": 13,
+    "box": [
+      473,
+      1339,
+      714,
+      1530
+    ],
+    "file": "A4_task_name_p13.png"
+  },
+  {
+    "task": "A4",
+    "field": "task_objective",
+    "page": 13,
+    "box": [
+      722,
+      1339,
+      1158,
+      1530
+    ],
+    "file": "A4_task_objective_p13.png"
+  },
+  {
+    "task": "A4",
+    "field": "question",
+    "page": 13,
+    "box": [
+      1166,
+      1339,
+      1534,
+      1530
+    ],
+    "file": "A4_question_p13.png"
+  },
+  {
+    "task": "A4",
+    "field": "examples",
+    "page": 13,
+    "box": [
+      1542,
+      1339,
+      1900,
+      1530
+    ],
+    "file": "A4_examples_p13.png"
+  },
+  {
+    "task": "A4",
+    "field": "criteria",
+    "page": 13,
+    "box": [
+      1908,
+      1339,
+      2401,
+      1530
+    ],
+    "file": "A4_criteria_p13.png"
+  },
+  {
+    "task": "A4",
+    "field": "notes",
+    "page": 13,
+    "box": [
+      2409,
+      1339,
+      3101,
+      1530
+    ],
+    "file": "A4_notes_p13.png"
+  },
+  {
+    "task": "A5",
+    "field": "task",
+    "page": 13,
+    "box": [
+      207,
+      1538,
+      309,
+      2118
+    ],
+    "file": "A5_task_p13.png"
+  },
+  {
+    "task": "A5",
+    "field": "score",
+    "page": 13,
+    "box": [
+      317,
+      1538,
+      465,
+      2118
+    ],
+    "file": "A5_score_p13.png"
+  },
+  {
+    "task": "A5",
+    "field": "task_name",
+    "page": 13,
+    "box": [
+      473,
+      1538,
+      714,
+      2118
+    ],
+    "file": "A5_task_name_p13.png"
+  },
+  {
+    "task": "A5",
+    "field": "task_objective",
+    "page": 13,
+    "box": [
+      722,
+      1538,
+      1158,
+      2118
+    ],
+    "file": "A5_task_objective_p13.png"
+  },
+  {
+    "task": "A5",
+    "field": "question",
+    "page": 13,
+    "box": [
+      1166,
+      1538,
+      1534,
+      2118
+    ],
+    "file": "A5_question_p13.png"
+  },
+  {
+    "task": "A5",
+    "field": "examples",
+    "page": 13,
+    "box": [
+      1542,
+      1538,
+      1900,
+      2118
+    ],
+    "file": "A5_examples_p13.png"
+  },
+  {
+    "task": "A5",
+    "field": "criteria",
+    "page": 13,
+    "box": [
+      1908,
+      1538,
+      2401,
+      2118
+    ],
+    "file": "A5_criteria_p13.png"
+  },
+  {
+    "task": "A5",
+    "field": "notes",
+    "page": 13,
+    "box": [
+      2409,
+      1538,
+      3101,
+      2118
+    ],
+    "file": "A5_notes_p13.png"
+  },
+  {
+    "task": "A6",
+    "field": "task",
+    "page": 14,
+    "box": [
+      207,
+      378,
+      309,
+      756
+    ],
+    "file": "A6_task_p14.png"
+  },
+  {
+    "task": "A6",
+    "field": "score",
+    "page": 14,
+    "box": [
+      317,
+      378,
+      465,
+      756
+    ],
+    "file": "A6_score_p14.png"
+  },
+  {
+    "task": "A6",
+    "field": "task_name",
+    "page": 14,
+    "box": [
+      473,
+      378,
+      714,
+      756
+    ],
+    "file": "A6_task_name_p14.png"
+  },
+  {
+    "task": "A6",
+    "field": "task_objective",
+    "page": 14,
+    "box": [
+      722,
+      378,
+      1158,
+      756
+    ],
+    "file": "A6_task_objective_p14.png"
+  },
+  {
+    "task": "A6",
+    "field": "question",
+    "page": 14,
+    "box": [
+      1166,
+      378,
+      1534,
+      756
+    ],
+    "file": "A6_question_p14.png"
+  },
+  {
+    "task": "A6",
+    "field": "examples",
+    "page": 14,
+    "box": [
+      1542,
+      378,
+      1900,
+      756
+    ],
+    "file": "A6_examples_p14.png"
+  },
+  {
+    "task": "A6",
+    "field": "criteria",
+    "page": 14,
+    "box": [
+      1908,
+      378,
+      2401,
+      756
+    ],
+    "file": "A6_criteria_p14.png"
+  },
+  {
+    "task": "A6",
+    "field": "notes",
+    "page": 14,
+    "box": [
+      2409,
+      378,
+      3101,
+      756
+    ],
+    "file": "A6_notes_p14.png"
+  },
+  {
+    "task": "A7",
+    "field": "task",
+    "page": 14,
+    "box": [
+      207,
+      764,
+      309,
+      1150
+    ],
+    "file": "A7_task_p14.png"
+  },
+  {
+    "task": "A7",
+    "field": "score",
+    "page": 14,
+    "box": [
+      317,
+      764,
+      465,
+      1150
+    ],
+    "file": "A7_score_p14.png"
+  },
+  {
+    "task": "A7",
+    "field": "task_name",
+    "page": 14,
+    "box": [
+      473,
+      764,
+      714,
+      1150
+    ],
+    "file": "A7_task_name_p14.png"
+  },
+  {
+    "task": "A7",
+    "field": "task_objective",
+    "page": 14,
+    "box": [
+      722,
+      764,
+      1158,
+      1150
+    ],
+    "file": "A7_task_objective_p14.png"
+  },
+  {
+    "task": "A7",
+    "field": "question",
+    "page": 14,
+    "box": [
+      1166,
+      764,
+      1534,
+      1150
+    ],
+    "file": "A7_question_p14.png"
+  },
+  {
+    "task": "A7",
+    "field": "examples",
+    "page": 14,
+    "box": [
+      1542,
+      764,
+      1900,
+      1150
+    ],
+    "file": "A7_examples_p14.png"
+  },
+  {
+    "task": "A7",
+    "field": "criteria",
+    "page": 14,
+    "box": [
+      1908,
+      764,
+      2401,
+      1150
+    ],
+    "file": "A7_criteria_p14.png"
+  },
+  {
+    "task": "A7",
+    "field": "notes",
+    "page": 14,
+    "box": [
+      2409,
+      764,
+      3101,
+      1150
+    ],
+    "file": "A7_notes_p14.png"
+  },
+  {
+    "task": "A8",
+    "field": "task",
+    "page": 14,
+    "box": [
+      207,
+      1158,
+      309,
+      1703
+    ],
+    "file": "A8_task_p14.png"
+  },
+  {
+    "task": "A8",
+    "field": "score",
+    "page": 14,
+    "box": [
+      317,
+      1158,
+      465,
+      1703
+    ],
+    "file": "A8_score_p14.png"
+  },
+  {
+    "task": "A8",
+    "field": "task_name",
+    "page": 14,
+    "box": [
+      473,
+      1158,
+      714,
+      1703
+    ],
+    "file": "A8_task_name_p14.png"
+  },
+  {
+    "task": "A8",
+    "field": "task_objective",
+    "page": 14,
+    "box": [
+      722,
+      1158,
+      1158,
+      1703
+    ],
+    "file": "A8_task_objective_p14.png"
+  },
+  {
+    "task": "A8",
+    "field": "question",
+    "page": 14,
+    "box": [
+      1166,
+      1158,
+      1534,
+      1703
+    ],
+    "file": "A8_question_p14.png"
+  },
+  {
+    "task": "A8",
+    "field": "examples",
+    "page": 14,
+    "box": [
+      1542,
+      1158,
+      1900,
+      1703
+    ],
+    "file": "A8_examples_p14.png"
+  },
+  {
+    "task": "A8",
+    "field": "criteria",
+    "page": 14,
+    "box": [
+      1908,
+      1158,
+      2401,
+      1703
+    ],
+    "file": "A8_criteria_p14.png"
+  },
+  {
+    "task": "A8",
+    "field": "notes",
+    "page": 14,
+    "box": [
+      2409,
+      1158,
+      3101,
+      1703
+    ],
+    "file": "A8_notes_p14.png"
+  },
+  {
+    "task": "A9",
+    "field": "task",
+    "page": 14,
+    "box": [
+      207,
+      1711,
+      309,
+      2047
+    ],
+    "file": "A9_task_p14.png"
+  },
+  {
+    "task": "A9",
+    "field": "score",
+    "page": 14,
+    "box": [
+      317,
+      1711,
+      465,
+      2047
+    ],
+    "file": "A9_score_p14.png"
+  },
+  {
+    "task": "A9",
+    "field": "task_name",
+    "page": 14,
+    "box": [
+      473,
+      1711,
+      714,
+      2047
+    ],
+    "file": "A9_task_name_p14.png"
+  },
+  {
+    "task": "A9",
+    "field": "task_objective",
+    "page": 14,
+    "box": [
+      722,
+      1711,
+      1158,
+      2047
+    ],
+    "file": "A9_task_objective_p14.png"
+  },
+  {
+    "task": "A9",
+    "field": "question",
+    "page": 14,
+    "box": [
+      1166,
+      1711,
+      1534,
+      2047
+    ],
+    "file": "A9_question_p14.png"
+  },
+  {
+    "task": "A9",
+    "field": "examples",
+    "page": 14,
+    "box": [
+      1542,
+      1711,
+      1900,
+      2047
+    ],
+    "file": "A9_examples_p14.png"
+  },
+  {
+    "task": "A9",
+    "field": "criteria",
+    "page": 14,
+    "box": [
+      1908,
+      1711,
+      2401,
+      2047
+    ],
+    "file": "A9_criteria_p14.png"
+  },
+  {
+    "task": "A9",
+    "field": "notes",
+    "page": 14,
+    "box": [
+      2409,
+      1711,
+      3101,
+      2047
+    ],
+    "file": "A9_notes_p14.png"
+  },
+  {
+    "task": "A10",
+    "field": "task",
+    "page": 15,
+    "box": [
+      207,
+      478,
+      309,
+      818
+    ],
+    "file": "A10_task_p15.png"
+  },
+  {
+    "task": "A10",
+    "field": "score",
+    "page": 15,
+    "box": [
+      317,
+      478,
+      465,
+      818
+    ],
+    "file": "A10_score_p15.png"
+  },
+  {
+    "task": "A10",
+    "field": "task_name",
+    "page": 15,
+    "box": [
+      473,
+      478,
+      714,
+      818
+    ],
+    "file": "A10_task_name_p15.png"
+  },
+  {
+    "task": "A10",
+    "field": "task_objective",
+    "page": 15,
+    "box": [
+      722,
+      478,
+      1158,
+      818
+    ],
+    "file": "A10_task_objective_p15.png"
+  },
+  {
+    "task": "A10",
+    "field": "question",
+    "page": 15,
+    "box": [
+      1166,
+      478,
+      1534,
+      818
+    ],
+    "file": "A10_question_p15.png"
+  },
+  {
+    "task": "A10",
+    "field": "examples",
+    "page": 15,
+    "box": [
+      1542,
+      478,
+      1900,
+      818
+    ],
+    "file": "A10_examples_p15.png"
+  },
+  {
+    "task": "A10",
+    "field": "criteria",
+    "page": 15,
+    "box": [
+      1908,
+      478,
+      2401,
+      818
+    ],
+    "file": "A10_criteria_p15.png"
+  },
+  {
+    "task": "A10",
+    "field": "notes",
+    "page": 15,
+    "box": [
+      2409,
+      478,
+      3101,
+      818
+    ],
+    "file": "A10_notes_p15.png"
+  },
+  {
+    "task": "A11",
+    "field": "task",
+    "page": 15,
+    "box": [
+      207,
+      826,
+      309,
+      1123
+    ],
+    "file": "A11_task_p15.png"
+  },
+  {
+    "task": "A11",
+    "field": "score",
+    "page": 15,
+    "box": [
+      317,
+      826,
+      465,
+      1123
+    ],
+    "file": "A11_score_p15.png"
+  },
+  {
+    "task": "A11",
+    "field": "task_name",
+    "page": 15,
+    "box": [
+      473,
+      826,
+      714,
+      1123
+    ],
+    "file": "A11_task_name_p15.png"
+  },
+  {
+    "task": "A11",
+    "field": "task_objective",
+    "page": 15,
+    "box": [
+      722,
+      826,
+      1158,
+      1123
+    ],
+    "file": "A11_task_objective_p15.png"
+  },
+  {
+    "task": "A11",
+    "field": "question",
+    "page": 15,
+    "box": [
+      1166,
+      826,
+      1534,
+      1123
+    ],
+    "file": "A11_question_p15.png"
+  },
+  {
+    "task": "A11",
+    "field": "examples",
+    "page": 15,
+    "box": [
+      1542,
+      826,
+      1900,
+      1123
+    ],
+    "file": "A11_examples_p15.png"
+  },
+  {
+    "task": "A11",
+    "field": "criteria",
+    "page": 15,
+    "box": [
+      1908,
+      826,
+      2401,
+      1123
+    ],
+    "file": "A11_criteria_p15.png"
+  },
+  {
+    "task": "A11",
+    "field": "notes",
+    "page": 15,
+    "box": [
+      2409,
+      826,
+      3101,
+      1123
+    ],
+    "file": "A11_notes_p15.png"
+  },
+  {
+    "task": "A12",
+    "field": "task",
+    "page": 15,
+    "box": [
+      207,
+      1131,
+      309,
+      1438
+    ],
+    "file": "A12_task_p15.png"
+  },
+  {
+    "task": "A12",
+    "field": "score",
+    "page": 15,
+    "box": [
+      317,
+      1131,
+      465,
+      1438
+    ],
+    "file": "A12_score_p15.png"
+  },
+  {
+    "task": "A12",
+    "field": "task_name",
+    "page": 15,
+    "box": [
+      473,
+      1131,
+      714,
+      1438
+    ],
+    "file": "A12_task_name_p15.png"
+  },
+  {
+    "task": "A12",
+    "field": "task_objective",
+    "page": 15,
+    "box": [
+      722,
+      1131,
+      1158,
+      1438
+    ],
+    "file": "A12_task_objective_p15.png"
+  },
+  {
+    "task": "A12",
+    "field": "question",
+    "page": 15,
+    "box": [
+      1166,
+      1131,
+      1534,
+      1438
+    ],
+    "file": "A12_question_p15.png"
+  },
+  {
+    "task": "A12",
+    "field": "examples",
+    "page": 15,
+    "box": [
+      1542,
+      1131,
+      1900,
+      1438
+    ],
+    "file": "A12_examples_p15.png"
+  },
+  {
+    "task": "A12",
+    "field": "criteria",
+    "page": 15,
+    "box": [
+      1908,
+      1131,
+      2401,
+      1438
+    ],
+    "file": "A12_criteria_p15.png"
+  },
+  {
+    "task": "A12",
+    "field": "notes",
+    "page": 15,
+    "box": [
+      2409,
+      1131,
+      3101,
+      1438
+    ],
+    "file": "A12_notes_p15.png"
+  },
+  {
+    "task": "A13",
+    "field": "task",
+    "page": 15,
+    "box": [
+      207,
+      1446,
+      309,
+      1834
+    ],
+    "file": "A13_task_p15.png"
+  },
+  {
+    "task": "A13",
+    "field": "score",
+    "page": 15,
+    "box": [
+      317,
+      1446,
+      465,
+      1834
+    ],
+    "file": "A13_score_p15.png"
+  },
+  {
+    "task": "A13",
+    "field": "task_name",
+    "page": 15,
+    "box": [
+      473,
+      1446,
+      714,
+      1834
+    ],
+    "file": "A13_task_name_p15.png"
+  },
+  {
+    "task": "A13",
+    "field": "task_objective",
+    "page": 15,
+    "box": [
+      722,
+      1446,
+      1158,
+      1834
+    ],
+    "file": "A13_task_objective_p15.png"
+  },
+  {
+    "task": "A13",
+    "field": "question",
+    "page": 15,
+    "box": [
+      1166,
+      1446,
+      1534,
+      1834
+    ],
+    "file": "A13_question_p15.png"
+  },
+  {
+    "task": "A13",
+    "field": "examples",
+    "page": 15,
+    "box": [
+      1542,
+      1446,
+      1900,
+      1834
+    ],
+    "file": "A13_examples_p15.png"
+  },
+  {
+    "task": "A13",
+    "field": "criteria",
+    "page": 15,
+    "box": [
+      1908,
+      1446,
+      2401,
+      1834
+    ],
+    "file": "A13_criteria_p15.png"
+  },
+  {
+    "task": "A13",
+    "field": "notes",
+    "page": 15,
+    "box": [
+      2409,
+      1446,
+      3101,
+      1834
+    ],
+    "file": "A13_notes_p15.png"
+  },
+  {
+    "task": "A14",
+    "field": "task",
+    "page": 15,
+    "box": [
+      207,
+      1842,
+      309,
+      2260
+    ],
+    "file": "A14_task_p15.png"
+  },
+  {
+    "task": "A14",
+    "field": "score",
+    "page": 15,
+    "box": [
+      317,
+      1842,
+      465,
+      2260
+    ],
+    "file": "A14_score_p15.png"
+  },
+  {
+    "task": "A14",
+    "field": "task_name",
+    "page": 15,
+    "box": [
+      473,
+      1842,
+      714,
+      2260
+    ],
+    "file": "A14_task_name_p15.png"
+  },
+  {
+    "task": "A14",
+    "field": "task_objective",
+    "page": 15,
+    "box": [
+      722,
+      1842,
+      1158,
+      2260
+    ],
+    "file": "A14_task_objective_p15.png"
+  },
+  {
+    "task": "A14",
+    "field": "question",
+    "page": 15,
+    "box": [
+      1166,
+      1842,
+      1534,
+      2260
+    ],
+    "file": "A14_question_p15.png"
+  },
+  {
+    "task": "A14",
+    "field": "examples",
+    "page": 15,
+    "box": [
+      1542,
+      1842,
+      1900,
+      2260
+    ],
+    "file": "A14_examples_p15.png"
+  },
+  {
+    "task": "A14",
+    "field": "criteria",
+    "page": 15,
+    "box": [
+      1908,
+      1842,
+      2401,
+      2260
+    ],
+    "file": "A14_criteria_p15.png"
+  },
+  {
+    "task": "A14",
+    "field": "notes",
+    "page": 15,
+    "box": [
+      2409,
+      1842,
+      3101,
+      2260
+    ],
+    "file": "A14_notes_p15.png"
+  },
+  {
+    "task": "A15",
+    "field": "task",
+    "page": 16,
+    "box": [
+      207,
+      378,
+      309,
+      806
+    ],
+    "file": "A15_task_p16.png"
+  },
+  {
+    "task": "A15",
+    "field": "score",
+    "page": 16,
+    "box": [
+      317,
+      378,
+      465,
+      806
+    ],
+    "file": "A15_score_p16.png"
+  },
+  {
+    "task": "A15",
+    "field": "task_name",
+    "page": 16,
+    "box": [
+      473,
+      378,
+      714,
+      806
+    ],
+    "file": "A15_task_name_p16.png"
+  },
+  {
+    "task": "A15",
+    "field": "task_objective",
+    "page": 16,
+    "box": [
+      722,
+      378,
+      1158,
+      806
+    ],
+    "file": "A15_task_objective_p16.png"
+  },
+  {
+    "task": "A15",
+    "field": "question",
+    "page": 16,
+    "box": [
+      1166,
+      378,
+      1534,
+      806
+    ],
+    "file": "A15_question_p16.png"
+  },
+  {
+    "task": "A15",
+    "field": "examples",
+    "page": 16,
+    "box": [
+      1542,
+      378,
+      1900,
+      806
+    ],
+    "file": "A15_examples_p16.png"
+  },
+  {
+    "task": "A15",
+    "field": "criteria",
+    "page": 16,
+    "box": [
+      1908,
+      378,
+      2401,
+      806
+    ],
+    "file": "A15_criteria_p16.png"
+  },
+  {
+    "task": "A15",
+    "field": "notes",
+    "page": 16,
+    "box": [
+      2409,
+      378,
+      3101,
+      806
+    ],
+    "file": "A15_notes_p16.png"
+  },
+  {
+    "task": "A16",
+    "field": "task",
+    "page": 16,
+    "box": [
+      207,
+      814,
+      309,
+      1122
+    ],
+    "file": "A16_task_p16.png"
+  },
+  {
+    "task": "A16",
+    "field": "score",
+    "page": 16,
+    "box": [
+      317,
+      814,
+      465,
+      1122
+    ],
+    "file": "A16_score_p16.png"
+  },
+  {
+    "task": "A16",
+    "field": "task_name",
+    "page": 16,
+    "box": [
+      473,
+      814,
+      714,
+      1122
+    ],
+    "file": "A16_task_name_p16.png"
+  },
+  {
+    "task": "A16",
+    "field": "task_objective",
+    "page": 16,
+    "box": [
+      722,
+      814,
+      1158,
+      1122
+    ],
+    "file": "A16_task_objective_p16.png"
+  },
+  {
+    "task": "A16",
+    "field": "question",
+    "page": 16,
+    "box": [
+      1166,
+      814,
+      1534,
+      1122
+    ],
+    "file": "A16_question_p16.png"
+  },
+  {
+    "task": "A16",
+    "field": "examples",
+    "page": 16,
+    "box": [
+      1542,
+      814,
+      1900,
+      1122
+    ],
+    "file": "A16_examples_p16.png"
+  },
+  {
+    "task": "A16",
+    "field": "criteria",
+    "page": 16,
+    "box": [
+      1908,
+      814,
+      2401,
+      1122
+    ],
+    "file": "A16_criteria_p16.png"
+  },
+  {
+    "task": "A16",
+    "field": "notes",
+    "page": 16,
+    "box": [
+      2409,
+      814,
+      3101,
+      1122
+    ],
+    "file": "A16_notes_p16.png"
+  },
+  {
+    "task": "A17",
+    "field": "task",
+    "page": 16,
+    "box": [
+      207,
+      1130,
+      309,
+      1348
+    ],
+    "file": "A17_task_p16.png"
+  },
+  {
+    "task": "A17",
+    "field": "score",
+    "page": 16,
+    "box": [
+      317,
+      1130,
+      465,
+      1348
+    ],
+    "file": "A17_score_p16.png"
+  },
+  {
+    "task": "A17",
+    "field": "task_name",
+    "page": 16,
+    "box": [
+      473,
+      1130,
+      714,
+      1348
+    ],
+    "file": "A17_task_name_p16.png"
+  },
+  {
+    "task": "A17",
+    "field": "task_objective",
+    "page": 16,
+    "box": [
+      722,
+      1130,
+      1158,
+      1348
+    ],
+    "file": "A17_task_objective_p16.png"
+  },
+  {
+    "task": "A17",
+    "field": "question",
+    "page": 16,
+    "box": [
+      1166,
+      1130,
+      1534,
+      1348
+    ],
+    "file": "A17_question_p16.png"
+  },
+  {
+    "task": "A17",
+    "field": "examples",
+    "page": 16,
+    "box": [
+      1542,
+      1130,
+      1900,
+      1348
+    ],
+    "file": "A17_examples_p16.png"
+  },
+  {
+    "task": "A17",
+    "field": "criteria",
+    "page": 16,
+    "box": [
+      1908,
+      1130,
+      2401,
+      1348
+    ],
+    "file": "A17_criteria_p16.png"
+  },
+  {
+    "task": "A17",
+    "field": "notes",
+    "page": 16,
+    "box": [
+      2409,
+      1130,
+      3101,
+      1348
+    ],
+    "file": "A17_notes_p16.png"
+  },
+  {
+    "task": "A18",
+    "field": "task",
+    "page": 16,
+    "box": [
+      207,
+      1356,
+      309,
+      1546
+    ],
+    "file": "A18_task_p16.png"
+  },
+  {
+    "task": "A18",
+    "field": "score",
+    "page": 16,
+    "box": [
+      317,
+      1356,
+      465,
+      1546
+    ],
+    "file": "A18_score_p16.png"
+  },
+  {
+    "task": "A18",
+    "field": "task_name",
+    "page": 16,
+    "box": [
+      473,
+      1356,
+      714,
+      1546
+    ],
+    "file": "A18_task_name_p16.png"
+  },
+  {
+    "task": "A18",
+    "field": "task_objective",
+    "page": 16,
+    "box": [
+      722,
+      1356,
+      1158,
+      1546
+    ],
+    "file": "A18_task_objective_p16.png"
+  },
+  {
+    "task": "A18",
+    "field": "question",
+    "page": 16,
+    "box": [
+      1166,
+      1356,
+      1534,
+      1546
+    ],
+    "file": "A18_question_p16.png"
+  },
+  {
+    "task": "A18",
+    "field": "examples",
+    "page": 16,
+    "box": [
+      1542,
+      1356,
+      1900,
+      1546
+    ],
+    "file": "A18_examples_p16.png"
+  },
+  {
+    "task": "A18",
+    "field": "criteria",
+    "page": 16,
+    "box": [
+      1908,
+      1356,
+      2401,
+      1546
+    ],
+    "file": "A18_criteria_p16.png"
+  },
+  {
+    "task": "A18",
+    "field": "notes",
+    "page": 16,
+    "box": [
+      2409,
+      1356,
+      3101,
+      1546
+    ],
+    "file": "A18_notes_p16.png"
+  },
+  {
+    "task": "A19",
+    "field": "task",
+    "page": 16,
+    "box": [
+      207,
+      1554,
+      309,
+      1823
+    ],
+    "file": "A19_task_p16.png"
+  },
+  {
+    "task": "A19",
+    "field": "score",
+    "page": 16,
+    "box": [
+      317,
+      1554,
+      465,
+      1823
+    ],
+    "file": "A19_score_p16.png"
+  },
+  {
+    "task": "A19",
+    "field": "task_name",
+    "page": 16,
+    "box": [
+      473,
+      1554,
+      714,
+      1823
+    ],
+    "file": "A19_task_name_p16.png"
+  },
+  {
+    "task": "A19",
+    "field": "task_objective",
+    "page": 16,
+    "box": [
+      722,
+      1554,
+      1158,
+      1823
+    ],
+    "file": "A19_task_objective_p16.png"
+  },
+  {
+    "task": "A19",
+    "field": "question",
+    "page": 16,
+    "box": [
+      1166,
+      1554,
+      1534,
+      1823
+    ],
+    "file": "A19_question_p16.png"
+  },
+  {
+    "task": "A19",
+    "field": "examples",
+    "page": 16,
+    "box": [
+      1542,
+      1554,
+      1900,
+      1823
+    ],
+    "file": "A19_examples_p16.png"
+  },
+  {
+    "task": "A19",
+    "field": "criteria",
+    "page": 16,
+    "box": [
+      1908,
+      1554,
+      2401,
+      1823
+    ],
+    "file": "A19_criteria_p16.png"
+  },
+  {
+    "task": "A19",
+    "field": "notes",
+    "page": 16,
+    "box": [
+      2409,
+      1554,
+      3101,
+      1823
+    ],
+    "file": "A19_notes_p16.png"
+  }
+]

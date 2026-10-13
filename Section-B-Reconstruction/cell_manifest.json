@@ -1,0 +1,2594 @@
+[
+  {
+    "task": "B1",
+    "field": "task",
+    "page": 17,
+    "box": [
+      207,
+      471,
+      309,
+      921
+    ],
+    "file": "B1_task_p17.png"
+  },
+  {
+    "task": "B1",
+    "field": "score",
+    "page": 17,
+    "box": [
+      317,
+      471,
+      465,
+      921
+    ],
+    "file": "B1_score_p17.png"
+  },
+  {
+    "task": "B1",
+    "field": "task_name",
+    "page": 17,
+    "box": [
+      473,
+      471,
+      714,
+      921
+    ],
+    "file": "B1_task_name_p17.png"
+  },
+  {
+    "task": "B1",
+    "field": "task_objective",
+    "page": 17,
+    "box": [
+      722,
+      471,
+      1158,
+      921
+    ],
+    "file": "B1_task_objective_p17.png"
+  },
+  {
+    "task": "B1",
+    "field": "question",
+    "page": 17,
+    "box": [
+      1166,
+      471,
+      1534,
+      921
+    ],
+    "file": "B1_question_p17.png"
+  },
+  {
+    "task": "B1",
+    "field": "examples",
+    "page": 17,
+    "box": [
+      1542,
+      471,
+      1900,
+      921
+    ],
+    "file": "B1_examples_p17.png"
+  },
+  {
+    "task": "B1",
+    "field": "criteria",
+    "page": 17,
+    "box": [
+      1908,
+      471,
+      2401,
+      921
+    ],
+    "file": "B1_criteria_p17.png"
+  },
+  {
+    "task": "B1",
+    "field": "notes",
+    "page": 17,
+    "box": [
+      2409,
+      471,
+      3101,
+      921
+    ],
+    "file": "B1_notes_p17.png"
+  },
+  {
+    "task": "B2",
+    "field": "task",
+    "page": 17,
+    "box": [
+      207,
+      929,
+      309,
+      1208
+    ],
+    "file": "B2_task_p17.png"
+  },
+  {
+    "task": "B2",
+    "field": "score",
+    "page": 17,
+    "box": [
+      317,
+      929,
+      465,
+      1208
+    ],
+    "file": "B2_score_p17.png"
+  },
+  {
+    "task": "B2",
+    "field": "task_name",
+    "page": 17,
+    "box": [
+      473,
+      929,
+      714,
+      1208
+    ],
+    "file": "B2_task_name_p17.png"
+  },
+  {
+    "task": "B2",
+    "field": "task_objective",
+    "page": 17,
+    "box": [
+      722,
+      929,
+      1158,
+      1208
+    ],
+    "file": "B2_task_objective_p17.png"
+  },
+  {
+    "task": "B2",
+    "field": "question",
+    "page": 17,
+    "box": [
+      1166,
+      929,
+      1534,
+      1208
+    ],
+    "file": "B2_question_p17.png"
+  },
+  {
+    "task": "B2",
+    "field": "examples",
+    "page": 17,
+    "box": [
+      1542,
+      929,
+      1900,
+      1208
+    ],
+    "file": "B2_examples_p17.png"
+  },
+  {
+    "task": "B2",
+    "field": "criteria",
+    "page": 17,
+    "box": [
+      1908,
+      929,
+      2401,
+      1208
+    ],
+    "file": "B2_criteria_p17.png"
+  },
+  {
+    "task": "B2",
+    "field": "notes",
+    "page": 17,
+    "box": [
+      2409,
+      929,
+      3101,
+      1208
+    ],
+    "file": "B2_notes_p17.png"
+  },
+  {
+    "task": "B3",
+    "field": "task",
+    "page": 17,
+    "box": [
+      207,
+      1216,
+      309,
+      1562
+    ],
+    "file": "B3_task_p17.png"
+  },
+  {
+    "task": "B3",
+    "field": "score",
+    "page": 17,
+    "box": [
+      317,
+      1216,
+      465,
+      1562
+    ],
+    "file": "B3_score_p17.png"
+  },
+  {
+    "task": "B3",
+    "field": "task_name",
+    "page": 17,
+    "box": [
+      473,
+      1216,
+      714,
+      1562
+    ],
+    "file": "B3_task_name_p17.png"
+  },
+  {
+    "task": "B3",
+    "field": "task_objective",
+    "page": 17,
+    "box": [
+      722,
+      1216,
+      1158,
+      1562
+    ],
+    "file": "B3_task_objective_p17.png"
+  },
+  {
+    "task": "B3",
+    "field": "question",
+    "page": 17,
+    "box": [
+      1166,
+      1216,
+      1534,
+      1562
+    ],
+    "file": "B3_question_p17.png"
+  },
+  {
+    "task": "B3",
+    "field": "examples",
+    "page": 17,
+    "box": [
+      1542,
+      1216,
+      1900,
+      1562
+    ],
+    "file": "B3_examples_p17.png"
+  },
+  {
+    "task": "B3",
+    "field": "criteria",
+    "page": 17,
+    "box": [
+      1908,
+      1216,
+      2401,
+      1562
+    ],
+    "file": "B3_criteria_p17.png"
+  },
+  {
+    "task": "B3",
+    "field": "notes",
+    "page": 17,
+    "box": [
+      2409,
+      1216,
+      3101,
+      1562
+    ],
+    "file": "B3_notes_p17.png"
+  },
+  {
+    "task": "B4",
+    "field": "task",
+    "page": 17,
+    "box": [
+      207,
+      1570,
+      309,
+      1750
+    ],
+    "file": "B4_task_p17.png"
+  },
+  {
+    "task": "B4",
+    "field": "score",
+    "page": 17,
+    "box": [
+      317,
+      1570,
+      465,
+      1750
+    ],
+    "file": "B4_score_p17.png"
+  },
+  {
+    "task": "B4",
+    "field": "task_name",
+    "page": 17,
+    "box": [
+      473,
+      1570,
+      714,
+      1750
+    ],
+    "file": "B4_task_name_p17.png"
+  },
+  {
+    "task": "B4",
+    "field": "task_objective",
+    "page": 17,
+    "box": [
+      722,
+      1570,
+      1158,
+      1750
+    ],
+    "file": "B4_task_objective_p17.png"
+  },
+  {
+    "task": "B4",
+    "field": "question",
+    "page": 17,
+    "box": [
+      1166,
+      1570,
+      1534,
+      1750
+    ],
+    "file": "B4_question_p17.png"
+  },
+  {
+    "task": "B4",
+    "field": "examples",
+    "page": 17,
+    "box": [
+      1542,
+      1570,
+      1900,
+      1750
+    ],
+    "file": "B4_examples_p17.png"
+  },
+  {
+    "task": "B4",
+    "field": "criteria",
+    "page": 17,
+    "box": [
+      1908,
+      1570,
+      2401,
+      1750
+    ],
+    "file": "B4_criteria_p17.png"
+  },
+  {
+    "task": "B4",
+    "field": "notes",
+    "page": 17,
+    "box": [
+      2409,
+      1570,
+      3101,
+      1750
+    ],
+    "file": "B4_notes_p17.png"
+  },
+  {
+    "task": "B5",
+    "field": "task",
+    "page": 17,
+    "box": [
+      207,
+      1758,
+      309,
+      2100
+    ],
+    "file": "B5_task_p17.png"
+  },
+  {
+    "task": "B5",
+    "field": "score",
+    "page": 17,
+    "box": [
+      317,
+      1758,
+      465,
+      2100
+    ],
+    "file": "B5_score_p17.png"
+  },
+  {
+    "task": "B5",
+    "field": "task_name",
+    "page": 17,
+    "box": [
+      473,
+      1758,
+      714,
+      2100
+    ],
+    "file": "B5_task_name_p17.png"
+  },
+  {
+    "task": "B5",
+    "field": "task_objective",
+    "page": 17,
+    "box": [
+      722,
+      1758,
+      1158,
+      2100
+    ],
+    "file": "B5_task_objective_p17.png"
+  },
+  {
+    "task": "B5",
+    "field": "question",
+    "page": 17,
+    "box": [
+      1166,
+      1758,
+      1534,
+      2100
+    ],
+    "file": "B5_question_p17.png"
+  },
+  {
+    "task": "B5",
+    "field": "examples",
+    "page": 17,
+    "box": [
+      1542,
+      1758,
+      1900,
+      2100
+    ],
+    "file": "B5_examples_p17.png"
+  },
+  {
+    "task": "B5",
+    "field": "criteria",
+    "page": 17,
+    "box": [
+      1908,
+      1758,
+      2401,
+      2100
+    ],
+    "file": "B5_criteria_p17.png"
+  },
+  {
+    "task": "B5",
+    "field": "notes",
+    "page": 17,
+    "box": [
+      2409,
+      1758,
+      3101,
+      2100
+    ],
+    "file": "B5_notes_p17.png"
+  },
+  {
+    "task": "B6",
+    "field": "task",
+    "page": 18,
+    "box": [
+      207,
+      371,
+      309,
+      555
+    ],
+    "file": "B6_task_p18.png"
+  },
+  {
+    "task": "B6",
+    "field": "score",
+    "page": 18,
+    "box": [
+      317,
+      371,
+      465,
+      555
+    ],
+    "file": "B6_score_p18.png"
+  },
+  {
+    "task": "B6",
+    "field": "task_name",
+    "page": 18,
+    "box": [
+      473,
+      371,
+      714,
+      555
+    ],
+    "file": "B6_task_name_p18.png"
+  },
+  {
+    "task": "B6",
+    "field": "task_objective",
+    "page": 18,
+    "box": [
+      722,
+      371,
+      1158,
+      555
+    ],
+    "file": "B6_task_objective_p18.png"
+  },
+  {
+    "task": "B6",
+    "field": "question",
+    "page": 18,
+    "box": [
+      1166,
+      371,
+      1534,
+      555
+    ],
+    "file": "B6_question_p18.png"
+  },
+  {
+    "task": "B6",
+    "field": "examples",
+    "page": 18,
+    "box": [
+      1542,
+      371,
+      1900,
+      555
+    ],
+    "file": "B6_examples_p18.png"
+  },
+  {
+    "task": "B6",
+    "field": "criteria",
+    "page": 18,
+    "box": [
+      1908,
+      371,
+      2401,
+      555
+    ],
+    "file": "B6_criteria_p18.png"
+  },
+  {
+    "task": "B6",
+    "field": "notes",
+    "page": 18,
+    "box": [
+      2409,
+      371,
+      3101,
+      555
+    ],
+    "file": "B6_notes_p18.png"
+  },
+  {
+    "task": "B7",
+    "field": "task",
+    "page": 18,
+    "box": [
+      207,
+      563,
+      309,
+      823
+    ],
+    "file": "B7_task_p18.png"
+  },
+  {
+    "task": "B7",
+    "field": "score",
+    "page": 18,
+    "box": [
+      317,
+      563,
+      465,
+      823
+    ],
+    "file": "B7_score_p18.png"
+  },
+  {
+    "task": "B7",
+    "field": "task_name",
+    "page": 18,
+    "box": [
+      473,
+      563,
+      714,
+      823
+    ],
+    "file": "B7_task_name_p18.png"
+  },
+  {
+    "task": "B7",
+    "field": "task_objective",
+    "page": 18,
+    "box": [
+      722,
+      563,
+      1158,
+      823
+    ],
+    "file": "B7_task_objective_p18.png"
+  },
+  {
+    "task": "B7",
+    "field": "question",
+    "page": 18,
+    "box": [
+      1166,
+      563,
+      1534,
+      823
+    ],
+    "file": "B7_question_p18.png"
+  },
+  {
+    "task": "B7",
+    "field": "examples",
+    "page": 18,
+    "box": [
+      1542,
+      563,
+      1900,
+      823
+    ],
+    "file": "B7_examples_p18.png"
+  },
+  {
+    "task": "B7",
+    "field": "criteria",
+    "page": 18,
+    "box": [
+      1908,
+      563,
+      2401,
+      823
+    ],
+    "file": "B7_criteria_p18.png"
+  },
+  {
+    "task": "B7",
+    "field": "notes",
+    "page": 18,
+    "box": [
+      2409,
+      563,
+      3101,
+      823
+    ],
+    "file": "B7_notes_p18.png"
+  },
+  {
+    "task": "B8",
+    "field": "task",
+    "page": 18,
+    "box": [
+      207,
+      831,
+      309,
+      1376
+    ],
+    "file": "B8_task_p18.png"
+  },
+  {
+    "task": "B8",
+    "field": "score",
+    "page": 18,
+    "box": [
+      317,
+      831,
+      465,
+      1376
+    ],
+    "file": "B8_score_p18.png"
+  },
+  {
+    "task": "B8",
+    "field": "task_name",
+    "page": 18,
+    "box": [
+      473,
+      831,
+      714,
+      1376
+    ],
+    "file": "B8_task_name_p18.png"
+  },
+  {
+    "task": "B8",
+    "field": "task_objective",
+    "page": 18,
+    "box": [
+      722,
+      831,
+      1158,
+      1376
+    ],
+    "file": "B8_task_objective_p18.png"
+  },
+  {
+    "task": "B8",
+    "field": "question",
+    "page": 18,
+    "box": [
+      1166,
+      831,
+      1534,
+      1376
+    ],
+    "file": "B8_question_p18.png"
+  },
+  {
+    "task": "B8",
+    "field": "examples",
+    "page": 18,
+    "box": [
+      1542,
+      831,
+      1900,
+      1376
+    ],
+    "file": "B8_examples_p18.png"
+  },
+  {
+    "task": "B8",
+    "field": "criteria",
+    "page": 18,
+    "box": [
+      1908,
+      831,
+      2401,
+      1376
+    ],
+    "file": "B8_criteria_p18.png"
+  },
+  {
+    "task": "B8",
+    "field": "notes",
+    "page": 18,
+    "box": [
+      2409,
+      831,
+      3101,
+      1376
+    ],
+    "file": "B8_notes_p18.png"
+  },
+  {
+    "task": "B9",
+    "field": "task",
+    "page": 18,
+    "box": [
+      207,
+      1384,
+      309,
+      1656
+    ],
+    "file": "B9_task_p18.png"
+  },
+  {
+    "task": "B9",
+    "field": "score",
+    "page": 18,
+    "box": [
+      317,
+      1384,
+      465,
+      1656
+    ],
+    "file": "B9_score_p18.png"
+  },
+  {
+    "task": "B9",
+    "field": "task_name",
+    "page": 18,
+    "box": [
+      473,
+      1384,
+      714,
+      1656
+    ],
+    "file": "B9_task_name_p18.png"
+  },
+  {
+    "task": "B9",
+    "field": "task_objective",
+    "page": 18,
+    "box": [
+      722,
+      1384,
+      1158,
+      1656
+    ],
+    "file": "B9_task_objective_p18.png"
+  },
+  {
+    "task": "B9",
+    "field": "question",
+    "page": 18,
+    "box": [
+      1166,
+      1384,
+      1534,
+      1656
+    ],
+    "file": "B9_question_p18.png"
+  },
+  {
+    "task": "B9",
+    "field": "examples",
+    "page": 18,
+    "box": [
+      1542,
+      1384,
+      1900,
+      1656
+    ],
+    "file": "B9_examples_p18.png"
+  },
+  {
+    "task": "B9",
+    "field": "criteria",
+    "page": 18,
+    "box": [
+      1908,
+      1384,
+      2401,
+      1656
+    ],
+    "file": "B9_criteria_p18.png"
+  },
+  {
+    "task": "B9",
+    "field": "notes",
+    "page": 18,
+    "box": [
+      2409,
+      1384,
+      3101,
+      1656
+    ],
+    "file": "B9_notes_p18.png"
+  },
+  {
+    "task": "B10",
+    "field": "task",
+    "page": 18,
+    "box": [
+      207,
+      1664,
+      309,
+      1961
+    ],
+    "file": "B10_task_p18.png"
+  },
+  {
+    "task": "B10",
+    "field": "score",
+    "page": 18,
+    "box": [
+      317,
+      1664,
+      465,
+      1961
+    ],
+    "file": "B10_score_p18.png"
+  },
+  {
+    "task": "B10",
+    "field": "task_name",
+    "page": 18,
+    "box": [
+      473,
+      1664,
+      714,
+      1961
+    ],
+    "file": "B10_task_name_p18.png"
+  },
+  {
+    "task": "B10",
+    "field": "task_objective",
+    "page": 18,
+    "box": [
+      722,
+      1664,
+      1158,
+      1961
+    ],
+    "file": "B10_task_objective_p18.png"
+  },
+  {
+    "task": "B10",
+    "field": "question",
+    "page": 18,
+    "box": [
+      1166,
+      1664,
+      1534,
+      1961
+    ],
+    "file": "B10_question_p18.png"
+  },
+  {
+    "task": "B10",
+    "field": "examples",
+    "page": 18,
+    "box": [
+      1542,
+      1664,
+      1900,
+      1961
+    ],
+    "file": "B10_examples_p18.png"
+  },
+  {
+    "task": "B10",
+    "field": "criteria",
+    "page": 18,
+    "box": [
+      1908,
+      1664,
+      2401,
+      1961
+    ],
+    "file": "B10_criteria_p18.png"
+  },
+  {
+    "task": "B10",
+    "field": "notes",
+    "page": 18,
+    "box": [
+      2409,
+      1664,
+      3101,
+      1961
+    ],
+    "file": "B10_notes_p18.png"
+  },
+  {
+    "task": "B11",
+    "field": "task",
+    "page": 18,
+    "box": [
+      207,
+      1969,
+      309,
+      2272
+    ],
+    "file": "B11_task_p18.png"
+  },
+  {
+    "task": "B11",
+    "field": "score",
+    "page": 18,
+    "box": [
+      317,
+      1969,
+      465,
+      2272
+    ],
+    "file": "B11_score_p18.png"
+  },
+  {
+    "task": "B11",
+    "field": "task_name",
+    "page": 18,
+    "box": [
+      473,
+      1969,
+      714,
+      2272
+    ],
+    "file": "B11_task_name_p18.png"
+  },
+  {
+    "task": "B11",
+    "field": "task_objective",
+    "page": 18,
+    "box": [
+      722,
+      1969,
+      1158,
+      2272
+    ],
+    "file": "B11_task_objective_p18.png"
+  },
+  {
+    "task": "B11",
+    "field": "question",
+    "page": 18,
+    "box": [
+      1166,
+      1969,
+      1534,
+      2272
+    ],
+    "file": "B11_question_p18.png"
+  },
+  {
+    "task": "B11",
+    "field": "examples",
+    "page": 18,
+    "box": [
+      1542,
+      1969,
+      1900,
+      2272
+    ],
+    "file": "B11_examples_p18.png"
+  },
+  {
+    "task": "B11",
+    "field": "criteria",
+    "page": 18,
+    "box": [
+      1908,
+      1969,
+      2401,
+      2272
+    ],
+    "file": "B11_criteria_p18.png"
+  },
+  {
+    "task": "B11",
+    "field": "notes",
+    "page": 18,
+    "box": [
+      2409,
+      1969,
+      3101,
+      2272
+    ],
+    "file": "B11_notes_p18.png"
+  },
+  {
+    "task": "B12",
+    "field": "task",
+    "page": 19,
+    "box": [
+      207,
+      471,
+      309,
+      729
+    ],
+    "file": "B12_task_p19.png"
+  },
+  {
+    "task": "B12",
+    "field": "score",
+    "page": 19,
+    "box": [
+      317,
+      471,
+      465,
+      729
+    ],
+    "file": "B12_score_p19.png"
+  },
+  {
+    "task": "B12",
+    "field": "task_name",
+    "page": 19,
+    "box": [
+      473,
+      471,
+      714,
+      729
+    ],
+    "file": "B12_task_name_p19.png"
+  },
+  {
+    "task": "B12",
+    "field": "task_objective",
+    "page": 19,
+    "box": [
+      722,
+      471,
+      1158,
+      729
+    ],
+    "file": "B12_task_objective_p19.png"
+  },
+  {
+    "task": "B12",
+    "field": "question",
+    "page": 19,
+    "box": [
+      1166,
+      471,
+      1534,
+      729
+    ],
+    "file": "B12_question_p19.png"
+  },
+  {
+    "task": "B12",
+    "field": "examples",
+    "page": 19,
+    "box": [
+      1542,
+      471,
+      1900,
+      729
+    ],
+    "file": "B12_examples_p19.png"
+  },
+  {
+    "task": "B12",
+    "field": "criteria",
+    "page": 19,
+    "box": [
+      1908,
+      471,
+      2401,
+      729
+    ],
+    "file": "B12_criteria_p19.png"
+  },
+  {
+    "task": "B12",
+    "field": "notes",
+    "page": 19,
+    "box": [
+      2409,
+      471,
+      3101,
+      729
+    ],
+    "file": "B12_notes_p19.png"
+  },
+  {
+    "task": "B13",
+    "field": "task",
+    "page": 19,
+    "box": [
+      207,
+      737,
+      309,
+      1038
+    ],
+    "file": "B13_task_p19.png"
+  },
+  {
+    "task": "B13",
+    "field": "score",
+    "page": 19,
+    "box": [
+      317,
+      737,
+      465,
+      1038
+    ],
+    "file": "B13_score_p19.png"
+  },
+  {
+    "task": "B13",
+    "field": "task_name",
+    "page": 19,
+    "box": [
+      473,
+      737,
+      714,
+      1038
+    ],
+    "file": "B13_task_name_p19.png"
+  },
+  {
+    "task": "B13",
+    "field": "task_objective",
+    "page": 19,
+    "box": [
+      722,
+      737,
+      1158,
+      1038
+    ],
+    "file": "B13_task_objective_p19.png"
+  },
+  {
+    "task": "B13",
+    "field": "question",
+    "page": 19,
+    "box": [
+      1166,
+      737,
+      1534,
+      1038
+    ],
+    "file": "B13_question_p19.png"
+  },
+  {
+    "task": "B13",
+    "field": "examples",
+    "page": 19,
+    "box": [
+      1542,
+      737,
+      1900,
+      1038
+    ],
+    "file": "B13_examples_p19.png"
+  },
+  {
+    "task": "B13",
+    "field": "criteria",
+    "page": 19,
+    "box": [
+      1908,
+      737,
+      2401,
+      1038
+    ],
+    "file": "B13_criteria_p19.png"
+  },
+  {
+    "task": "B13",
+    "field": "notes",
+    "page": 19,
+    "box": [
+      2409,
+      737,
+      3101,
+      1038
+    ],
+    "file": "B13_notes_p19.png"
+  },
+  {
+    "task": "B14",
+    "field": "task",
+    "page": 19,
+    "box": [
+      207,
+      1046,
+      309,
+      1339
+    ],
+    "file": "B14_task_p19.png"
+  },
+  {
+    "task": "B14",
+    "field": "score",
+    "page": 19,
+    "box": [
+      317,
+      1046,
+      465,
+      1339
+    ],
+    "file": "B14_score_p19.png"
+  },
+  {
+    "task": "B14",
+    "field": "task_name",
+    "page": 19,
+    "box": [
+      473,
+      1046,
+      714,
+      1339
+    ],
+    "file": "B14_task_name_p19.png"
+  },
+  {
+    "task": "B14",
+    "field": "task_objective",
+    "page": 19,
+    "box": [
+      722,
+      1046,
+      1158,
+      1339
+    ],
+    "file": "B14_task_objective_p19.png"
+  },
+  {
+    "task": "B14",
+    "field": "question",
+    "page": 19,
+    "box": [
+      1166,
+      1046,
+      1534,
+      1339
+    ],
+    "file": "B14_question_p19.png"
+  },
+  {
+    "task": "B14",
+    "field": "examples",
+    "page": 19,
+    "box": [
+      1542,
+      1046,
+      1900,
+      1339
+    ],
+    "file": "B14_examples_p19.png"
+  },
+  {
+    "task": "B14",
+    "field": "criteria",
+    "page": 19,
+    "box": [
+      1908,
+      1046,
+      2401,
+      1339
+    ],
+    "file": "B14_criteria_p19.png"
+  },
+  {
+    "task": "B14",
+    "field": "notes",
+    "page": 19,
+    "box": [
+      2409,
+      1046,
+      3101,
+      1339
+    ],
+    "file": "B14_notes_p19.png"
+  },
+  {
+    "task": "B15",
+    "field": "task",
+    "page": 19,
+    "box": [
+      207,
+      1347,
+      309,
+      1616
+    ],
+    "file": "B15_task_p19.png"
+  },
+  {
+    "task": "B15",
+    "field": "score",
+    "page": 19,
+    "box": [
+      317,
+      1347,
+      465,
+      1616
+    ],
+    "file": "B15_score_p19.png"
+  },
+  {
+    "task": "B15",
+    "field": "task_name",
+    "page": 19,
+    "box": [
+      473,
+      1347,
+      714,
+      1616
+    ],
+    "file": "B15_task_name_p19.png"
+  },
+  {
+    "task": "B15",
+    "field": "task_objective",
+    "page": 19,
+    "box": [
+      722,
+      1347,
+      1158,
+      1616
+    ],
+    "file": "B15_task_objective_p19.png"
+  },
+  {
+    "task": "B15",
+    "field": "question",
+    "page": 19,
+    "box": [
+      1166,
+      1347,
+      1534,
+      1616
+    ],
+    "file": "B15_question_p19.png"
+  },
+  {
+    "task": "B15",
+    "field": "examples",
+    "page": 19,
+    "box": [
+      1542,
+      1347,
+      1900,
+      1616
+    ],
+    "file": "B15_examples_p19.png"
+  },
+  {
+    "task": "B15",
+    "field": "criteria",
+    "page": 19,
+    "box": [
+      1908,
+      1347,
+      2401,
+      1616
+    ],
+    "file": "B15_criteria_p19.png"
+  },
+  {
+    "task": "B15",
+    "field": "notes",
+    "page": 19,
+    "box": [
+      2409,
+      1347,
+      3101,
+      1616
+    ],
+    "file": "B15_notes_p19.png"
+  },
+  {
+    "task": "B16",
+    "field": "task",
+    "page": 19,
+    "box": [
+      207,
+      1624,
+      309,
+      2084
+    ],
+    "file": "B16_task_p19.png"
+  },
+  {
+    "task": "B16",
+    "field": "score",
+    "page": 19,
+    "box": [
+      317,
+      1624,
+      465,
+      2084
+    ],
+    "file": "B16_score_p19.png"
+  },
+  {
+    "task": "B16",
+    "field": "task_name",
+    "page": 19,
+    "box": [
+      473,
+      1624,
+      714,
+      2084
+    ],
+    "file": "B16_task_name_p19.png"
+  },
+  {
+    "task": "B16",
+    "field": "task_objective",
+    "page": 19,
+    "box": [
+      722,
+      1624,
+      1158,
+      2084
+    ],
+    "file": "B16_task_objective_p19.png"
+  },
+  {
+    "task": "B16",
+    "field": "question",
+    "page": 19,
+    "box": [
+      1166,
+      1624,
+      1534,
+      2084
+    ],
+    "file": "B16_question_p19.png"
+  },
+  {
+    "task": "B16",
+    "field": "examples",
+    "page": 19,
+    "box": [
+      1542,
+      1624,
+      1900,
+      2084
+    ],
+    "file": "B16_examples_p19.png"
+  },
+  {
+    "task": "B16",
+    "field": "criteria",
+    "page": 19,
+    "box": [
+      1908,
+      1624,
+      2401,
+      2084
+    ],
+    "file": "B16_criteria_p19.png"
+  },
+  {
+    "task": "B16",
+    "field": "notes",
+    "page": 19,
+    "box": [
+      2409,
+      1624,
+      3101,
+      2084
+    ],
+    "file": "B16_notes_p19.png"
+  },
+  {
+    "task": "B17",
+    "field": "task",
+    "page": 20,
+    "box": [
+      207,
+      371,
+      309,
+      800
+    ],
+    "file": "B17_task_p20.png"
+  },
+  {
+    "task": "B17",
+    "field": "score",
+    "page": 20,
+    "box": [
+      317,
+      371,
+      465,
+      800
+    ],
+    "file": "B17_score_p20.png"
+  },
+  {
+    "task": "B17",
+    "field": "task_name",
+    "page": 20,
+    "box": [
+      473,
+      371,
+      714,
+      800
+    ],
+    "file": "B17_task_name_p20.png"
+  },
+  {
+    "task": "B17",
+    "field": "task_objective",
+    "page": 20,
+    "box": [
+      722,
+      371,
+      1158,
+      800
+    ],
+    "file": "B17_task_objective_p20.png"
+  },
+  {
+    "task": "B17",
+    "field": "question",
+    "page": 20,
+    "box": [
+      1166,
+      371,
+      1534,
+      800
+    ],
+    "file": "B17_question_p20.png"
+  },
+  {
+    "task": "B17",
+    "field": "examples",
+    "page": 20,
+    "box": [
+      1542,
+      371,
+      1900,
+      800
+    ],
+    "file": "B17_examples_p20.png"
+  },
+  {
+    "task": "B17",
+    "field": "criteria",
+    "page": 20,
+    "box": [
+      1908,
+      371,
+      2401,
+      800
+    ],
+    "file": "B17_criteria_p20.png"
+  },
+  {
+    "task": "B17",
+    "field": "notes",
+    "page": 20,
+    "box": [
+      2409,
+      371,
+      3101,
+      800
+    ],
+    "file": "B17_notes_p20.png"
+  },
+  {
+    "task": "B18",
+    "field": "task",
+    "page": 20,
+    "box": [
+      207,
+      808,
+      309,
+      1395
+    ],
+    "file": "B18_task_p20.png"
+  },
+  {
+    "task": "B18",
+    "field": "score",
+    "page": 20,
+    "box": [
+      317,
+      808,
+      465,
+      1395
+    ],
+    "file": "B18_score_p20.png"
+  },
+  {
+    "task": "B18",
+    "field": "task_name",
+    "page": 20,
+    "box": [
+      473,
+      808,
+      714,
+      1395
+    ],
+    "file": "B18_task_name_p20.png"
+  },
+  {
+    "task": "B18",
+    "field": "task_objective",
+    "page": 20,
+    "box": [
+      722,
+      808,
+      1158,
+      1395
+    ],
+    "file": "B18_task_objective_p20.png"
+  },
+  {
+    "task": "B18",
+    "field": "question",
+    "page": 20,
+    "box": [
+      1166,
+      808,
+      1534,
+      1395
+    ],
+    "file": "B18_question_p20.png"
+  },
+  {
+    "task": "B18",
+    "field": "examples",
+    "page": 20,
+    "box": [
+      1542,
+      808,
+      1900,
+      1395
+    ],
+    "file": "B18_examples_p20.png"
+  },
+  {
+    "task": "B18",
+    "field": "criteria",
+    "page": 20,
+    "box": [
+      1908,
+      808,
+      2401,
+      1395
+    ],
+    "file": "B18_criteria_p20.png"
+  },
+  {
+    "task": "B18",
+    "field": "notes",
+    "page": 20,
+    "box": [
+      2409,
+      808,
+      3101,
+      1395
+    ],
+    "file": "B18_notes_p20.png"
+  },
+  {
+    "task": "B19",
+    "field": "task",
+    "page": 20,
+    "box": [
+      207,
+      1403,
+      309,
+      1796
+    ],
+    "file": "B19_task_p20.png"
+  },
+  {
+    "task": "B19",
+    "field": "score",
+    "page": 20,
+    "box": [
+      317,
+      1403,
+      465,
+      1796
+    ],
+    "file": "B19_score_p20.png"
+  },
+  {
+    "task": "B19",
+    "field": "task_name",
+    "page": 20,
+    "box": [
+      473,
+      1403,
+      714,
+      1796
+    ],
+    "file": "B19_task_name_p20.png"
+  },
+  {
+    "task": "B19",
+    "field": "task_objective",
+    "page": 20,
+    "box": [
+      722,
+      1403,
+      1158,
+      1796
+    ],
+    "file": "B19_task_objective_p20.png"
+  },
+  {
+    "task": "B19",
+    "field": "question",
+    "page": 20,
+    "box": [
+      1166,
+      1403,
+      1534,
+      1796
+    ],
+    "file": "B19_question_p20.png"
+  },
+  {
+    "task": "B19",
+    "field": "examples",
+    "page": 20,
+    "box": [
+      1542,
+      1403,
+      1900,
+      1796
+    ],
+    "file": "B19_examples_p20.png"
+  },
+  {
+    "task": "B19",
+    "field": "criteria",
+    "page": 20,
+    "box": [
+      1908,
+      1403,
+      2401,
+      1796
+    ],
+    "file": "B19_criteria_p20.png"
+  },
+  {
+    "task": "B19",
+    "field": "notes",
+    "page": 20,
+    "box": [
+      2409,
+      1403,
+      3101,
+      1796
+    ],
+    "file": "B19_notes_p20.png"
+  },
+  {
+    "task": "B20",
+    "field": "task",
+    "page": 20,
+    "box": [
+      207,
+      1804,
+      309,
+      2154
+    ],
+    "file": "B20_task_p20.png"
+  },
+  {
+    "task": "B20",
+    "field": "score",
+    "page": 20,
+    "box": [
+      317,
+      1804,
+      465,
+      2154
+    ],
+    "file": "B20_score_p20.png"
+  },
+  {
+    "task": "B20",
+    "field": "task_name",
+    "page": 20,
+    "box": [
+      473,
+      1804,
+      714,
+      2154
+    ],
+    "file": "B20_task_name_p20.png"
+  },
+  {
+    "task": "B20",
+    "field": "task_objective",
+    "page": 20,
+    "box": [
+      722,
+      1804,
+      1158,
+      2154
+    ],
+    "file": "B20_task_objective_p20.png"
+  },
+  {
+    "task": "B20",
+    "field": "question",
+    "page": 20,
+    "box": [
+      1166,
+      1804,
+      1534,
+      2154
+    ],
+    "file": "B20_question_p20.png"
+  },
+  {
+    "task": "B20",
+    "field": "examples",
+    "page": 20,
+    "box": [
+      1542,
+      1804,
+      1900,
+      2154
+    ],
+    "file": "B20_examples_p20.png"
+  },
+  {
+    "task": "B20",
+    "field": "criteria",
+    "page": 20,
+    "box": [
+      1908,
+      1804,
+      2401,
+      2154
+    ],
+    "file": "B20_criteria_p20.png"
+  },
+  {
+    "task": "B20",
+    "field": "notes",
+    "page": 20,
+    "box": [
+      2409,
+      1804,
+      3101,
+      2154
+    ],
+    "file": "B20_notes_p20.png"
+  },
+  {
+    "task": "B21",
+    "field": "task",
+    "page": 21,
+    "box": [
+      207,
+      471,
+      309,
+      1019
+    ],
+    "file": "B21_task_p21.png"
+  },
+  {
+    "task": "B21",
+    "field": "score",
+    "page": 21,
+    "box": [
+      317,
+      471,
+      465,
+      1019
+    ],
+    "file": "B21_score_p21.png"
+  },
+  {
+    "task": "B21",
+    "field": "task_name",
+    "page": 21,
+    "box": [
+      473,
+      471,
+      714,
+      1019
+    ],
+    "file": "B21_task_name_p21.png"
+  },
+  {
+    "task": "B21",
+    "field": "task_objective",
+    "page": 21,
+    "box": [
+      722,
+      471,
+      1158,
+      1019
+    ],
+    "file": "B21_task_objective_p21.png"
+  },
+  {
+    "task": "B21",
+    "field": "question",
+    "page": 21,
+    "box": [
+      1166,
+      471,
+      1534,
+      1019
+    ],
+    "file": "B21_question_p21.png"
+  },
+  {
+    "task": "B21",
+    "field": "examples",
+    "page": 21,
+    "box": [
+      1542,
+      471,
+      1900,
+      1019
+    ],
+    "file": "B21_examples_p21.png"
+  },
+  {
+    "task": "B21",
+    "field": "criteria",
+    "page": 21,
+    "box": [
+      1908,
+      471,
+      2401,
+      1019
+    ],
+    "file": "B21_criteria_p21.png"
+  },
+  {
+    "task": "B21",
+    "field": "notes",
+    "page": 21,
+    "box": [
+      2409,
+      471,
+      3101,
+      1019
+    ],
+    "file": "B21_notes_p21.png"
+  },
+  {
+    "task": "B22",
+    "field": "task",
+    "page": 21,
+    "box": [
+      207,
+      1027,
+      309,
+      1384
+    ],
+    "file": "B22_task_p21.png"
+  },
+  {
+    "task": "B22",
+    "field": "score",
+    "page": 21,
+    "box": [
+      317,
+      1027,
+      465,
+      1384
+    ],
+    "file": "B22_score_p21.png"
+  },
+  {
+    "task": "B22",
+    "field": "task_name",
+    "page": 21,
+    "box": [
+      473,
+      1027,
+      714,
+      1384
+    ],
+    "file": "B22_task_name_p21.png"
+  },
+  {
+    "task": "B22",
+    "field": "task_objective",
+    "page": 21,
+    "box": [
+      722,
+      1027,
+      1158,
+      1384
+    ],
+    "file": "B22_task_objective_p21.png"
+  },
+  {
+    "task": "B22",
+    "field": "question",
+    "page": 21,
+    "box": [
+      1166,
+      1027,
+      1534,
+      1384
+    ],
+    "file": "B22_question_p21.png"
+  },
+  {
+    "task": "B22",
+    "field": "examples",
+    "page": 21,
+    "box": [
+      1542,
+      1027,
+      1900,
+      1384
+    ],
+    "file": "B22_examples_p21.png"
+  },
+  {
+    "task": "B22",
+    "field": "criteria",
+    "page": 21,
+    "box": [
+      1908,
+      1027,
+      2401,
+      1384
+    ],
+    "file": "B22_criteria_p21.png"
+  },
+  {
+    "task": "B22",
+    "field": "notes",
+    "page": 21,
+    "box": [
+      2409,
+      1027,
+      3101,
+      1384
+    ],
+    "file": "B22_notes_p21.png"
+  },
+  {
+    "task": "B23",
+    "field": "task",
+    "page": 21,
+    "box": [
+      207,
+      1392,
+      309,
+      1689
+    ],
+    "file": "B23_task_p21.png"
+  },
+  {
+    "task": "B23",
+    "field": "score",
+    "page": 21,
+    "box": [
+      317,
+      1392,
+      465,
+      1689
+    ],
+    "file": "B23_score_p21.png"
+  },
+  {
+    "task": "B23",
+    "field": "task_name",
+    "page": 21,
+    "box": [
+      473,
+      1392,
+      714,
+      1689
+    ],
+    "file": "B23_task_name_p21.png"
+  },
+  {
+    "task": "B23",
+    "field": "task_objective",
+    "page": 21,
+    "box": [
+      722,
+      1392,
+      1158,
+      1689
+    ],
+    "file": "B23_task_objective_p21.png"
+  },
+  {
+    "task": "B23",
+    "field": "question",
+    "page": 21,
+    "box": [
+      1166,
+      1392,
+      1534,
+      1689
+    ],
+    "file": "B23_question_p21.png"
+  },
+  {
+    "task": "B23",
+    "field": "examples",
+    "page": 21,
+    "box": [
+      1542,
+      1392,
+      1900,
+      1689
+    ],
+    "file": "B23_examples_p21.png"
+  },
+  {
+    "task": "B23",
+    "field": "criteria",
+    "page": 21,
+    "box": [
+      1908,
+      1392,
+      2401,
+      1689
+    ],
+    "file": "B23_criteria_p21.png"
+  },
+  {
+    "task": "B23",
+    "field": "notes",
+    "page": 21,
+    "box": [
+      2409,
+      1392,
+      3101,
+      1689
+    ],
+    "file": "B23_notes_p21.png"
+  },
+  {
+    "task": "B24",
+    "field": "task",
+    "page": 21,
+    "box": [
+      207,
+      1697,
+      309,
+      2210
+    ],
+    "file": "B24_task_p21.png"
+  },
+  {
+    "task": "B24",
+    "field": "score",
+    "page": 21,
+    "box": [
+      317,
+      1697,
+      465,
+      2210
+    ],
+    "file": "B24_score_p21.png"
+  },
+  {
+    "task": "B24",
+    "field": "task_name",
+    "page": 21,
+    "box": [
+      473,
+      1697,
+      714,
+      2210
+    ],
+    "file": "B24_task_name_p21.png"
+  },
+  {
+    "task": "B24",
+    "field": "task_objective",
+    "page": 21,
+    "box": [
+      722,
+      1697,
+      1158,
+      2210
+    ],
+    "file": "B24_task_objective_p21.png"
+  },
+  {
+    "task": "B24",
+    "field": "question",
+    "page": 21,
+    "box": [
+      1166,
+      1697,
+      1534,
+      2210
+    ],
+    "file": "B24_question_p21.png"
+  },
+  {
+    "task": "B24",
+    "field": "examples",
+    "page": 21,
+    "box": [
+      1542,
+      1697,
+      1900,
+      2210
+    ],
+    "file": "B24_examples_p21.png"
+  },
+  {
+    "task": "B24",
+    "field": "criteria",
+    "page": 21,
+    "box": [
+      1908,
+      1697,
+      2401,
+      2210
+    ],
+    "file": "B24_criteria_p21.png"
+  },
+  {
+    "task": "B24",
+    "field": "notes",
+    "page": 21,
+    "box": [
+      2409,
+      1697,
+      3101,
+      2210
+    ],
+    "file": "B24_notes_p21.png"
+  },
+  {
+    "task": "B25",
+    "field": "task",
+    "page": 22,
+    "box": [
+      207,
+      371,
+      309,
+      685
+    ],
+    "file": "B25_task_p22.png"
+  },
+  {
+    "task": "B25",
+    "field": "score",
+    "page": 22,
+    "box": [
+      317,
+      371,
+      465,
+      685
+    ],
+    "file": "B25_score_p22.png"
+  },
+  {
+    "task": "B25",
+    "field": "task_name",
+    "page": 22,
+    "box": [
+      473,
+      371,
+      714,
+      685
+    ],
+    "file": "B25_task_name_p22.png"
+  },
+  {
+    "task": "B25",
+    "field": "task_objective",
+    "page": 22,
+    "box": [
+      722,
+      371,
+      1158,
+      685
+    ],
+    "file": "B25_task_objective_p22.png"
+  },
+  {
+    "task": "B25",
+    "field": "question",
+    "page": 22,
+    "box": [
+      1166,
+      371,
+      1534,
+      685
+    ],
+    "file": "B25_question_p22.png"
+  },
+  {
+    "task": "B25",
+    "field": "examples",
+    "page": 22,
+    "box": [
+      1542,
+      371,
+      1900,
+      685
+    ],
+    "file": "B25_examples_p22.png"
+  },
+  {
+    "task": "B25",
+    "field": "criteria",
+    "page": 22,
+    "box": [
+      1908,
+      371,
+      2401,
+      685
+    ],
+    "file": "B25_criteria_p22.png"
+  },
+  {
+    "task": "B25",
+    "field": "notes",
+    "page": 22,
+    "box": [
+      2409,
+      371,
+      3101,
+      685
+    ],
+    "file": "B25_notes_p22.png"
+  },
+  {
+    "task": "B26",
+    "field": "task",
+    "page": 22,
+    "box": [
+      207,
+      693,
+      309,
+      1000
+    ],
+    "file": "B26_task_p22.png"
+  },
+  {
+    "task": "B26",
+    "field": "score",
+    "page": 22,
+    "box": [
+      317,
+      693,
+      465,
+      1000
+    ],
+    "file": "B26_score_p22.png"
+  },
+  {
+    "task": "B26",
+    "field": "task_name",
+    "page": 22,
+    "box": [
+      473,
+      693,
+      714,
+      1000
+    ],
+    "file": "B26_task_name_p22.png"
+  },
+  {
+    "task": "B26",
+    "field": "task_objective",
+    "page": 22,
+    "box": [
+      722,
+      693,
+      1158,
+      1000
+    ],
+    "file": "B26_task_objective_p22.png"
+  },
+  {
+    "task": "B26",
+    "field": "question",
+    "page": 22,
+    "box": [
+      1166,
+      693,
+      1534,
+      1000
+    ],
+    "file": "B26_question_p22.png"
+  },
+  {
+    "task": "B26",
+    "field": "examples",
+    "page": 22,
+    "box": [
+      1542,
+      693,
+      1900,
+      1000
+    ],
+    "file": "B26_examples_p22.png"
+  },
+  {
+    "task": "B26",
+    "field": "criteria",
+    "page": 22,
+    "box": [
+      1908,
+      693,
+      2401,
+      1000
+    ],
+    "file": "B26_criteria_p22.png"
+  },
+  {
+    "task": "B26",
+    "field": "notes",
+    "page": 22,
+    "box": [
+      2409,
+      693,
+      3101,
+      1000
+    ],
+    "file": "B26_notes_p22.png"
+  },
+  {
+    "task": "B27",
+    "field": "task",
+    "page": 22,
+    "box": [
+      207,
+      1008,
+      309,
+      1284
+    ],
+    "file": "B27_task_p22.png"
+  },
+  {
+    "task": "B27",
+    "field": "score",
+    "page": 22,
+    "box": [
+      317,
+      1008,
+      465,
+      1284
+    ],
+    "file": "B27_score_p22.png"
+  },
+  {
+    "task": "B27",
+    "field": "task_name",
+    "page": 22,
+    "box": [
+      473,
+      1008,
+      714,
+      1284
+    ],
+    "file": "B27_task_name_p22.png"
+  },
+  {
+    "task": "B27",
+    "field": "task_objective",
+    "page": 22,
+    "box": [
+      722,
+      1008,
+      1158,
+      1284
+    ],
+    "file": "B27_task_objective_p22.png"
+  },
+  {
+    "task": "B27",
+    "field": "question",
+    "page": 22,
+    "box": [
+      1166,
+      1008,
+      1534,
+      1284
+    ],
+    "file": "B27_question_p22.png"
+  },
+  {
+    "task": "B27",
+    "field": "examples",
+    "page": 22,
+    "box": [
+      1542,
+      1008,
+      1900,
+      1284
+    ],
+    "file": "B27_examples_p22.png"
+  },
+  {
+    "task": "B27",
+    "field": "criteria",
+    "page": 22,
+    "box": [
+      1908,
+      1008,
+      2401,
+      1284
+    ],
+    "file": "B27_criteria_p22.png"
+  },
+  {
+    "task": "B27",
+    "field": "notes",
+    "page": 22,
+    "box": [
+      2409,
+      1008,
+      3101,
+      1284
+    ],
+    "file": "B27_notes_p22.png"
+  }
+]

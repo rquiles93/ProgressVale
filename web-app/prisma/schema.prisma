@@ -1,0 +1,108 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum AuthProvider {
+  EMAIL
+  GOOGLE
+}
+
+enum AssessmentStatus {
+  DRAFT
+  IN_PROGRESS
+  COMPLETED
+  ARCHIVED
+}
+
+model User {
+  id          String         @id @default(cuid())
+  email       String         @unique
+  displayName String?
+  identities AuthIdentity[]
+  clients     Client[]
+  assessments Assessment[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+}
+
+model AuthIdentity {
+  id                String       @id @default(cuid())
+  userId            String
+  provider          AuthProvider
+  providerAccountId String
+  user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  @@unique([provider, providerAccountId])
+  @@unique([userId, provider])
+  @@index([userId])
+}
+
+model Client {
+  id          String       @id @default(cuid())
+  ownerId     String
+  name        String
+  identifier  String
+  dateOfBirth DateTime?    @db.Date
+  owner       User         @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  assessments Assessment[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@unique([ownerId, identifier])
+  @@unique([id, ownerId])
+  @@index([ownerId, name])
+}
+
+model Assessment {
+  id                    String           @id @default(cuid())
+  clientId              String
+  ownerId               String
+  status                AssessmentStatus @default(DRAFT)
+  evaluationStartedAt   DateTime?
+  evaluationCompletedAt DateTime?
+  client                Client           @relation(fields: [clientId, ownerId], references: [id, ownerId], onDelete: Cascade)
+  owner                 User             @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  scores                AssessmentScore[]
+  notes                 AssessmentNote[]
+  createdAt             DateTime         @default(now())
+  updatedAt             DateTime         @updatedAt
+
+  @@index([ownerId, status])
+  @@index([clientId, createdAt])
+}
+
+model AssessmentScore {
+  id              String     @id @default(cuid())
+  assessmentId    String
+  skillIdentifier String
+  // Null means unanswered; zero is an explicit assessed score.
+  score           Int?
+  maxScore        Int
+  assessment      Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  observedAt      DateTime?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  @@unique([assessmentId, skillIdentifier])
+  @@index([skillIdentifier])
+}
+
+model AssessmentNote {
+  id              String     @id @default(cuid())
+  assessmentId    String
+  skillIdentifier String
+  content         String     @db.Text
+  assessment      Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  @@unique([assessmentId, skillIdentifier])
+  @@index([skillIdentifier])
+}

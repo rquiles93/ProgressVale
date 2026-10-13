@@ -1,0 +1,12 @@
+PDF pages processed: 148
+Assessment sections: 25
+Supplemental DOCX files: 2
+Tasks identified: 544
+Cells audited: 4406
+Statuses: {'VERIFIED': 0, 'UNVERIFIED': 3614, 'CORRECTED': 0, 'REVIEW REQUIRED': 792}
+DOCX files: 27
+Package validation: PASS - all 27 DOCX packages opened successfully with python-docx.
+Assessment row validation: PASS - section task rows total 544 and match the section maxima shown in the source tracking system.
+Workbook validation: PASS - Complete_Audit_Report.xlsx opened with 4,407 rows x 10 columns; Unresolved_Discrepancies.xlsx opened with 793 rows x 10 columns.
+ZIP validation: PASS - 30 members; CRC test returned no bad member.
+Source crops generated: 491 row-level crops referenced by REVIEW REQUIRED audit entries.

@@ -1,0 +1,186 @@
+[
+  {
+    "section": "C",
+    "heading": "RECEPTIVE LANGUAGE",
+    "source_pages": "23-32",
+    "tasks": 57,
+    "cells": 456,
+    "unresolved": 0
+  },
+  {
+    "section": "D",
+    "heading": "MOTOR IMITATION",
+    "source_pages": "33-37",
+    "tasks": 27,
+    "cells": 216,
+    "unresolved": 0
+  },
+  {
+    "section": "E",
+    "heading": "VOCAL IMITATION",
+    "source_pages": "38-41",
+    "tasks": 20,
+    "cells": 160,
+    "unresolved": 0
+  },
+  {
+    "section": "F",
+    "heading": "REQUESTS",
+    "source_pages": "42-46",
+    "tasks": 29,
+    "cells": 232,
+    "unresolved": 0
+  },
+  {
+    "section": "G",
+    "heading": "LABELING",
+    "source_pages": "47-54",
+    "tasks": 47,
+    "cells": 376,
+    "unresolved": 0
+  },
+  {
+    "section": "H",
+    "heading": "INTRAVERBAL",
+    "source_pages": "55-63",
+    "tasks": 49,
+    "cells": 392,
+    "unresolved": 0
+  },
+  {
+    "section": "I",
+    "heading": "SPONTANEOUS VOCALIZATIONS",
+    "source_pages": "64-65",
+    "tasks": 9,
+    "cells": 72,
+    "unresolved": 0
+  },
+  {
+    "section": "J",
+    "heading": "Syntax and Grammar",
+    "source_pages": "66-68",
+    "tasks": 20,
+    "cells": 160,
+    "unresolved": 0
+  },
+  {
+    "section": "K",
+    "heading": "PLAY & LEISURE SKILLS",
+    "source_pages": "69-72",
+    "tasks": 15,
+    "cells": 120,
+    "unresolved": 0
+  },
+  {
+    "section": "L",
+    "heading": "SOCIAL INTERACTIONS",
+    "source_pages": "73-78",
+    "tasks": 34,
+    "cells": 272,
+    "unresolved": 0
+  },
+  {
+    "section": "M",
+    "heading": "GROUP INSTRUCTION",
+    "source_pages": "79-80",
+    "tasks": 12,
+    "cells": 96,
+    "unresolved": 0
+  },
+  {
+    "section": "N",
+    "heading": "FOLLOW CLASSROOM ROUTINES",
+    "source_pages": "81-82",
+    "tasks": 10,
+    "cells": 80,
+    "unresolved": 0
+  },
+  {
+    "section": "P",
+    "heading": "GENERALIZED RESPONDING",
+    "source_pages": "83",
+    "tasks": 6,
+    "cells": 48,
+    "unresolved": 0
+  },
+  {
+    "section": "Q",
+    "heading": "READING SKILLS",
+    "source_pages": "84-86",
+    "tasks": 17,
+    "cells": 136,
+    "unresolved": 0
+  },
+  {
+    "section": "R",
+    "heading": "MATH SKILLS",
+    "source_pages": "87-90",
+    "tasks": 29,
+    "cells": 232,
+    "unresolved": 0
+  },
+  {
+    "section": "S",
+    "heading": "WRITING SKILLS",
+    "source_pages": "91-92",
+    "tasks": 10,
+    "cells": 80,
+    "unresolved": 0
+  },
+  {
+    "section": "T",
+    "heading": "SPELLING",
+    "source_pages": "93",
+    "tasks": 7,
+    "cells": 56,
+    "unresolved": 0
+  },
+  {
+    "section": "U",
+    "heading": "DRESSING SKILLS",
+    "source_pages": "94-95",
+    "tasks": 15,
+    "cells": 120,
+    "unresolved": 0
+  },
+  {
+    "section": "V",
+    "heading": "EATING SKILLS",
+    "source_pages": "96",
+    "tasks": 10,
+    "cells": 80,
+    "unresolved": 0
+  },
+  {
+    "section": "W",
+    "heading": "GROOMING SKILLS",
+    "source_pages": "97",
+    "tasks": 7,
+    "cells": 56,
+    "unresolved": 0
+  },
+  {
+    "section": "X",
+    "heading": "TOILETING SKILLS",
+    "source_pages": "98-99",
+    "tasks": 10,
+    "cells": 80,
+    "unresolved": 0
+  },
+  {
+    "section": "Y",
+    "heading": "GROSS MOTOR SKILLS",
+    "source_pages": "100-102",
+    "tasks": 30,
+    "cells": 240,
+    "unresolved": 0
+  },
+  {
+    "section": "Z",
+    "heading": "FINE MOTOR SKILLS",
+    "source_pages": "103-105",
+    "tasks": 28,
+    "cells": 224,
+    "unresolved": 0
+  }
+]

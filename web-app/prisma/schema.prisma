@@ -7,11 +7,6 @@ datasource db {
   provider = "postgresql"
 }
 
-enum AuthProvider {
-  EMAIL
-  GOOGLE
-}
-
 enum AssessmentStatus {
   DRAFT
   IN_PROGRESS
@@ -20,35 +15,76 @@ enum AssessmentStatus {
 }
 
 model User {
-  id          String         @id @default(cuid())
-  email       String         @unique
-  displayName String?
-  identities AuthIdentity[]
-  clients     Client[]
-  assessments Assessment[]
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime       @updatedAt
+  id            String         @id @default(cuid())
+  email         String         @unique
+  displayName   String
+  emailVerified Boolean        @default(false)
+  image         String?
+  identities    AuthIdentity[]
+  sessions      Session[]
+  clients       Client[]
+  assessments   Assessment[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
 }
 
 model AuthIdentity {
-  id                String       @id @default(cuid())
-  userId            String
-  provider          AuthProvider
-  providerAccountId String
-  user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt         DateTime     @default(now())
-  updatedAt         DateTime     @updatedAt
+  id                    String    @id @default(cuid())
+  userId                String
+  provider              String
+  providerAccountId     String
+  accessToken           String?   @db.Text
+  refreshToken          String?   @db.Text
+  idToken               String?   @db.Text
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?   @db.Text
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
 
   @@unique([provider, providerAccountId])
-  @@unique([userId, provider])
   @@index([userId])
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  ipAddress String?
+  userAgent String?
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model Verification {
+  id         String   @id @default(cuid())
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+}
+
+model RateLimit {
+  id          String @id @default(cuid())
+  key         String @unique
+  count       Int
+  lastRequest BigInt
 }
 
 model Client {
   id          String       @id @default(cuid())
   ownerId     String
   name        String
-  identifier  String
+  identifier  String?
   dateOfBirth DateTime?    @db.Date
   owner       User         @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   assessments Assessment[]
@@ -61,18 +97,18 @@ model Client {
 }
 
 model Assessment {
-  id                    String           @id @default(cuid())
+  id                    String            @id @default(cuid())
   clientId              String
   ownerId               String
-  status                AssessmentStatus @default(DRAFT)
+  status                AssessmentStatus  @default(DRAFT)
   evaluationStartedAt   DateTime?
   evaluationCompletedAt DateTime?
-  client                Client           @relation(fields: [clientId, ownerId], references: [id, ownerId], onDelete: Cascade)
-  owner                 User             @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  client                Client            @relation(fields: [clientId, ownerId], references: [id, ownerId], onDelete: Cascade)
+  owner                 User              @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   scores                AssessmentScore[]
   notes                 AssessmentNote[]
-  createdAt             DateTime         @default(now())
-  updatedAt             DateTime         @updatedAt
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
 
   @@index([ownerId, status])
   @@index([clientId, createdAt])

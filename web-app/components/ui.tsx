@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowLeft, ChevronDown, LogOut, Settings, UserRound } from "lucide-react";
+import { ArrowLeft, ChevronDown, Settings, UserRound } from "lucide-react";
+import { LogoutButton } from "./logout-button";
 
 export function Logo({ light = false }: { light?: boolean }) {
   return (
@@ -10,7 +11,8 @@ export function Logo({ light = false }: { light?: boolean }) {
   );
 }
 
-export function AppHeader({ back }: { back?: { href: string; label: string } }) {
+export function AppHeader({ back, user }: { back?: { href: string; label: string }; user: { name: string; email: string } }) {
+  const initials = user.name.split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part[0]).join("").toUpperCase() || "U";
   return (
     <header className="border-b border-line bg-paper/90 backdrop-blur">
       <div className="mx-auto flex h-[74px] max-w-[1540px] items-center justify-between px-5 sm:px-8 lg:px-12">
@@ -24,10 +26,10 @@ export function AppHeader({ back }: { back?: { href: string; label: string } }) 
         </div>
         <details className="group relative">
           <summary className="focus-ring flex cursor-pointer list-none items-center gap-3 rounded-full py-1 pl-1 pr-2 transition hover:bg-cream">
-            <span className="grid size-9 place-items-center rounded-full bg-navy text-xs font-semibold text-white">AM</span>
+            <span className="grid size-9 place-items-center rounded-full bg-navy text-xs font-semibold text-white">{initials}</span>
             <span className="hidden text-left sm:block">
-              <span className="block text-xs font-semibold text-navy">Ana Morales</span>
-              <span className="block text-[10px] text-ink/50">Especialista</span>
+              <span className="block max-w-40 truncate text-xs font-semibold text-navy">{user.name}</span>
+              <span className="block max-w-40 truncate text-[10px] text-ink/50">{user.email}</span>
             </span>
             <ChevronDown size={14} className="text-ink/50 transition group-open:rotate-180" />
           </summary>
@@ -35,7 +37,7 @@ export function AppHeader({ back }: { back?: { href: string; label: string } }) 
             <button className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ink hover:bg-cream"><UserRound size={16} /> Mi perfil</button>
             <button className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ink hover:bg-cream"><Settings size={16} /> Configuración</button>
             <div className="my-1 border-t border-line" />
-            <Link href="/login" className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-rust hover:bg-rust-soft/50"><LogOut size={16} /> Cerrar sesión</Link>
+            <LogoutButton />
           </div>
         </details>
       </div>
@@ -46,8 +48,4 @@ export function AppHeader({ back }: { back?: { href: string; label: string } }) 
 export function StatusPill({ status }: { status: string }) {
   const style = status === "En progreso" ? "bg-rust-soft text-rust-dark" : status === "Completada" ? "bg-[#E8F0E7] text-[#365F4A]" : "bg-[#ECEAE6] text-ink/60";
   return <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-semibold ${style}`}>{status}</span>;
-}
-
-export function DemoBadge() {
-  return <span className="rounded-full border border-rust/20 bg-rust-soft/50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-rust-dark">Datos ficticios</span>;
 }

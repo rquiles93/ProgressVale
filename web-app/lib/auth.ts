@@ -5,6 +5,8 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { nextCookies } from "better-auth/next-js";
 import { prisma } from "@/lib/prisma";
 
+const googleEnabled = Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
+
 export const auth = betterAuth({
   appName: "ABLLS-R",
   baseURL: process.env.BETTER_AUTH_URL,
@@ -21,7 +23,23 @@ export const auth = betterAuth({
       providerId: "provider",
     },
     encryptOAuthTokens: true,
+    accountLinking: {
+      enabled: true,
+      disableImplicitLinking: true,
+      allowDifferentEmails: false,
+      allowUnlinkingAll: false,
+      updateUserInfoOnLink: false,
+    },
   },
+  socialProviders: googleEnabled ? {
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      disableDefaultScope: true,
+      scope: ["openid", "email", "profile"],
+      includeGrantedScopes: false,
+    },
+  } : undefined,
   session: {
     modelName: "Session",
     expiresIn: 60 * 60 * 24 * 7,

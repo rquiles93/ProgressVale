@@ -39,7 +39,7 @@ export function ClientList({ clients }: { clients: ClientListItem[] }) {
 
       <section className="overflow-hidden rounded-3xl border border-line bg-paper shadow-soft">
         <div className="flex flex-col gap-3 border-b border-line p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
-          <label className="relative block w-full sm:max-w-md"><Search size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink/35" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar por nombre o identificador" className="focus-ring h-10 w-full rounded-xl border border-line bg-cream/45 pl-10 pr-4 text-sm placeholder:text-ink/35" /></label>
+          <label className="relative block w-full sm:max-w-md"><span className="sr-only">Buscar clientes por nombre o identificador</span><Search aria-hidden="true" size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink/35" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar por nombre o identificador" className="focus-ring h-10 w-full rounded-xl border border-line bg-cream/45 pl-10 pr-4 text-sm placeholder:text-ink/35" /></label>
           <span className="text-xs text-ink/45">{filteredClients.length} {filteredClients.length === 1 ? "cliente" : "clientes"}</span>
         </div>
 

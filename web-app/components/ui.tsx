@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { ArrowLeft, ChevronDown, Settings, UserRound } from "lucide-react";
+import { ArrowLeft, ChevronDown, UserRound } from "lucide-react";
 import { LogoutButton } from "./logout-button";
 
 export function Logo({ light = false }: { light?: boolean }) {
   return (
-    <Link href="/clientes" className={`focus-ring inline-flex items-baseline gap-2 rounded-sm ${light ? "text-white" : "text-navy"}`}>
-      <span className="font-serif text-[28px] tracking-tight">ABLLS-R</span>
-      <span className={`text-[9px] font-semibold uppercase tracking-[0.22em] ${light ? "text-white/55" : "text-rust"}`}>Evaluación</span>
+    <Link href="/clientes" className={`focus-ring inline-flex flex-none items-baseline gap-1.5 whitespace-nowrap rounded-sm sm:gap-2 ${light ? "text-white" : "text-navy"}`}>
+      <span className="font-serif text-[23px] tracking-tight sm:text-[28px]">ABLLS-R</span>
+      <span className={`hidden text-[8px] font-semibold uppercase tracking-[0.18em] min-[360px]:inline sm:text-[9px] sm:tracking-[0.22em] ${light ? "text-white/55" : "text-rust"}`}>Evaluación</span>
     </Link>
   );
 }
@@ -34,8 +34,7 @@ export function AppHeader({ back, user }: { back?: { href: string; label: string
             <ChevronDown size={14} className="text-ink/50 transition group-open:rotate-180" />
           </summary>
           <div className="absolute right-0 z-50 mt-2 w-56 overflow-hidden rounded-2xl border border-line bg-paper p-2 shadow-soft">
-            <button className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ink hover:bg-cream"><UserRound size={16} /> Mi perfil</button>
-            <button className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ink hover:bg-cream"><Settings size={16} /> Configuración</button>
+            <Link href="/perfil" className="focus-ring flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ink hover:bg-cream"><UserRound size={16} /> Mi perfil y seguridad</Link>
             <div className="my-1 border-t border-line" />
             <LogoutButton />
           </div>

@@ -4,16 +4,20 @@ import { Prisma } from "@/generated/prisma/client";
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { requireUserId } from "@/lib/auth-session";
+import type { ServiceSettingValue } from "@/lib/ablls-content";
 
 export type ClientActionState = {
   status: "idle" | "success" | "error";
   message: string;
 };
 
-function validateClient(formData: FormData): { ok: true; name: string; identifier: string | null } | { ok: false; error: string } {
+const validSettings = new Set<ServiceSettingValue>(["HOME", "SCHOOL", "CLINIC_BASED"]);
+
+function validateClient(formData: FormData): { ok: true; name: string; identifier: string | null; serviceSettings: ServiceSettingValue[] } | { ok: false; error: string } {
   const name = String(formData.get("name") ?? "").trim().replace(/\s+/g, " ");
   const rawIdentifier = String(formData.get("identifier") ?? "").trim();
   const identifier = rawIdentifier ? rawIdentifier.toUpperCase() : null;
+  const serviceSettings = [...new Set(formData.getAll("serviceSettings").map(String))].filter((value): value is ServiceSettingValue => validSettings.has(value as ServiceSettingValue));
 
   if (!name || name.length > 100 || /[\u0000-\u001F\u007F]/.test(name)) {
     return { ok: false, error: "Escribe un nombre válido de hasta 100 caracteres." };
@@ -21,7 +25,10 @@ function validateClient(formData: FormData): { ok: true; name: string; identifie
   if (identifier && (identifier.length > 50 || /[\u0000-\u001F\u007F]/.test(identifier))) {
     return { ok: false, error: "El identificador debe tener hasta 50 caracteres válidos." };
   }
-  return { ok: true, name, identifier };
+  if (serviceSettings.length === 0) {
+    return { ok: false, error: "Selecciona al menos un Service Setting." };
+  }
+  return { ok: true, name, identifier, serviceSettings };
 }
 
 function clientError(error: unknown): ClientActionState {
@@ -37,7 +44,7 @@ export async function createClientAction(_state: ClientActionState, formData: Fo
   if (!input.ok) return { status: "error", message: input.error };
 
   try {
-    await prisma.client.create({ data: { name: input.name, identifier: input.identifier, ownerId } });
+    await prisma.client.create({ data: { name: input.name, identifier: input.identifier, serviceSettings: input.serviceSettings, ownerId } });
     revalidatePath("/clientes");
     return { status: "success", message: "Cliente creado." };
   } catch (error) {
@@ -56,7 +63,7 @@ export async function updateClientAction(_state: ClientActionState, formData: Fo
   try {
     await prisma.client.update({
       where: { id_ownerId: { id: clientId, ownerId } },
-      data: { name: input.name, identifier: input.identifier },
+      data: { name: input.name, identifier: input.identifier, serviceSettings: input.serviceSettings },
     });
     revalidatePath("/clientes");
     revalidatePath(`/clientes/${clientId}`);

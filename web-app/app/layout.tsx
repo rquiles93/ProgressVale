@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "ABLLS-R — Evaluación",
-  description: "Prototipo visual de evaluación ABLLS-R",
+  description: "Aplicación de evaluación y seguimiento ABLLS-R",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

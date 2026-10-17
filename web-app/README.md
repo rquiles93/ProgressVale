@@ -1,6 +1,6 @@
-# ABLLS-R — prototipo de interfaz
+# Aplicación ABLLS-R
 
-Prototipo visual local de la fase 1. No incluye autenticación real, base de datos, OAuth, generación de PDF ni almacenamiento de datos.
+Aplicación local en desarrollo con Next.js, Better Auth, Prisma y PostgreSQL. Incluye clientes por usuario, evaluaciones históricas, Skills Tracking y exportaciones PDF privadas. Google OAuth y recuperación de contraseña permanecen desactivados hasta configurar proveedores reales.
 
 ## Ejecutar
 
@@ -11,12 +11,27 @@ npm run dev
 
 Abre `http://localhost:3000`.
 
-## Rutas principales
+Antes de iniciar, copia `.env.example` a un archivo `.env` local ignorado por Git y configura la base de datos dedicada, la URL de Better Auth y un secreto seguro.
 
-- `/login`
-- `/registro`
-- `/clientes`
-- `/clientes/lucia-m`
-- `/evaluacion/demo-2026`
+## Verificación
 
-Todos los clientes y estados visibles son datos ficticios para demostrar la navegación. El contenido de las habilidades de evaluación está marcado expresamente como placeholder hasta poder validarlo con una fuente autorizada.
+```bash
+npm test
+npm run test:integration
+npm run test:auth
+npm run test:pdf:integration
+npx tsc --noEmit
+npm run lint
+npx prisma validate
+npx prisma migrate status
+npm run build
+```
+
+Las pruebas de integración requieren el servidor local y la base de datos aislada de ABLLS-R. Sólo crean datos ficticios temporales y los eliminan al finalizar.
+
+## Operación
+
+- Consulta `docs/BACKUP_AND_RECOVERY.md` para respaldos y ensayos de restauración.
+- Consulta `docs/DEPLOYMENT_CHECKLIST.md` antes de preparar un entorno alojado.
+
+No ejecutes restauraciones, migraciones destructivas ni despliegues sin una revisión explícita del entorno de destino.

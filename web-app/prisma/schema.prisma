@@ -11,7 +11,14 @@ enum AssessmentStatus {
   DRAFT
   IN_PROGRESS
   COMPLETED
+  FINALIZED
   ARCHIVED
+}
+
+enum ServiceSetting {
+  HOME
+  SCHOOL
+  CLINIC_BASED
 }
 
 model User {
@@ -86,6 +93,7 @@ model Client {
   name        String
   identifier  String?
   dateOfBirth DateTime?    @db.Date
+  serviceSettings ServiceSetting[] @default([])
   owner       User         @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   assessments Assessment[]
   createdAt   DateTime     @default(now())
@@ -103,15 +111,35 @@ model Assessment {
   status                AssessmentStatus  @default(DRAFT)
   evaluationStartedAt   DateTime?
   evaluationCompletedAt DateTime?
+  protocolVersion       String?
+  serviceSettingsSnapshot ServiceSetting[] @default([])
+  trackingColor         String?           @db.VarChar(7)
   client                Client            @relation(fields: [clientId, ownerId], references: [id, ownerId], onDelete: Cascade)
   owner                 User              @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   scores                AssessmentScore[]
   notes                 AssessmentNote[]
+  sections              AssessmentSection[]
   createdAt             DateTime          @default(now())
   updatedAt             DateTime          @updatedAt
 
   @@index([ownerId, status])
   @@index([clientId, createdAt])
+  @@unique([clientId, trackingColor])
+}
+
+model AssessmentSection {
+  id             String     @id @default(cuid())
+  assessmentId   String
+  sectionCode    String
+  defaultEnabled Boolean
+  enabled        Boolean
+  lockReason     String?
+  assessment     Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  @@unique([assessmentId, sectionCode])
+  @@index([assessmentId, enabled])
 }
 
 model AssessmentScore {

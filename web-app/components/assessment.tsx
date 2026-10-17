@@ -1,106 +1,82 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check, ChevronLeft, ChevronRight, CircleHelp, Menu, MoreHorizontal, Save, X } from "lucide-react";
-import { useState } from "react";
-import { sections, skillPlaceholders } from "@/lib/demo-data";
+import { useRouter } from "next/navigation";
+import { Check, CheckCircle2, ChevronLeft, ChevronRight, CircleHelp, LockKeyhole, Menu, Save, UnlockKeyhole, X } from "lucide-react";
+import { useActionState, useEffect, useRef, useState, useTransition } from "react";
+import { finalizeAssessmentAction, saveTaskAction, toggleSectionAction, type AssessmentActionState } from "@/app/actions/assessments";
+import type { ProtocolSection, ProtocolTask } from "@/lib/ablls-content";
 import { Logo } from "./ui";
 
-export function Assessment() {
-  const [skillIndex, setSkillIndex] = useState(0);
-  const [score, setScore] = useState<number | null>(2);
-  const [showExamples, setShowExamples] = useState(false);
+type SidebarSection = ProtocolSection & { enabled: boolean; lockReason: string | null; answered: number; href: string | null; tasks: { id: string; answered: boolean }[] };
+type AssessmentInfo = { id: string; status: string; clientId: string; clientName: string; clientIdentifier: string | null; protocolVersion: string | null; answeredCount: number; enabledTaskCount: number; lockedTaskCount: number };
+type Props = { assessment: AssessmentInfo; sections: SidebarSection[]; task: ProtocolTask; savedScore: number | null; savedNote: string; previousTaskId: string | null; nextTaskId: string | null; view: "task" | "summary" | "section-complete"; transitionSection: ProtocolSection | null; nextSection: ProtocolSection | null };
+const initialState: AssessmentActionState = { status: "idle", message: "" };
+
+export function Assessment(props: Props) {
+  const { assessment, sections, task, savedScore, savedNote, previousTaskId, nextTaskId, view, transitionSection, nextSection } = props;
+  const router = useRouter();
+  const [state, action, pending] = useActionState(saveTaskAction, initialState);
+  const [score, setScore] = useState<number | null>(savedScore);
+  const [note, setNote] = useState(savedNote);
+  const [dirty, setDirty] = useState(false);
+  const [examplesOpen, setExamplesOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const skill = skillPlaceholders[skillIndex];
-  const scores = Array.from({ length: skill.maxScore + 1 }, (_, index) => index);
+  const [desktopSidebar, setDesktopSidebar] = useState(false);
+  const [togglePending, startToggle] = useTransition();
+  const dragStart = useRef<number | null>(null);
+  const section = sections.find((item) => item.code === task.sectionCode)!;
+  const readOnly = ["FINALIZED", "COMPLETED", "ARCHIVED"].includes(assessment.status);
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 1024px)");
+    const update = () => setDesktopSidebar(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
 
-  const move = (direction: number) => {
-    const next = Math.min(Math.max(skillIndex + direction, 0), skillPlaceholders.length - 1);
-    setSkillIndex(next);
-    setScore(null);
-    setShowExamples(false);
+  useEffect(() => { if (state.status === "success" && state.navigateTo) router.push(state.navigateTo); }, [state, router]);
+  useEffect(() => {
+    const warn = (event: BeforeUnloadEvent) => { if (dirty) event.preventDefault(); };
+    window.addEventListener("beforeunload", warn);
+    return () => window.removeEventListener("beforeunload", warn);
+  }, [dirty]);
+
+  const navigate = (href: string) => {
+    if (dirty && !window.confirm("Hay cambios sin guardar. ¿Quieres descartarlos?")) return;
+    router.push(href); setSidebarOpen(false);
   };
+  const toggle = (item: SidebarSection, enabled: boolean) => startToggle(async () => { const result = await toggleSectionAction(assessment.id, item.code, enabled); if (result.status === "success") router.refresh(); });
+  const finishDrag = (item: SidebarSection, x: number) => { const start = dragStart.current; dragStart.current = null; if (start === null) return; if (!item.enabled && x - start > 28) toggle(item, true); if (item.enabled && x - start < -28) toggle(item, false); };
 
-  return (
-    <div className="min-h-screen bg-cream">
-      <header className="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur">
-        <div className="flex h-[70px] items-center justify-between px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 lg:gap-7">
-            <button onClick={() => setSidebarOpen(true)} className="focus-ring rounded-lg p-2 text-navy lg:hidden" aria-label="Abrir secciones"><Menu size={20} /></button>
-            <Logo />
-            <span className="hidden h-6 w-px bg-line sm:block" />
-            <div className="hidden sm:block"><p className="text-[10px] uppercase tracking-[0.12em] text-ink/40">Cliente</p><Link href="/clientes/lucia-m" className="text-xs font-semibold text-navy hover:text-rust">Lucía M. · DEMO-001</Link></div>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="hidden items-center gap-2 text-[11px] text-ink/40 md:flex"><Check size={13} className="text-sage" /> Cambios guardados localmente</span>
-            <button className="focus-ring rounded-lg border border-line p-2 text-ink/55 hover:bg-cream" aria-label="Más opciones"><MoreHorizontal size={18} /></button>
-            <Link href="/clientes/lucia-m" className="focus-ring flex h-9 items-center gap-2 rounded-lg border border-line px-3 text-xs font-semibold text-navy hover:bg-cream"><X size={14} /> <span className="hidden sm:inline">Salir</span></Link>
-          </div>
-        </div>
-      </header>
-
-      {sidebarOpen && <button aria-label="Cerrar menú" onClick={() => setSidebarOpen(false)} className="fixed inset-0 z-40 bg-navy/30 backdrop-blur-sm lg:hidden" />}
-      <div className="flex min-h-[calc(100vh-70px)]">
-        <aside className={`fixed inset-y-0 left-0 z-50 w-[290px] border-r border-line bg-paper transition-transform lg:sticky lg:top-[70px] lg:z-20 lg:h-[calc(100vh-70px)] lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
-          <div className="flex h-full flex-col">
-            <div className="flex items-center justify-between border-b border-line px-5 py-5"><div><p className="text-[10px] font-bold uppercase tracking-[0.15em] text-rust">Evaluación 2026</p><p className="mt-1 text-xs text-ink/45">Secciones ABLLS-R</p></div><button onClick={() => setSidebarOpen(false)} className="focus-ring rounded-lg p-1.5 text-ink/50 lg:hidden" aria-label="Cerrar secciones"><X size={18} /></button></div>
-            <nav className="flex-1 overflow-y-auto p-3" aria-label="Secciones de evaluación">
-              {sections.map((section, index) => <button key={section.code} onClick={() => setSidebarOpen(false)} className={`focus-ring mb-1 flex w-full items-center gap-3 rounded-xl p-3 text-left transition ${index === 0 ? "bg-rust-soft/65" : "hover:bg-cream"}`}><span className={`grid size-8 shrink-0 place-items-center rounded-lg text-xs font-bold ${index === 0 ? "bg-rust text-white" : "bg-cream text-ink/55"}`}>{section.code}</span><span className="min-w-0 flex-1"><span className={`block truncate text-xs font-semibold ${index === 0 ? "text-rust-dark" : "text-navy"}`}>{section.name}</span><span className="mt-2 block h-1 overflow-hidden rounded-full bg-line"><span className="block h-full rounded-full bg-sage" style={{ width: `${section.progress}%` }} /></span></span><span className="text-[10px] font-medium text-ink/35">{section.progress}%</span></button>)}
-            </nav>
-            <div className="border-t border-line p-5"><div className="mb-2 flex justify-between text-[10px] font-medium text-ink/45"><span>Progreso general</span><span>18%</span></div><div className="h-1.5 overflow-hidden rounded-full bg-line"><div className="h-full w-[18%] rounded-full bg-sage" /></div></div>
-          </div>
-        </aside>
-
-        <main className="min-w-0 flex-1 px-5 py-8 sm:px-8 lg:px-10 xl:px-14 xl:py-10">
-          <div className="mx-auto max-w-[1180px]">
-            <div className="mb-8 flex flex-col justify-between gap-5 border-b border-line pb-7 sm:flex-row sm:items-end">
-              <div><Link href="/clientes/lucia-m" className="focus-ring mb-5 inline-flex items-center gap-2 rounded-md text-xs font-semibold text-ink/45 hover:text-rust sm:hidden"><ArrowLeft size={14} /> Lucía M.</Link><p className="text-[10px] font-bold uppercase tracking-[0.17em] text-rust">Sección A</p><h1 className="mt-2 font-serif text-3xl tracking-tight text-navy sm:text-4xl">Cooperación y eficacia del reforzador</h1></div>
-              <div className="min-w-[180px]"><div className="mb-2 flex justify-between text-[10px] font-semibold text-ink/45"><span>Progreso de sección</span><span>8 de 11</span></div><div className="h-2 overflow-hidden rounded-full bg-line"><div className="h-full w-[72%] rounded-full bg-sage" /></div></div>
-            </div>
-
-            <article className="rounded-3xl border border-line bg-paper p-5 shadow-soft sm:p-8 xl:p-10">
-              <div className="mb-7 flex items-start justify-between gap-4"><div><span className="inline-flex rounded-lg bg-navy px-2.5 py-1 text-xs font-bold tracking-wide text-white">{skill.id}</span><h2 className="mt-4 font-serif text-2xl leading-tight text-navy sm:text-[30px]">{skill.title}</h2></div><span className="shrink-0 rounded-full border border-rust/20 bg-rust-soft/50 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.1em] text-rust-dark">Placeholder UI</span></div>
-
-              <section className="mb-8 rounded-2xl border-l-4 border-rust bg-cream/70 px-5 py-4"><p className="text-[10px] font-bold uppercase tracking-[0.15em] text-rust">Objetivo de la tarea · siempre visible</p><p className="mt-2 text-sm leading-6 text-ink/65">Contenido oficial pendiente de validación. Este texto demuestra la ubicación fija del objetivo de la habilidad.</p></section>
-
-              <section>
-                <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.15em] text-ink/40">Pregunta de evaluación</p>
-                <h3 className="max-w-[950px] font-serif text-2xl leading-[1.35] text-navy sm:text-[34px]">¿Pregunta de evaluación pendiente de verificar con la fuente oficial?</h3>
-                <p className="mt-3 text-xs text-rust-dark/70">Contenido demostrativo; no corresponde a una pregunta oficial de ABLLS-R.</p>
-              </section>
-
-              <section className="mt-10 rounded-2xl border border-line px-4 py-6 sm:px-8 sm:py-8">
-                <div className="mb-8 flex items-center justify-between"><div><p className="text-sm font-semibold text-navy">Selecciona una puntuación</p><p className="mt-1 text-xs text-ink/40">Escala de 0 a {skill.maxScore}</p></div>{score !== null && <span className="rounded-full bg-rust-soft px-3 py-1.5 text-xs font-bold text-rust-dark">Puntuación: {score}</span>}</div>
-                <div className="relative mx-auto max-w-[900px]">
-                  <div className="absolute left-[18px] right-[18px] top-[18px] h-1 rounded-full bg-line" />
-                  <div className="absolute left-[18px] top-[18px] h-1 rounded-full bg-rust transition-all duration-300" style={{ width: score === null ? 0 : `calc((${score} / ${skill.maxScore}) * (100% - 36px))` }} />
-                  <div className="relative flex justify-between">
-                    {scores.map((value) => <button key={value} onClick={() => setScore(value)} aria-label={`Puntuación ${value}`} aria-pressed={score === value} className="focus-ring group flex w-9 flex-col items-center rounded-full"><span className={`grid size-9 place-items-center rounded-full border-2 text-sm font-bold transition ${score === value ? "border-rust bg-rust text-white shadow-[0_0_0_5px_rgba(54,95,74,0.12)]" : "border-line bg-paper text-ink/55 group-hover:border-rust/50"}`}>{value}</span></button>)}
-                  </div>
-                  <div className="mt-5 flex justify-between gap-2">
-                    {scores.map((value) => <div key={value} className="w-20 text-center text-[10px] leading-4 text-ink/45"><span className="font-semibold text-ink/60">Criterio {value}</span><span className="block">pendiente de validación</span></div>)}
-                  </div>
-                </div>
-              </section>
-
-              <div className="mt-7 grid gap-5 md:grid-cols-2">
-                <section className="relative min-h-[190px] rounded-2xl border border-line bg-cream/45 p-5 sm:p-6">
-                  <div className="flex items-center gap-2"><h4 className="font-serif text-xl text-navy">Ejemplos</h4><button onClick={() => setShowExamples((value) => !value)} aria-label="Ver ejemplos adicionales" aria-expanded={showExamples} className="focus-ring grid size-6 place-items-center rounded-full bg-rust-soft text-rust-dark hover:bg-rust/20"><CircleHelp size={14} /></button></div>
-                  <p className="mt-4 text-sm leading-6 text-ink/55">Ejemplo de interfaz pendiente de sustituir por contenido verificado de la fuente autorizada.</p>
-                  {showExamples && <div className="absolute left-5 right-5 top-14 z-20 rounded-2xl border border-rust/20 bg-paper p-5 shadow-[0_18px_45px_rgba(24,38,56,0.14)]"><div className="flex items-center justify-between"><p className="text-xs font-bold uppercase tracking-[0.1em] text-rust">Ejemplos prácticos adicionales</p><button onClick={() => setShowExamples(false)} className="focus-ring rounded p-1 text-ink/40" aria-label="Cerrar ejemplos"><X size={14} /></button></div><ul className="mt-3 space-y-2 text-xs leading-5 text-ink/60"><li>• Ejemplo adicional pendiente de validación.</li><li>• No representa contenido oficial ABLLS-R.</li></ul></div>}
-                </section>
-                <section className="min-h-[190px] rounded-2xl border border-line bg-cream/45 p-5 sm:p-6"><div className="flex items-center justify-between"><h4 className="font-serif text-xl text-navy">Notas</h4><Save size={15} className="text-ink/30" /></div><textarea aria-label="Notas de la habilidad" placeholder="Escribe observaciones sobre esta habilidad…" className="focus-ring mt-3 h-28 w-full resize-none rounded-xl border border-line bg-paper p-3 text-sm leading-6 text-ink placeholder:text-ink/30" /></section>
-              </div>
-            </article>
-
-            <nav className="mt-6 flex items-center justify-between" aria-label="Navegación entre habilidades">
-              <button onClick={() => move(-1)} disabled={skillIndex === 0} className="focus-ring flex h-11 items-center gap-2 rounded-xl border border-line bg-paper px-4 text-sm font-semibold text-navy disabled:cursor-not-allowed disabled:opacity-35"><ChevronLeft size={17} /> Anterior</button>
-              <span className="text-[11px] font-medium text-ink/40">Habilidad {skillIndex + 1} de {skillPlaceholders.length}</span>
-              <button onClick={() => move(1)} disabled={skillIndex === skillPlaceholders.length - 1} className="focus-ring flex h-11 items-center gap-2 rounded-xl bg-navy px-5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-35">Siguiente <ChevronRight size={17} /></button>
-            </nav>
-          </div>
-        </main>
-      </div>
+  return <div className="min-h-screen bg-cream">
+    <header className="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur"><div className="flex h-[70px] items-center justify-between px-4 sm:px-6 lg:px-8"><div className="flex items-center gap-4"><button onClick={() => setSidebarOpen(true)} className="focus-ring rounded-lg p-2 text-navy lg:hidden" aria-label="Abrir secciones"><Menu size={20} /></button><Logo /><div className="hidden border-l border-line pl-4 sm:block"><p className="text-[10px] uppercase tracking-[0.12em] text-ink/40">Cliente · {readOnly ? "Finalizada" : "En progreso"}</p><button onClick={() => navigate(`/clientes/${assessment.clientId}`)} className="text-xs font-semibold text-navy">{assessment.clientName}{assessment.clientIdentifier ? ` · ${assessment.clientIdentifier}` : ""}</button></div></div><div className="flex items-center gap-3"><span aria-live="polite" className="hidden items-center gap-2 text-[11px] text-ink/40 md:flex"><Check size={13} className="text-sage" />{dirty ? "Cambios sin guardar" : state.status === "success" ? "Cambios guardados" : "Sin cambios pendientes"}</span><button onClick={() => navigate(`/evaluacion/${assessment.id}?view=summary`)} className="focus-ring rounded-lg border border-line px-3 py-2 text-xs font-semibold text-navy">Resumen</button><button onClick={() => navigate(`/clientes/${assessment.clientId}`)} className="focus-ring rounded-lg border border-line p-2 text-navy" aria-label="Salir"><X size={16} /></button></div></div></header>
+    {sidebarOpen && <button aria-label="Cerrar menú" onClick={() => setSidebarOpen(false)} className="fixed inset-0 z-40 bg-navy/30 lg:hidden" />}
+    <div className="flex min-h-[calc(100vh-70px)]"><Sidebar assessment={assessment} currentCode={task.sectionCode} sections={sections} open={sidebarOpen} accessible={sidebarOpen || desktopSidebar} readOnly={readOnly} togglePending={togglePending} onClose={() => setSidebarOpen(false)} onNavigate={navigate} onToggle={toggle} dragStart={dragStart} finishDrag={finishDrag} />
+      <main className="min-w-0 flex-1 px-5 py-8 sm:px-8 lg:px-10 xl:px-14"><div className="mx-auto max-w-[1180px]">
+        {view === "summary" ? <Summary assessment={assessment} sections={sections} readOnly={readOnly} /> : view === "section-complete" && transitionSection ? <Transition assessmentId={assessment.id} completed={transitionSection} next={nextSection} sections={sections} /> : <>
+          <div className="mb-8 flex flex-col justify-between gap-5 border-b border-line pb-7 sm:flex-row sm:items-end"><div><p className="text-[10px] font-bold uppercase tracking-[0.17em] text-rust">Sección {section.code}</p><h1 className="mt-2 font-serif text-3xl text-navy sm:text-4xl">{section.name}</h1></div><div className="min-w-[180px]"><div className="mb-2 flex justify-between text-[10px] text-ink/45"><span>Progreso</span><span>{section.answered} de {section.taskCount}</span></div><div className="h-2 overflow-hidden rounded-full bg-line"><div className="h-full rounded-full bg-sage" style={{ width: `${section.taskCount ? section.answered / section.taskCount * 100 : 0}%` }} /></div></div></div>
+          <form action={action}><input type="hidden" name="assessmentId" value={assessment.id} /><input type="hidden" name="taskId" value={task.id} /><input type="hidden" name="score" value={score ?? ""} />
+            <article className="rounded-3xl border border-line bg-paper p-5 shadow-soft sm:p-8 xl:p-10"><div className="mb-7 flex items-start justify-between gap-4"><div><span className="inline-flex rounded-lg bg-navy px-2.5 py-1 text-xs font-bold text-white">{task.id}</span><h2 className="mt-4 font-serif text-2xl text-navy sm:text-[30px]">{task.taskName}</h2></div>{readOnly && <span className="rounded-full bg-rust-soft px-3 py-1.5 text-[10px] font-bold text-rust-dark">Sólo lectura</span>}</div>
+              <section className="mb-8 rounded-2xl border-l-4 border-rust bg-cream/70 px-5 py-4"><p className="text-[10px] font-bold uppercase tracking-[0.15em] text-rust">Task Objective</p><p className="mt-2 text-sm leading-6 text-ink/65">{task.taskObjective}</p><p className="mt-3 text-[10px] text-ink/35">Fuente: protocolo {assessment.protocolVersion ?? "sin versión"} · registro {task.id}</p></section>
+              <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.15em] text-ink/40">Question</p><h3 className="max-w-[950px] font-serif text-2xl leading-[1.35] text-navy sm:text-[34px]">{task.question}</h3>
+              <Scoring task={task} score={score} readOnly={readOnly} onScore={(value) => { setScore(value); setDirty(true); }} />
+              <div className="mt-7 grid gap-5 md:grid-cols-2"><section className="relative min-h-[190px] rounded-2xl border border-line bg-cream/45 p-5"><div className="flex items-center gap-2"><h4 className="font-serif text-xl text-navy">Ejemplos</h4><button type="button" aria-expanded={examplesOpen} aria-controls="protocol-examples" aria-label="Mostrar ejemplos adicionales" onClick={() => setExamplesOpen(!examplesOpen)} className="focus-ring grid size-6 place-items-center rounded-full bg-rust-soft text-rust-dark"><CircleHelp size={14} /></button></div><p className="mt-4 whitespace-pre-line text-sm leading-6 text-ink/55">{task.examples || "El protocolo no incluye un ejemplo textual para esta tarea."}</p>{task.exampleImages.map((src) => <Image key={src} src={src} alt={`Ejemplo oficial ${task.id}`} width={180} height={180} className="mt-4 max-h-40 w-auto object-contain" />)}{examplesOpen && <div id="protocol-examples" className="absolute left-5 right-5 top-14 z-20 rounded-2xl border border-rust/20 bg-paper p-5 shadow-soft"><p className="text-xs font-bold uppercase text-rust">Ejemplos del protocolo</p><p className="mt-3 text-xs leading-5 text-ink/60">{task.examples || "No se proporciona contenido adicional en la fuente."}</p></div>}</section><section className="min-h-[190px] rounded-2xl border border-line bg-cream/45 p-5"><div className="flex items-center justify-between"><label htmlFor="assessment-note" className="font-serif text-xl text-navy">Notas</label><Save size={15} className="text-ink/30" /></div><textarea id="assessment-note" name="note" value={note} disabled={readOnly} onChange={(event) => { setNote(event.target.value); setDirty(true); }} className="focus-ring mt-3 h-28 w-full resize-none rounded-xl border border-line bg-paper p-3 text-sm" />{task.protocolNotes && <p className="mt-3 text-[11px] leading-4 text-ink/45"><strong>Protocol Notes:</strong> {task.protocolNotes}</p>}</section></div>
+              {state.status === "error" && <p role="alert" className="mt-5 rounded-xl bg-rust-soft px-4 py-3 text-xs text-rust-dark">{state.message}</p>}
+            </article><nav className="mt-6 flex items-center justify-between"><button type="button" disabled={!previousTaskId} onClick={() => previousTaskId && navigate(`/evaluacion/${assessment.id}?task=${previousTaskId}`)} className="focus-ring flex h-11 items-center gap-2 rounded-xl border border-line bg-paper px-4 text-sm font-semibold text-navy disabled:opacity-35"><ChevronLeft size={17} />Anterior</button><span className="text-[11px] text-ink/40">{task.id}</span>{readOnly ? <button type="button" disabled={!nextTaskId} onClick={() => nextTaskId && navigate(`/evaluacion/${assessment.id}?task=${nextTaskId}`)} className="focus-ring flex h-11 items-center gap-2 rounded-xl bg-navy px-5 text-sm font-semibold text-white disabled:opacity-35">Siguiente<ChevronRight size={17} /></button> : <button type="submit" disabled={pending || score === null} className="focus-ring flex h-11 items-center gap-2 rounded-xl bg-navy px-5 text-sm font-semibold text-white disabled:opacity-35">{pending ? "Guardando…" : "Guardar y siguiente"}<ChevronRight size={17} /></button>}</nav>
+          </form></>}
+      </div></main>
     </div>
-  );
+  </div>;
 }
+
+function Sidebar({ assessment, currentCode, sections, open, accessible, readOnly, togglePending, onClose, onNavigate, onToggle, dragStart, finishDrag }: { assessment: AssessmentInfo; currentCode: string; sections: SidebarSection[]; open: boolean; accessible: boolean; readOnly: boolean; togglePending: boolean; onClose: () => void; onNavigate: (href: string) => void; onToggle: (section: SidebarSection, enabled: boolean) => void; dragStart: React.MutableRefObject<number | null>; finishDrag: (section: SidebarSection, x: number) => void }) {
+  return <aside aria-hidden={!accessible} inert={!accessible} className={`fixed inset-y-0 left-0 z-50 w-[300px] border-r border-line bg-paper transition-transform lg:sticky lg:top-[70px] lg:z-20 lg:h-[calc(100vh-70px)] lg:translate-x-0 ${open ? "translate-x-0" : "-translate-x-full"}`}><div className="flex h-full flex-col"><div className="flex items-center justify-between border-b border-line px-5 py-5"><div><p className="text-[10px] font-bold uppercase tracking-[0.15em] text-rust">Evaluación</p><p className="mt-1 text-xs text-ink/45">25 secciones ABLLS-R</p></div><button onClick={onClose} aria-label="Cerrar secciones" className="focus-ring rounded-lg p-1 lg:hidden"><X size={18} /></button></div><nav className="flex-1 overflow-y-auto p-3">{sections.map((item) => { const active = item.code === currentCode; const permanent = item.lockReason === "PERMANENT"; const progress = item.taskCount ? Math.round(item.answered / item.taskCount * 100) : 0; return <div key={item.code} className={`mb-1 rounded-xl p-2 ${active ? "bg-rust-soft/65" : "hover:bg-cream"}`}><div className="flex items-center"><button disabled={!item.enabled || !item.href} onClick={() => item.href && onNavigate(item.href)} className="focus-ring flex min-w-0 flex-1 items-center gap-3 rounded-lg text-left disabled:cursor-not-allowed"><span className={`grid size-8 shrink-0 place-items-center rounded-lg text-xs font-bold ${active ? "bg-rust text-white" : "bg-cream text-ink/55"}`}>{item.code}</span><span className="min-w-0 flex-1"><span className="block truncate text-xs font-semibold text-navy">{item.name}</span><span className="mt-2 block h-1 overflow-hidden rounded-full bg-line"><span className="block h-full rounded-full bg-sage" style={{ width: `${progress}%` }} /></span></span></button>{!item.enabled || item.lockReason === "SERVICE_SETTING" ? <button disabled={permanent || readOnly || togglePending} title={permanent ? "Sección excluida" : item.enabled ? "Arrastra a la izquierda para bloquear" : "Arrastra a la derecha para desbloquear"} onPointerDown={(event) => { dragStart.current = event.clientX; event.currentTarget.setPointerCapture(event.pointerId); }} onPointerUp={(event) => finishDrag(item, event.clientX)} onKeyDown={(event) => { if (event.key === "ArrowRight" && !item.enabled) onToggle(item, true); if (event.key === "ArrowLeft" && item.enabled) onToggle(item, false); }} className="focus-ring ml-2 grid size-8 touch-none place-items-center rounded-lg text-ink/40 disabled:opacity-55" aria-label={`${item.enabled ? "Bloquear" : "Desbloquear"} sección ${item.code}`}>{item.enabled ? <UnlockKeyhole size={15} /> : <LockKeyhole size={15} />}</button> : null}</div>{active && item.enabled && <div className="mt-2 flex flex-wrap gap-1 border-t border-rust/10 pt-2" aria-label={`Tareas de la sección ${item.code}`}>{item.tasks.map((task) => <button key={task.id} onClick={() => onNavigate(`/evaluacion/${assessment.id}?task=${task.id}`)} className={`focus-ring rounded-md px-1.5 py-1 text-[9px] font-semibold ${task.answered ? "bg-rust text-white" : "border border-line bg-paper text-ink/55"}`} aria-label={`${task.id}: ${task.answered ? "respondida" : "sin responder"}`}>{task.id}</button>)}</div>}</div>; })}</nav><div className="border-t border-line p-5"><div className="mb-2 flex justify-between text-[10px] text-ink/45"><span>Progreso general</span><span>{assessment.answeredCount}/{assessment.enabledTaskCount}</span></div><div className="h-1.5 overflow-hidden rounded-full bg-line"><div className="h-full rounded-full bg-sage" style={{ width: `${assessment.enabledTaskCount ? assessment.answeredCount / assessment.enabledTaskCount * 100 : 0}%` }} /></div></div></div></aside>;
+}
+
+function Scoring({ task, score, readOnly, onScore }: { task: ProtocolTask; score: number | null; readOnly: boolean; onScore: (score: number) => void }) { return <section className="mt-10 rounded-2xl border border-line px-4 py-6 sm:px-8"><div className="mb-8 flex items-center justify-between"><div><p className="text-sm font-semibold text-navy">Selecciona una puntuación</p><p className="mt-1 text-xs text-ink/40">Valores válidos: {task.validScores.join(", ")}</p></div>{score !== null && <span className="rounded-full bg-rust-soft px-3 py-1.5 text-xs font-bold text-rust-dark">Puntuación: {score}</span>}</div><div className="relative mx-auto max-w-[900px]"><div className="absolute left-[18px] right-[18px] top-[18px] h-1 rounded-full bg-line" /><div className="absolute left-[18px] top-[18px] h-1 rounded-full bg-rust" style={{ width: score === null ? 0 : `calc((${task.validScores.indexOf(score)} / ${Math.max(task.validScores.length - 1, 1)}) * (100% - 36px))` }} /><div className="relative flex justify-between">{task.validScores.map((value) => <button type="button" disabled={readOnly} key={value} onClick={() => onScore(value)} aria-pressed={score === value} className="focus-ring w-9 rounded-full"><span className={`grid size-9 place-items-center rounded-full border-2 text-sm font-bold ${score === value ? "border-rust bg-rust text-white shadow-[0_0_0_5px_rgba(54,95,74,0.12)]" : "border-line bg-paper text-ink/55"}`}>{value}</span></button>)}</div><p className="mt-6 whitespace-pre-line text-xs leading-5 text-ink/55"><strong className="text-navy">Scoring Criteria: </strong>{task.scoringCriteria}</p></div></section>; }
+
+function Summary({ assessment, sections, readOnly }: { assessment: AssessmentInfo; sections: SidebarSection[]; readOnly: boolean }) { const unanswered = Math.max(assessment.enabledTaskCount - assessment.answeredCount, 0); const [confirming, setConfirming] = useState(false); return <section><div className="flex flex-wrap items-end justify-between gap-4"><div><p className="text-[10px] font-bold uppercase tracking-[0.17em] text-rust">Resumen de evaluación</p><h1 className="mt-2 font-serif text-4xl text-navy">{assessment.clientName}</h1></div><a href={`/api/assessments/${assessment.id}/pdf`} className="focus-ring rounded-xl bg-rust px-4 py-3 text-sm font-semibold text-white">Descargar PDF</a></div><div className="mt-8 grid gap-4 sm:grid-cols-3"><Stat label="Completadas" value={assessment.answeredCount} /><Stat label="Sin responder" value={unanswered} /><Stat label="Bloqueadas" value={assessment.lockedTaskCount} /></div><div className="mt-8 overflow-hidden rounded-3xl border border-line bg-paper shadow-soft">{sections.map((item) => <div key={item.code} className="flex items-center justify-between border-b border-line px-5 py-4 last:border-0"><div><b className="text-navy">{item.code}</b><span className="ml-3 text-sm text-ink/60">{item.name}</span></div><span className="text-xs text-ink/45">{item.enabled ? `${item.answered}/${item.taskCount}` : "Bloqueada"}</span></div>)}</div>{!readOnly && <form action={finalizeAssessmentAction} className="mt-8 rounded-2xl border border-rust/20 bg-rust-soft/35 p-5"><input type="hidden" name="assessmentId" value={assessment.id} /><p className="text-sm font-semibold text-navy">Finalización explícita</p><p className="mt-2 text-xs leading-5 text-ink/55">Puedes finalizar aun con tareas sin responder. Después será histórica y de sólo lectura.</p>{confirming ? <div role="alertdialog" aria-label="Confirmar finalización" className="mt-4 rounded-xl border border-rust/25 bg-paper p-4"><p className="text-xs font-semibold text-navy">¿Finalizar con {unanswered} tareas sin responder?</p><p className="mt-1 text-xs text-ink/50">La evaluación pasará a ser histórica y de sólo lectura.</p><div className="mt-4 flex gap-3"><button type="button" onClick={() => setConfirming(false)} className="focus-ring rounded-xl border border-line px-4 py-2.5 text-xs font-semibold text-navy">Cancelar</button><button className="focus-ring rounded-xl bg-rust px-4 py-2.5 text-xs font-semibold text-white">Finalizar evaluación</button></div></div> : <button type="button" onClick={() => setConfirming(true)} className="focus-ring mt-4 rounded-xl bg-rust px-5 py-3 text-sm font-semibold text-white">Confirmar y finalizar</button>}</form>}<Link href={`/clientes/${assessment.clientId}`} className="mt-6 inline-flex text-sm font-semibold text-navy">Volver al cliente</Link></section>; }
+function Transition({ assessmentId, completed, next, sections }: { assessmentId: string; completed: ProtocolSection; next: ProtocolSection | null; sections: SidebarSection[] }) { const target = next ? sections.find((item) => item.code === next.code) : null; return <section className="mx-auto max-w-2xl rounded-3xl border border-line bg-paper p-8 text-center shadow-soft sm:p-12"><CheckCircle2 size={52} className="mx-auto text-rust" /><p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-rust">Section completed</p><h1 className="mt-3 font-serif text-4xl text-navy">{completed.code} · {completed.name}</h1><p className="mt-4 text-sm text-ink/55">Las puntuaciones se guardaron correctamente.</p>{next && target?.href ? <div className="mt-8 rounded-2xl bg-cream/70 p-5"><p className="text-xs text-ink/45">Next section</p><p className="mt-2 font-serif text-2xl text-navy">{next.code} · {next.name}</p><Link href={target.href} className="mt-5 inline-flex rounded-xl bg-rust px-5 py-3 text-sm font-semibold text-white">Start section</Link></div> : <p className="mt-8 rounded-2xl bg-cream/70 p-5 text-sm text-ink/55">No quedan secciones disponibles. La evaluación no se finalizará automáticamente.</p>}<Link href={`/evaluacion/${assessmentId}?view=summary`} className="mt-6 inline-flex text-sm font-semibold text-navy">Back to summary</Link></section>; }
+function Stat({ label, value }: { label: string; value: number }) { return <div className="rounded-2xl border border-line bg-paper p-5"><p className="text-xs text-ink/45">{label}</p><p className="mt-2 font-serif text-3xl text-navy">{value}</p></div>; }

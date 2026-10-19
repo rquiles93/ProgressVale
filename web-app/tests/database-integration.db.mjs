@@ -89,6 +89,8 @@ test("assessment persistence, ownership, snapshots, locks, history, and finaliza
     await client.query(`UPDATE "Client" SET "serviceSettings" = ARRAY['CLINIC_BASED']::"ServiceSetting"[] WHERE id = $1`, [clientA]);
     const snapshot = await client.query(`SELECT "serviceSettingsSnapshot" FROM "Assessment" WHERE id = $1`, [assessmentHome]);
     assert.equal(snapshot.rows[0].serviceSettingsSnapshot, "{HOME}");
+    const legacyLanguage = await client.query(`SELECT language FROM "Assessment" WHERE id = $1`, [assessmentHome]);
+    assert.equal(legacyLanguage.rows[0].language, "EN");
 
     const task = content.tasks.find((item) => item.id === "A1");
     await client.query(
@@ -106,6 +108,30 @@ test("assessment persistence, ownership, snapshots, locks, history, and finaliza
       [assessmentHome, task.id],
     );
     assert.deepEqual(persisted.rows[0], { score: 0, maxScore: task.maxScore, content: "Nota ficticia de integración" });
+
+    const switchedLanguage = await client.query(`UPDATE "Assessment" SET language = 'ES' WHERE id = $1 AND "ownerId" = $2 RETURNING language`, [assessmentHome, ownerA]);
+    assert.equal(switchedLanguage.rows[0].language, "ES");
+    const crossOwnerLanguage = await client.query(`UPDATE "Assessment" SET language = 'EN' WHERE id = $1 AND "ownerId" = $2 RETURNING language`, [assessmentHome, ownerB]);
+    assert.equal(crossOwnerLanguage.rowCount, 0);
+    const preservedAfterLanguageSwitch = await client.query(
+      `SELECT a.language, s.score, n.content FROM "Assessment" a JOIN "AssessmentScore" s ON s."assessmentId" = a.id JOIN "AssessmentNote" n ON n."assessmentId" = a.id AND n."skillIdentifier" = s."skillIdentifier" WHERE a.id = $1 AND s."skillIdentifier" = $2`,
+      [assessmentHome, task.id],
+    );
+    assert.deepEqual(preservedAfterLanguageSwitch.rows[0], { language: "ES", score: 0, content: "Nota ficticia de integración" });
+
+    const decreaseTask = content.tasks.find((item) => item.id === "A3");
+    assert.ok(decreaseTask.maxScore >= 2);
+    await client.query(
+      `INSERT INTO "AssessmentScore" (id, "assessmentId", "skillIdentifier", score, "maxScore", "observedAt", "createdAt", "updatedAt") VALUES
+       ($1, $3, $5, $7, $6, $9, $9, $9),
+       ($2, $4, $5, $8, $6, $10, $10, $10)`,
+      [`itest-score-history-a-${token}`, `itest-score-history-b-${token}`, assessmentSchool, assessmentClinic, decreaseTask.id, decreaseTask.maxScore, decreaseTask.maxScore, 2, new Date("2026-01-01T00:00:00Z"), new Date("2026-02-01T00:00:00Z")],
+    );
+    const historicalScores = await client.query(
+      `SELECT "assessmentId", score FROM "AssessmentScore" WHERE "assessmentId" IN ($1, $2) AND "skillIdentifier" = $3 ORDER BY "observedAt"`,
+      [assessmentSchool, assessmentClinic, decreaseTask.id],
+    );
+    assert.deepEqual(historicalScores.rows, [{ assessmentId: assessmentSchool, score: decreaseTask.maxScore }, { assessmentId: assessmentClinic, score: 2 }], "a later lower score remains individually retrievable from its own assessment");
 
     const crossOwner = await client.query(
       `SELECT c.id FROM "Client" c WHERE c.id = $1 AND c."ownerId" = $2`,

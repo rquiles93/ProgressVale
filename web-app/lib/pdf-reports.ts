@@ -1,6 +1,6 @@
 import PDFDocument from "pdfkit";
 import { buildTrackingGrid } from "./tracking-grid.ts";
-import { fadedAssessmentColor } from "./assessment-colors.ts";
+import { TRACKING_EXCLUDED_SECTION_HEADER_COLOR, TRACKING_SECTION_HEADER_COLOR } from "./assessment-colors.ts";
 
 export const REPORT_COLORS = ["#365F4A", "#C67A5A", "#557A95", "#9A7AA0", "#B08A3E", "#487F78", "#8A5F55", "#667A48"] as const;
 
@@ -213,14 +213,25 @@ export async function generateAssessmentPdf(data: AssessmentReportData) {
   return completed;
 }
 
+export function trackingPdfTaskLabel(taskId: string) {
+  return `${taskId} -`;
+}
+
+export function trackingPdfSectionPresentation(status: string) {
+  const unavailable = status !== "available";
+  return {
+    headerColor: unavailable ? TRACKING_EXCLUDED_SECTION_HEADER_COLOR : TRACKING_SECTION_HEADER_COLOR,
+    textColor: unavailable ? NAVY : "#FFFFFF",
+    showScoreColors: !unavailable,
+  };
+}
+
 export async function generateTrackingPdf(data: TrackingReportData) {
   const model = buildTrackingGrid(data.sections, data.assessments);
   const { doc, completed } = createDocument({ size: "A3", layout: "portrait", margins: { top: 44, right: 28, bottom: 36, left: 28 } });
   const sectionGroups = [["A", "B", "C", "D"], ["E", "F", "G", "H"], ["I", "J", "K", "L"], ["M", "N", "P", "Q"], ["R", "S", "T", "U"], ["V", "W", "X", "Y", "Z"]];
   const inlineLegendLimit = 24;
   const useSeparateLegend = model.legend.length > inlineLegendLimit;
-  const referenceColor = model.legend.at(-1)?.color ?? "#557A95";
-  const excludedHeaderColor = fadedAssessmentColor(referenceColor, 0.62);
   if (useSeparateLegend) {
     const legendPerPage = 28;
     for (let legendPage = 0; legendPage < Math.ceil(model.legend.length / legendPerPage); legendPage += 1) {
@@ -257,19 +268,21 @@ export async function generateTrackingPdf(data: TrackingReportData) {
       const boxWidth = columnWidth - labelWidth;
       const rowHeight = Math.min(14, (gridBottom - gridTop) / Math.max(section.rowsTopToBottom.length, 1));
       const sectionTop = gridBottom - rowHeight * section.rowsTopToBottom.length;
-      const headerFill = section.latestSectionStatus === "excluded" ? excludedHeaderColor : referenceColor;
-      const headerText = section.latestSectionStatus === "locked" ? `${section.code} · ${section.name} · bloqueada` : `${section.code} · ${section.name}`;
+      const presentation = trackingPdfSectionPresentation(section.latestSectionStatus);
+      const sectionUnavailable = !presentation.showScoreColors;
+      const headerFill = presentation.headerColor;
+      const headerText = `${section.code} · ${section.name}`;
       const headerWidth = columnWidth - labelWidth * 0.55;
       const scoringGridRight = x + labelWidth + boxWidth;
       const headerX = scoringGridRight - headerWidth;
       doc.roundedRect(headerX, gridBottom + 7, headerWidth, 34, 1.5).fill(headerFill);
-      doc.font("Helvetica-Bold").fontSize(finalPage ? 8.2 : 8.7).fillColor(section.latestSectionStatus === "excluded" ? NAVY : "#FFFFFF").text(headerText, headerX + 4, gridBottom + 11, { width: headerWidth - 8, height: 26, ellipsis: true, align: "center" });
+      doc.font("Helvetica-Bold").fontSize(finalPage ? 8.2 : 8.7).fillColor(presentation.textColor).text(headerText, headerX + 4, gridBottom + 11, { width: headerWidth - 8, height: 26, ellipsis: true, align: "center" });
       section.rowsTopToBottom.forEach((row, rowIndex) => {
-        const y = sectionTop + rowIndex * rowHeight; const regression = row.regressions.at(-1); const marker = row.latestStatus === "locked" ? "x" : row.latestStatus === "unanswered" ? "-" : row.latestScore === 0 ? "0" : "";
+        const y = sectionTop + rowIndex * rowHeight;
         const labelFontSize = Math.max(6.4, Math.min(finalPage ? 7.8 : 8.3, rowHeight - 1.8));
-        doc.font("Helvetica-Bold").fontSize(labelFontSize).fillColor(regression ? "#A23B3B" : INK).text(`${row.task.id}${regression ? " R" : ""}${marker ? ` ${marker}` : ""}`, x, y + Math.max(0.8, (rowHeight - labelFontSize) / 2), { width: labelWidth - 3, align: "right", lineBreak: false });
+        doc.font("Helvetica-Bold").fontSize(labelFontSize).fillColor(INK).text(trackingPdfTaskLabel(row.task.id), x, y + Math.max(0.8, (rowHeight - labelFontSize) / 2), { width: labelWidth - 3, align: "right", lineBreak: false });
         const cellWidth = boxWidth / row.task.maxScore;
-        row.boxes.forEach((box, boxIndex) => { const bx = x + labelWidth + boxIndex * cellWidth; doc.rect(bx, y, cellWidth, rowHeight).fillAndStroke(box?.color ?? CREAM, LINE); });
+        row.boxes.forEach((box, boxIndex) => { const bx = x + labelWidth + boxIndex * cellWidth; doc.rect(bx, y, cellWidth, rowHeight).fillAndStroke(sectionUnavailable ? CREAM : box?.color ?? CREAM, LINE); });
       });
     });
   }

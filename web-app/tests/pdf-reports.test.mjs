@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync } from "node:fs";
-import { generateAssessmentPdf, generateTrackingPdf, REPORT_COLORS } from "../lib/pdf-reports.ts";
+import { generateAssessmentPdf, generateTrackingPdf, REPORT_COLORS, trackingPdfSectionPresentation, trackingPdfTaskLabel } from "../lib/pdf-reports.ts";
 import { HISTORY_COLORS } from "../lib/progress.ts";
+import { TRACKING_EXCLUDED_SECTION_HEADER_COLOR, TRACKING_SECTION_HEADER_COLOR } from "../lib/assessment-colors.ts";
 
 const task = (sectionCode, index, maxScore = 2) => ({ id: `${sectionCode}${index}`, sectionCode, taskName: `Tarea ficticia ${sectionCode}${index}`, maxScore });
 const sectionCodes = "ABCDEFGHIJKLMNOPQR".split("");
@@ -64,6 +65,7 @@ test("finalized assessment PDF preserves explicit zero separately from unanswere
 test("tracking PDF renders all 25 complete sections on six portrait grid pages with many assessments and regression", async () => {
   const assessments = Array.from({ length: 19 }, (_, index) => ({
     id: `assessment-${index}`,
+    trackingColor: index === 18 ? "#B04A6F" : null,
     createdAt: new Date(Date.UTC(2024, index % 12, 1)),
     evaluationCompletedAt: new Date(Date.UTC(2024 + Math.floor(index / 12), index % 12, 2)),
     sections: completeSections.map((section) => ({ sectionCode: section.code, enabled: section.assessmentApproved && !(index === 18 && ["M", "N"].includes(section.code)), lockReason: section.permanentlyExcluded ? "PERMANENT" : index === 18 && ["M", "N"].includes(section.code) ? "SERVICE_SETTING" : null })),
@@ -76,6 +78,20 @@ test("tracking PDF renders all 25 complete sections on six portrait grid pages w
   assert.equal(buffer.subarray(0, 5).toString(), "%PDF-");
   assert.equal(REPORT_COLORS.length, 8);
   assert.deepEqual(REPORT_COLORS, HISTORY_COLORS);
+  assert.equal(TRACKING_SECTION_HEADER_COLOR, "#365F4A");
+  assert.notEqual(TRACKING_EXCLUDED_SECTION_HEADER_COLOR, assessments.at(-1).trackingColor);
   assert.equal(pageCount(buffer), 6, "25 complete sections use the approved four/four/four/four/four/five distribution on six A3 portrait pages");
   assert.ok(buffer.length > 10_000);
+});
+
+test("tracking PDF standardizes labels and neutralizes blocked and excluded sections", () => {
+  for (const id of ["A1", "A19", "B1", "B27", "M1", "N10", "Q14"]) assert.equal(trackingPdfTaskLabel(id), `${id} -`);
+  const regular = trackingPdfSectionPresentation("available");
+  const blocked = trackingPdfSectionPresentation("locked");
+  const excluded = trackingPdfSectionPresentation("excluded");
+  assert.deepEqual(blocked, excluded, "client-settings-blocked and permanently excluded sections must render identically");
+  assert.equal(regular.headerColor, TRACKING_SECTION_HEADER_COLOR);
+  assert.equal(regular.showScoreColors, true);
+  assert.equal(blocked.headerColor, TRACKING_EXCLUDED_SECTION_HEADER_COLOR);
+  assert.equal(blocked.showScoreColors, false);
 });

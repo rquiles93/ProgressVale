@@ -21,6 +21,11 @@ enum ServiceSetting {
   CLINIC_BASED
 }
 
+enum AssessmentLanguage {
+  EN
+  ES
+}
+
 model User {
   id            String         @id @default(cuid())
   email         String         @unique
@@ -114,6 +119,7 @@ model Assessment {
   protocolVersion       String?
   serviceSettingsSnapshot ServiceSetting[] @default([])
   trackingColor         String?           @db.VarChar(7)
+  language              AssessmentLanguage @default(EN)
   client                Client            @relation(fields: [clientId, ownerId], references: [id, ownerId], onDelete: Cascade)
   owner                 User              @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   scores                AssessmentScore[]

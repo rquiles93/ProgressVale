@@ -7,6 +7,7 @@ export const ASSESSMENT_COLOR_PALETTE = [
 ] as const;
 
 export type AssessmentColor = (typeof ASSESSMENT_COLOR_PALETTE)[number]["value"];
+export const TRACKING_SECTION_HEADER_COLOR = "#365F4A";
 
 const assessmentColors = new Set<string>(ASSESSMENT_COLOR_PALETTE.map((item) => item.value));
 
@@ -25,3 +26,5 @@ export function fadedAssessmentColor(color: string, whiteRatio = 0.72) {
   const channels = [0, 2, 4].map((offset) => Number.parseInt(hex.slice(offset, offset + 2), 16));
   return `#${channels.map((channel) => Math.round(channel + (255 - channel) * whiteRatio).toString(16).padStart(2, "0")).join("").toUpperCase()}`;
 }
+
+export const TRACKING_EXCLUDED_SECTION_HEADER_COLOR = fadedAssessmentColor(TRACKING_SECTION_HEADER_COLOR, 0.62);

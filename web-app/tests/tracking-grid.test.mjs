@@ -3,7 +3,7 @@ import test from "node:test";
 import { readFileSync } from "node:fs";
 import { assessmentColor, buildTrackingGrid, verifyTrackingGrid } from "../lib/tracking-grid.ts";
 import { generateTrackingXlsx } from "../lib/tracking-xlsx.ts";
-import { ASSESSMENT_COLOR_PALETTE, availableAssessmentColors, fadedAssessmentColor } from "../lib/assessment-colors.ts";
+import { ASSESSMENT_COLOR_PALETTE, availableAssessmentColors, TRACKING_EXCLUDED_SECTION_HEADER_COLOR } from "../lib/assessment-colors.ts";
 import ExcelJS from "exceljs";
 
 const tasks = [1, 2, 4].map((maxScore, index) => ({ id: `A${index + 1}`, sectionCode: "A", taskName: `Tarea ${index + 1}`, maxScore }));
@@ -99,6 +99,7 @@ test("XLSX export contains five real-cell grid sheets with fills and merged vari
   const workbook = new ExcelJS.Workbook(); await workbook.xlsx.load(buffer);
   assert.deepEqual(workbook.worksheets.map((sheet) => sheet.name), ["Rejilla 1", "Rejilla 2", "Rejilla 3", "Rejilla 4", "Rejilla 5"]);
   assert.equal(workbook.getWorksheet("Rejilla 1").getCell("B62").value, "A · Cooperation and Reinforcer Effectiveness");
+  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("B62").fill.fgColor.argb, "FF365F4A", "regular section headers use institutional green");
   assert.equal(workbook.getWorksheet("Rejilla 2").getCell("B54").value, "F · Requests");
   assert.equal(workbook.getWorksheet("Rejilla 3").getCell("B39").value, "K · Play and Leisure Skills");
   assert.equal(workbook.getWorksheet("Rejilla 4").getCell("B34").value, "Q · Reading Skills");
@@ -150,8 +151,9 @@ test("XLSX export preserves every verified task, geometry, legend, print setup, 
     const headerRow = gridBottomRow + 1;
     pageSections.forEach((section, sectionIndex) => {
       const start = sectionIndex * 6 + 1;
-      const status = section.latestSectionStatus === "locked" ? " · BLOQUEADA" : "";
-      assert.equal(sheet.getCell(headerRow, start + 1).value, `${section.code} · ${section.name}${status}`);
+      const unavailable = section.latestSectionStatus !== "available";
+      assert.equal(sheet.getCell(headerRow, start + 1).value, `${section.code} · ${section.name}`);
+      assert.equal(sheet.getCell(headerRow, start + 1).fill.fgColor.argb, argbForTest(unavailable ? TRACKING_EXCLUDED_SECTION_HEADER_COLOR : "#365F4A"));
       assert.ok(sheet.getCell(headerRow, start + 1).font.size <= 10 && sheet.getCell(headerRow, start + 1).font.size >= 6, `${section.code} header font must stay within the deterministic fitting range`);
       assert.ok(sheet.model.merges.includes(`${sheet.getCell(headerRow, start + 1).address}:${sheet.getCell(headerRow, start + 4).address}`), `${section.code} header must occupy only its scoring area`);
       for (let column = start; column <= start + 4; column += 1) assert.equal(sheet.getCell(headerRow, column).protection?.locked ?? true, true, `${section.code} header must be protected`);
@@ -159,9 +161,8 @@ test("XLSX export preserves every verified task, geometry, legend, print setup, 
       section.rowsTopToBottom.forEach((row, rowIndex) => {
         const excelRow = firstTaskRow + rowIndex;
         const label = String(sheet.getCell(excelRow, start).value);
-        assert.ok(label.startsWith(row.task.id), `${row.task.id} must align with its score row`);
-        if (section.latestSectionStatus === "excluded") assert.equal(label, row.task.id, `${row.task.id} must not carry an exclusion marker`);
-        assert.equal(sheet.getCell(excelRow, start).protection?.locked ?? true, section.latestSectionStatus === "excluded", `${row.task.id} label protection must match excluded state`);
+        assert.equal(label, `${row.task.id} -`, `${row.task.id} must use the standard task-label format`);
+        assert.equal(sheet.getCell(excelRow, start).protection?.locked ?? true, unavailable, `${row.task.id} label protection must match availability`);
         actualTaskIds.push(row.task.id);
         assert.equal(sheet.getRow(excelRow).height, 12);
         const span = 4 / row.task.maxScore;
@@ -174,9 +175,9 @@ test("XLSX export preserves every verified task, geometry, legend, print setup, 
           assert.equal(cell.border.right?.style, "thin", `${row.task.id} level ${boxIndex + 1} must retain its right border`);
           assert.equal(cell.border.top?.style, "thin", `${row.task.id} level ${boxIndex + 1} must retain its top border`);
           assert.equal(cell.border.bottom?.style, "thin", `${row.task.id} level ${boxIndex + 1} must retain its bottom border`);
-          if (section.latestSectionStatus === "excluded") assert.equal(cell.fill.fgColor.argb.replace(/^FF/, ""), "F8F4EC", `${row.task.id} excluded score cells must use the neutral grid fill`);
+          if (unavailable) assert.equal(cell.fill.fgColor.argb.replace(/^FF/, ""), "F8F4EC", `${row.task.id} unavailable score cells must use the neutral grid fill`);
           assert.equal(cell.formula, undefined);
-          assert.equal(cell.protection?.locked ?? true, section.latestSectionStatus === "excluded", `${row.task.id} protection must match excluded state`);
+          assert.equal(cell.protection?.locked ?? true, unavailable, `${row.task.id} protection must match availability`);
           if (to > from) {
             const range = `${sheet.getCell(excelRow, from).address}:${sheet.getCell(excelRow, to).address}`;
             assert.ok(sheet.model.merges.includes(range), `${row.task.id} must merge ${range}`);
@@ -201,8 +202,14 @@ test("XLSX export preserves every verified task, geometry, legend, print setup, 
     const section = expectedModel.sections.find((item) => item.code === excluded);
     assert.ok(section.rowsTopToBottom.every((row) => row.latestStatus === "excluded" && row.boxes.every((box) => box === null)), `${excluded} must remain complete and uncolored`);
   }
-  const expectedFaded = argbForTest(fadedAssessmentColor(expectedModel.legend.at(-1).color, 0.62));
+  const expectedFaded = argbForTest(TRACKING_EXCLUDED_SECTION_HEADER_COLOR);
   assert.equal(workbook.getWorksheet("Rejilla 4").getCell(`B${expectedModel.legend.length + 4 + 29}`).fill.fgColor.argb, expectedFaded);
+  const blockedM = expectedModel.sections.find((section) => section.code === "M");
+  const blockedMPage = workbook.getWorksheet("Rejilla 3");
+  const blockedMHeaderRow = expectedModel.legend.length + 4 + Math.max(...expectedModel.sections.slice(10, 15).map((section) => section.rowsTopToBottom.length));
+  assert.equal(blockedM.latestSectionStatus, "locked");
+  assert.equal(blockedMPage.getCell(`N${blockedMHeaderRow}`).value, "M · Group Instruction");
+  assert.equal(blockedMPage.getCell(`N${blockedMHeaderRow}`).fill.fgColor.argb, expectedFaded);
 });
 
 function argbForTest(color) { return `FF${color.replace("#", "").toUpperCase()}`; }

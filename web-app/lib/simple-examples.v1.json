@@ -1,0 +1,1620 @@
+{
+  "sourceDocuments": {
+    "es": "ABLLS_R_403_Ejemplos_Sencillos_Revision.docx",
+    "en": "ABLLS_R_403_Simple_Examples_English.docx"
+  },
+  "examples": {
+    "A1": {
+      "en": "Offer the child a favorite toy and see if they take it.",
+      "es": "Ofrécele su juguete favorito y observa si lo toma."
+    },
+    "A2": {
+      "en": "Offer a favorite cookie next to a shoe and see which one the child chooses.",
+      "es": "Ofrécele una galleta que le gusta junto a un zapato y observa cuál escoge."
+    },
+    "A3": {
+      "en": "Show a spoon, move it from side to side, and see if the child follows it with their eyes.",
+      "es": "Muéstrale una cuchara y muévela a diferentes lados para ver si la sigue con la mirada."
+    },
+    "A4": {
+      "en": "Hold out a cup and see if the child takes it.",
+      "es": "Extiéndele un vaso y observa si lo toma."
+    },
+    "A5": {
+      "en": "Place a favorite toy near the table and see if the child approaches to complete a simple task and get it.",
+      "es": "Coloca su juguete favorito cerca de la mesa y observa si se acerca para completar una tarea sencilla y obtenerlo."
+    },
+    "A6": {
+      "en": "Give the child a puzzle piece after each response and see if they keep working.",
+      "es": "Dale una pieza de rompecabezas después de cada respuesta y observa si continúa trabajando."
+    },
+    "A7": {
+      "en": "Have two different instructors ask the child to clap and see if they respond to both.",
+      "es": "Pídele que aplauda con dos instructores diferentes y observa si responde con ambos."
+    },
+    "A8": {
+      "en": "Place blocks in front of the child and see if they wait for instructions before touching them.",
+      "es": "Coloca bloques frente a él y observa si espera la indicación antes de tocarlos."
+    },
+    "A9": {
+      "en": "Put several pictures on the table and see if the child looks to the adult for what to do next.",
+      "es": "Pon varias imágenes sobre la mesa y observa si mira al adulto esperando qué hacer."
+    },
+    "A10": {
+      "en": "Put three objects in front of the child and see if they look at them before choosing the requested one.",
+      "es": "Pon tres objetos frente a él y observa si los mira antes de escoger el solicitado."
+    },
+    "A11": {
+      "en": "Say “touch the table” and see how long the child takes to respond.",
+      "es": "Dile «toca la mesa» y observa cuánto tarda en responder."
+    },
+    "A12": {
+      "en": "After a task, try reinforcing with a short game or high five, not just food.",
+      "es": "Después de una tarea, prueba reforzar con un juego breve o un choque de manos, no solo comida."
+    },
+    "A13": {
+      "en": "Give access to a toy after some responses, rather than every response, and see if the child keeps participating.",
+      "es": "Dale acceso a un juguete después de algunas respuestas, no después de cada una, y observa si sigue participando."
+    },
+    "A14": {
+      "en": "Praise the child and play briefly after a task; see if they seek that interaction.",
+      "es": "Felicítalo y juega brevemente con él después de completar una tarea; observa si busca esa interacción."
+    },
+    "A15": {
+      "en": "Change your expression from happy to serious during a game and see if the child notices your face and voice.",
+      "es": "Cambia tu expresión de alegre a seria durante un juego y observa si se fija en tu cara y voz."
+    },
+    "A16": {
+      "en": "Say “great job!” and smile after a response; see if the child enjoys it.",
+      "es": "Dile «¡muy bien!» y sonríe después de una respuesta; observa si le resulta agradable."
+    },
+    "A17": {
+      "en": "Ask the child to wait a moment before giving them a toy and observe how they wait.",
+      "es": "Dile que espere un momento antes de entregarle su juguete y observa cómo espera."
+    },
+    "A18": {
+      "en": "After the child finishes a puzzle, see if they want an adult to look at what they made.",
+      "es": "Cuando termine un rompecabezas, observa si busca que el adulto vea lo que hizo."
+    },
+    "A19": {
+      "en": "See if the child enjoys completing a puzzle even without another reward.",
+      "es": "Observa si disfruta terminar un rompecabezas aunque no reciba otro premio."
+    },
+    "B1": {
+      "en": "Give the child inset puzzle pieces and see if they put them into the matching spaces.",
+      "es": "Dale piezas de un rompecabezas de encaje y observa si las coloca en sus huecos."
+    },
+    "B2": {
+      "en": "Give the child a shape sorter and see if they put each shape through the correct opening.",
+      "es": "Dale un clasificador de formas y observa si mete cada figura por el agujero correcto."
+    },
+    "B3": {
+      "en": "Show a spoon and ask the child to find another identical spoon among several objects.",
+      "es": "Muéstrale una cuchara y pídele que encuentre otra cuchara igual entre varios objetos."
+    },
+    "B4": {
+      "en": "Give the child a spoon and ask them to place it on a photograph of a spoon.",
+      "es": "Dale una cuchara y pídele que la coloque sobre su fotografía."
+    },
+    "B5": {
+      "en": "Give the child a picture of a dog and ask them to find an identical picture.",
+      "es": "Dale una foto de un perro y pídele que encuentre otra foto idéntica."
+    },
+    "B6": {
+      "en": "Show a picture of a cup and ask the child to find the real cup.",
+      "es": "Muéstrale una foto de una taza y pídele que encuentre la taza real."
+    },
+    "B7": {
+      "en": "Present several pictures one after another and have the child quickly find each identical match.",
+      "es": "Dale varias imágenes, una tras otra, para que encuentre rápidamente cada pareja idéntica."
+    },
+    "B8": {
+      "en": "Mix pictures of different dogs and trees and ask the child to sort them into two groups.",
+      "es": "Mezcla dibujos de perros y árboles diferentes y pídele que los separe en dos grupos."
+    },
+    "B9": {
+      "en": "Show a block design and ask the child to place blocks directly on top of the model.",
+      "es": "Muéstrale un dibujo hecho con bloques y pídele que coloque bloques encima siguiendo el modelo."
+    },
+    "B10": {
+      "en": "Give the child an inset puzzle with connecting pieces and see if they finish it.",
+      "es": "Dale un rompecabezas de encaje con piezas que se conectan y observa si lo completa."
+    },
+    "B11": {
+      "en": "Give the child a square-framed puzzle with pieces that fit together.",
+      "es": "Dale un rompecabezas con marco cuadrado y piezas que encajan entre sí."
+    },
+    "B12": {
+      "en": "Show a card with a block structure and ask the child to copy it next to the card.",
+      "es": "Muéstrale una tarjeta con una construcción de bloques y pídele que la copie al lado."
+    },
+    "B13": {
+      "en": "Make a red-blue-red-blue row and ask the child to copy the pattern.",
+      "es": "Haz una fila rojo-azul-rojo-azul y pídele que copie ese patrón."
+    },
+    "B14": {
+      "en": "Give the child pieces of a picture to put together into a complete image.",
+      "es": "Dale varias piezas de una imagen que deben colocarse juntas para formar el dibujo."
+    },
+    "B15": {
+      "en": "Give the child a traditional interlocking jigsaw puzzle and see if they assemble it.",
+      "es": "Dale un rompecabezas tradicional de piezas entrelazadas y observa si lo arma."
+    },
+    "B16": {
+      "en": "Show pictures of a brush and hair, and a shoe and foot, and ask the child to find related pairs.",
+      "es": "Pon imágenes de cepillo y cabello, y de zapato y pie, para que encuentre las parejas relacionadas."
+    },
+    "B17": {
+      "en": "Show pictures of a spoon, fork, bed, and chair; ask the child to group the things used for eating.",
+      "es": "Dale dibujos de cuchara, tenedor, cama y silla; pídele que agrupe los que sirven para comer."
+    },
+    "B18": {
+      "en": "Show pictures of dogs, cats, and cars; ask the child to group things with legs and things with wheels.",
+      "es": "Dale dibujos de perros, gatos y carros; pídele que agrupe los que tienen patas y los que tienen ruedas."
+    },
+    "B19": {
+      "en": "Show pictures of dogs, cats, apples, and bananas; ask the child to group animals and fruits.",
+      "es": "Dale dibujos de perros, gatos, manzanas y bananas; pídele que agrupe animales y frutas."
+    },
+    "B20": {
+      "en": "Show a sequence of three blocks, remove it, and ask the child to recreate it.",
+      "es": "Muéstrale una secuencia de tres bloques, retírala y pídele que la reproduzca."
+    },
+    "B21": {
+      "en": "Show a picture, hide it for a few seconds, and ask the child to find the same picture among others.",
+      "es": "Enséñale una imagen, escóndela unos segundos y pídele que encuentre la misma entre otras."
+    },
+    "B22": {
+      "en": "Start a circle-square-circle pattern and ask the child to continue it.",
+      "es": "Empieza un patrón círculo-cuadrado-círculo y pídele que continúe la secuencia."
+    },
+    "B23": {
+      "en": "Build a small tower or bridge with blocks and ask the child to copy it.",
+      "es": "Construye una pequeña torre o puente con bloques y pídele que lo reproduzca."
+    },
+    "B24": {
+      "en": "Show a picture to match, remove it, and ask the child to continue in the indicated matching order.",
+      "es": "Muéstrale una imagen para emparejar, retírala y pídele que continúe siguiendo el orden de emparejamiento indicado."
+    },
+    "B25": {
+      "en": "Give the child sticks of different lengths and ask them to arrange them from shortest to longest.",
+      "es": "Dale palitos de distintos tamaños y pídele que los ordene de menor a mayor."
+    },
+    "B26": {
+      "en": "Give the child pictures of handwashing steps and ask them to put the pictures in order.",
+      "es": "Dale imágenes de lavarse las manos y pídele que las ordene según lo que ocurre primero y después."
+    },
+    "B27": {
+      "en": "Give the child a simple paper maze and see if they find the way out.",
+      "es": "Dale un laberinto sencillo en papel y observa si encuentra el camino hasta la salida."
+    },
+    "C1": {
+      "en": "Call the child's name from nearby and see if they look at you or come over.",
+      "es": "Llámalo por su nombre desde cerca y observa si te mira o se acerca."
+    },
+    "C2": {
+      "en": "While the child plays outside, say “go to the swing” and see if they do it.",
+      "es": "Mientras juega en el patio, dile «ve al columpio» y observa si lo hace."
+    },
+    "C3": {
+      "en": "Hold up a favorite toy and say “look at the toy car.”",
+      "es": "Sostén su juguete favorito y dile «mira el carrito»."
+    },
+    "C4": {
+      "en": "Hold a cookie above and then to the side of the child; say “touch it.”",
+      "es": "Sostén una galleta arriba y luego a un lado; dile «tócala»."
+    },
+    "C5": {
+      "en": "Hold a pencil in different places and say “touch the pencil.”",
+      "es": "Sostén un lápiz en distintos lugares y dile «toca el lápiz»."
+    },
+    "C6": {
+      "en": "While the child is sitting, say “let's jump” even when you are not playing a jumping game.",
+      "es": "Mientras está sentado, dile «vamos a saltar» aunque no estén jugando a saltar."
+    },
+    "C7": {
+      "en": "After using the bathroom, say “wash your hands.”",
+      "es": "Después de usar el baño, dile «lávate las manos»."
+    },
+    "C8": {
+      "en": "Hold out your hand and say “give me the shoe.”",
+      "es": "Extiende la mano y dile «dame el zapato»."
+    },
+    "C9": {
+      "en": "Say “clap,” “jump,” or “raise your arms.”",
+      "es": "Dile «aplaude», «salta» o «levanta los brazos»."
+    },
+    "C10": {
+      "en": "Show a cup in one hand and keep the other hand empty; say “touch the cup.”",
+      "es": "Muestra una taza en una mano y la otra vacía; dile «toca la taza»."
+    },
+    "C11": {
+      "en": "Put bubbles and a shoe in front of the child; ask them to point to the bubbles.",
+      "es": "Pon burbujas y un zapato frente a él; pídele que señale las burbujas."
+    },
+    "C12": {
+      "en": "Put out a favorite cookie and toy; ask the child to choose one when you name it.",
+      "es": "Pon una galleta y un juguete que le gustan; pídele que escoja uno por su nombre."
+    },
+    "C13": {
+      "en": "Put out a spoon and a ball; say “give me the ball.”",
+      "es": "Pon una cuchara y una pelota; dile «dame la pelota»."
+    },
+    "C14": {
+      "en": "Show pictures of a dog and a cup; say “point to the dog.”",
+      "es": "Muestra fotos de un perro y una taza; dile «señala el perro»."
+    },
+    "C15": {
+      "en": "Say “touch your nose” or “point to your knees.”",
+      "es": "Dile «toca tu nariz» o «señala tus rodillas»."
+    },
+    "C16": {
+      "en": "Put out six familiar objects and ask the child to find the spoon.",
+      "es": "Coloca seis objetos conocidos y pídele que encuentre la cuchara."
+    },
+    "C17": {
+      "en": "Put out six familiar photographs and ask the child to find the shoe.",
+      "es": "Coloca seis fotografías conocidas y pídele que encuentre el zapato."
+    },
+    "C18": {
+      "en": "Teach the child to recognize a new object and see if they can select it without many repetitions.",
+      "es": "Enséñale a reconocer un objeto nuevo y comprueba si aprende a elegirlo sin muchas repeticiones."
+    },
+    "C19": {
+      "en": "Ask the child to quickly find several familiar objects, one after another.",
+      "es": "Pídele que encuentre rápidamente varios objetos conocidos, uno tras otro."
+    },
+    "C20": {
+      "en": "Alternate “give me,” “touch,” and “point to” with different objects.",
+      "es": "Alterna «dame», «toca» y «señala» con diferentes objetos."
+    },
+    "C21": {
+      "en": "Show a photo of a person and say “point to their nose.”",
+      "es": "Muéstrale una foto de una persona y dile «señala su nariz»."
+    },
+    "C22": {
+      "en": "Say “touch your shirt” or “point to your shoes.”",
+      "es": "Dile «toca tu camiseta» o «señala tus zapatos»."
+    },
+    "C23": {
+      "en": "Show a toy car and ask the child to touch its wheels.",
+      "es": "Muestra un carrito y pídele que toque sus ruedas."
+    },
+    "C24": {
+      "en": "Show one large and one small object; say “point to the small one.”",
+      "es": "Muestra un objeto grande y otro pequeño; dile «señala el pequeño»."
+    },
+    "C25": {
+      "en": "Look directly at a toy and see if the child follows your gaze to find it.",
+      "es": "Mira fijamente hacia un juguete y observa si el niño sigue tu mirada para encontrarlo."
+    },
+    "C26": {
+      "en": "Gesture for the child to come closer and see if they follow the gesture.",
+      "es": "Haz una señal con la mano para que se acerque y observa si la sigue."
+    },
+    "C27": {
+      "en": "Say “go to Mom.”",
+      "es": "Dile «ve donde está mamá»."
+    },
+    "C28": {
+      "en": "Say “take this book to Mom” or “put the cup on the table.”",
+      "es": "Dile «lleva este libro a mamá» o «pon el vaso sobre la mesa»."
+    },
+    "C29": {
+      "en": "Say “go to Mom and bring back the ball.”",
+      "es": "Dile «ve donde mamá y trae la pelota»."
+    },
+    "C30": {
+      "en": "Say “go to Dad and give him a hug.”",
+      "es": "Dile «ve donde papá y dale un abrazo»."
+    },
+    "C31": {
+      "en": "Say “point to” and then “touch” an object; see if the child gives the requested response.",
+      "es": "Dile «señala» y después «toca» un objeto; observa si hace la respuesta indicada."
+    },
+    "C32": {
+      "en": "Give the child a brush and say “brush”; then give a cup and say “drink.”",
+      "es": "Dale un cepillo y dile «cepilla»; luego una taza y dile «bebe»."
+    },
+    "C33": {
+      "en": "With a toy car, say “push it” and then “put it in the box.”",
+      "es": "Con un carrito, pídele «empújalo» y luego «ponlo dentro de la caja»."
+    },
+    "C34": {
+      "en": "Give the child a toy phone and say “pretend to make a call.”",
+      "es": "Dale un teléfono de juguete y dile «haz como si llamaras»."
+    },
+    "C35": {
+      "en": "Show pictures of someone running, eating, and sleeping; say “point to who is eating.”",
+      "es": "Muestra fotos de alguien corriendo, comiendo y durmiendo; dile «señala quién come»."
+    },
+    "C36": {
+      "en": "Show pictures of a shoe and foot, and a key and door; ask the child which ones go together.",
+      "es": "Pon fotos de un zapato y un pie, y de una llave y una puerta; pide la que combina."
+    },
+    "C37": {
+      "en": "Show a spoon, brush, and ball; ask “which one do we use to eat?”",
+      "es": "Muestra una cuchara, un cepillo y una pelota; dile «¿cuál sirve para comer?»."
+    },
+    "C38": {
+      "en": "Show a plain ball and a striped ball; say “point to the striped one.”",
+      "es": "Muestra una pelota lisa y otra con rayas; dile «señala la que tiene rayas»."
+    },
+    "C39": {
+      "en": "Show fruits and animals; say “point to an animal.”",
+      "es": "Muestra frutas y animales; dile «señala un animal»."
+    },
+    "C40": {
+      "en": "Put out several objects and say “give me the cup and the spoon.”",
+      "es": "Coloca varios objetos y dile «dame la taza y la cuchara»."
+    },
+    "C41": {
+      "en": "Put out several objects and say “first give me the pencil, then the ball.”",
+      "es": "Coloca varios objetos y dile «primero dame el lápiz y después la pelota»."
+    },
+    "C42": {
+      "en": "Show pictures of a firefighter, doctor, and teacher; say “point to the firefighter.”",
+      "es": "Muestra fotos de bombero, médico y maestro; dile «señala al bombero»."
+    },
+    "C43": {
+      "en": "Show a busy kitchen picture and say “find the spoon.”",
+      "es": "Muestra una imagen de una cocina con muchos objetos; dile «encuentra la cuchara»."
+    },
+    "C44": {
+      "en": "Show part of a bicycle in a scene and ask the child to find the bicycle.",
+      "es": "Muestra parte de una bicicleta dentro de una escena y pídele que encuentre la bicicleta."
+    },
+    "C45": {
+      "en": "Play a barking sound and a doorbell; ask the child to identify the dog sound.",
+      "es": "Reproduce un ladrido y un timbre; pídele que identifique el sonido del perro."
+    },
+    "C46": {
+      "en": "Show several different dogs and ask the child to point to all the dogs.",
+      "es": "Muestra varios perros diferentes y pídele que señale todos los perros."
+    },
+    "C47": {
+      "en": "Show a red ball and other balls; say “give me the red ball.”",
+      "es": "Muestra una pelota roja y otras pelotas; dile «dame la pelota roja»."
+    },
+    "C48": {
+      "en": "Put out several objects and say “give me all the red ones.”",
+      "es": "Coloca varios objetos y dile «dame todos los que son rojos»."
+    },
+    "C49": {
+      "en": "Put out different objects and say “give me all the small cars.”",
+      "es": "Coloca objetos variados y dile «dame todos los carros pequeños»."
+    },
+    "C50": {
+      "en": "Say “take the ball, put it in the box, and sit down.”",
+      "es": "Dile «toma la pelota, ponla en la caja y siéntate»."
+    },
+    "C51": {
+      "en": "Show a teddy bear on, under, and inside a box; say “point to the one underneath.”",
+      "es": "Pon un oso sobre, debajo y dentro de una caja; dile «señala el que está debajo»."
+    },
+    "C52": {
+      "en": "Show pictures of a boy and a girl; say “point to his” or “point to hers,” as appropriate.",
+      "es": "Muestra dibujos de un niño y una niña; dile «señala el suyo» según el contexto."
+    },
+    "C53": {
+      "en": "Show pictures of a kitchen and a park; ask the child to find where people cook.",
+      "es": "Muestra dibujos de cocina y parque; pídele que encuentre dónde se cocina."
+    },
+    "C54": {
+      "en": "Show happy and sad faces; say “point to who is sad.”",
+      "es": "Muestra caras alegres y tristes; dile «señala quién está triste»."
+    },
+    "C55": {
+      "en": "Show two identical pictures and one different one; say “point to the different one.”",
+      "es": "Muestra dos dibujos iguales y uno diferente; dile «señala el diferente»."
+    },
+    "C56": {
+      "en": "Show animals and a car; say “point to the one that is not an animal.”",
+      "es": "Muestra animales y un carro; dile «señala el que no es un animal»."
+    },
+    "C57": {
+      "en": "Show pictures of children sharing and fighting; say “point to who is sharing.”",
+      "es": "Muestra dibujos de niños compartiendo y peleando; dile «señala quién está compartiendo»."
+    },
+    "D1": {
+      "en": "Tap a toy drum and ask the child to do the same.",
+      "es": "Golpea un tambor de juguete y pídele que haga lo mismo."
+    },
+    "D2": {
+      "en": "Tap a drum and then move a toy car; see if the child imitates the action you show.",
+      "es": "Golpea un tambor y luego mueve un carrito; observa si imita la acción que muestras."
+    },
+    "D3": {
+      "en": "Clap and say “do this” so the child can imitate you.",
+      "es": "Aplaude y dile «haz esto» para que te imite."
+    },
+    "D4": {
+      "en": "Raise one leg or stomp a foot and see if the child copies you.",
+      "es": "Levanta una pierna o golpea el suelo con el pie y observa si te copia."
+    },
+    "D5": {
+      "en": "Raise both arms or open and close your hands; ask the child to imitate you.",
+      "es": "Levanta ambos brazos o abre y cierra las manos; pídele que te imite."
+    },
+    "D6": {
+      "en": "Hold your arms up without moving, then move them; see if the child distinguishes the actions.",
+      "es": "Quédate quieto con los brazos arriba y luego muévelos; observa si distingue ambas acciones."
+    },
+    "D7": {
+      "en": "Alternate “do this” and “copy me” while demonstrating movements.",
+      "es": "Alterna «haz esto» y «cópíame» mientras muestras movimientos."
+    },
+    "D8": {
+      "en": "Jump in front of a mirror and see if the child imitates you.",
+      "es": "Frente a un espejo, salta y observa si imita el movimiento."
+    },
+    "D9": {
+      "en": "Tilt your head to one side and see if the child does the same.",
+      "es": "Inclina la cabeza hacia un lado y observa si hace lo mismo."
+    },
+    "D10": {
+      "en": "Stick out your tongue or open your mouth and ask the child to copy you.",
+      "es": "Saca la lengua o abre la boca y pídele que te copie."
+    },
+    "D11": {
+      "en": "In front of a mirror, smile and then puff out your cheeks for the child to imitate.",
+      "es": "Frente al espejo, sonríe y luego infla las mejillas para que te imite."
+    },
+    "D12": {
+      "en": "Bring your fingers together or make a pinching motion and see if the child copies you.",
+      "es": "Junta los dedos o haz una pinza con los dedos y observa si te copia."
+    },
+    "D13": {
+      "en": "Touch the cup first and then the ball; ask the child to copy the order.",
+      "es": "Toca primero la taza y después la pelota; pídele que copie el orden."
+    },
+    "D14": {
+      "en": "Blow on a feather or a bubble and ask the child to do the same.",
+      "es": "Sopla una pluma o una burbuja y pídele que haga lo mismo."
+    },
+    "D15": {
+      "en": "Move a toy car slowly and then quickly; see if the child copies the speed.",
+      "es": "Mueve un carrito lentamente y luego rápido; observa si copia la velocidad."
+    },
+    "D16": {
+      "en": "Move a toy car quickly, stop, and ask the child to do the same.",
+      "es": "Mueve un carrito rápido, detente y pídele que lo haga igual."
+    },
+    "D17": {
+      "en": "Clap slowly and then quickly; see if the child imitates the rhythm.",
+      "es": "Aplaude despacio y luego rápido; observa si imita el ritmo."
+    },
+    "D18": {
+      "en": "Touch the table, then the chair, then the cup; ask the child to repeat the sequence.",
+      "es": "Toca la mesa, luego la silla y después el vaso; pídele que repita la secuencia."
+    },
+    "D19": {
+      "en": "Make one movement, let the child copy it, then switch to another; see if they follow the changes.",
+      "es": "Haz un movimiento, deja que lo copie y cambia al siguiente; observa si sigue los cambios."
+    },
+    "D20": {
+      "en": "Clap, raise your arms, and touch your head; ask the child to repeat the sequence.",
+      "es": "Aplaude, levanta los brazos y toca la cabeza; pídele que repita la secuencia."
+    },
+    "D21": {
+      "en": "Tap the table softly and then loudly; see if the child imitates the force.",
+      "es": "Golpea la mesa suave y luego fuerte; observa si imita la intensidad."
+    },
+    "D22": {
+      "en": "Clap three times and see if the child also claps three times.",
+      "es": "Aplaude tres veces y observa si también aplaude tres veces."
+    },
+    "D23": {
+      "en": "Raise your arms while saying “up!” and see if the child copies both.",
+      "es": "Levanta los brazos mientras dices «¡arriba!» y observa si copia ambos."
+    },
+    "D24": {
+      "en": "Tap a drum, move a car, and stack a block; ask the child to imitate the order.",
+      "es": "Golpea un tambor, mueve un carro y apila un bloque; pídele que imite el orden."
+    },
+    "D25": {
+      "en": "Start clapping without saying “do this” and see if the child imitates you.",
+      "es": "Empieza a aplaudir sin decir «haz esto» y observa si te imita."
+    },
+    "D26": {
+      "en": "During play, see if the child spontaneously copies another child jumping.",
+      "es": "Durante el juego, observa si copia espontáneamente cómo otro niño salta."
+    },
+    "D27": {
+      "en": "Show how to put a token in a box; wait a moment, then ask the child to do it.",
+      "es": "Muéstrale cómo meter una ficha en una caja; espera un momento y pídele que lo haga."
+    },
+    "E1": {
+      "en": "Say “mmm” and ask the child to repeat the sound.",
+      "es": "Di «mmm» y pídele que repita el sonido."
+    },
+    "E2": {
+      "en": "Say “ma,” then “pa,” and see if the child repeats the sequence in order.",
+      "es": "Di «ma», luego «pa» y observa si repite la secuencia en orden."
+    },
+    "E3": {
+      "en": "Say “mmm” as the beginning of “mama” and see if the child imitates the sound.",
+      "es": "Di «mmm» como inicio de «mamá» y observa si imita ese sonido."
+    },
+    "E4": {
+      "en": "Say “ma,” “pa,” and “tu” separately for the child to repeat.",
+      "es": "Di «ma», «pa» y «tu» por separado para que los repita."
+    },
+    "E5": {
+      "en": "Make a short “aaa” sound and then a long one; see if the child copies the duration.",
+      "es": "Haz un «aaa» corto y luego uno largo; observa si imita la duración."
+    },
+    "E6": {
+      "en": "Say “pa-pa-pa” and see if the child repeats it the same number of times.",
+      "es": "Di «pa-pa-pa» y observa si repite la misma cantidad de veces."
+    },
+    "E7": {
+      "en": "Hold an “aaaa” sound and change it to “oooo”; see if the child copies the change.",
+      "es": "Mantén un «aaaa» y cambia a «oooo»; observa si copia el cambio."
+    },
+    "E8": {
+      "en": "Say “ma” and then “am”; ask the child to repeat both combinations.",
+      "es": "Di «ma» y luego «am»; pídele que repita ambas combinaciones."
+    },
+    "E9": {
+      "en": "Say “mama” or “papa” as a sequence of syllables and see if the child repeats it.",
+      "es": "Di «mama» o «papa» como secuencia de sílabas y observa si la repite."
+    },
+    "E10": {
+      "en": "Say “pan” and see if the child reproduces the final sound.",
+      "es": "Di «pan» y observa si reproduce el sonido final."
+    },
+    "E11": {
+      "en": "Say “pla” or “bra” and see if the child imitates the combined sounds.",
+      "es": "Di «pla» o «bra» y observa si imita los sonidos juntos."
+    },
+    "E12": {
+      "en": "Say “ball” and ask the child to repeat the word.",
+      "es": "Di «pelota» y pídele que repita la palabra."
+    },
+    "E13": {
+      "en": "Say “I want water” and ask the child to repeat the phrase.",
+      "es": "Di «quiero agua» y pídele que repita la frase."
+    },
+    "E14": {
+      "en": "Say “two, five, eight” and ask the child to repeat the numbers in order.",
+      "es": "Di «dos, cinco, ocho» y pídele que repita los números en orden."
+    },
+    "E15": {
+      "en": "Say “let's go” quickly and then slowly; see if the child copies the speed.",
+      "es": "Di «vamos» rápido y después despacio; observa si copia la velocidad."
+    },
+    "E16": {
+      "en": "Say “hello” softly and then loudly; see if the child adjusts their voice.",
+      "es": "Di «hola» en voz baja y después fuerte; observa si ajusta su voz."
+    },
+    "E17": {
+      "en": "Make a low-pitched sound and then a high-pitched one; see if the child copies the pitch.",
+      "es": "Haz un sonido grave y luego agudo; observa si copia el tono."
+    },
+    "E18": {
+      "en": "Say “go tell Mom to come here” and see if the child repeats the message.",
+      "es": "Dile «ve y dile a mamá que venga» y observa si repite el mensaje."
+    },
+    "E19": {
+      "en": "Say a word during play and see if the child repeats it without being asked.",
+      "es": "Di una palabra durante el juego y observa si el niño la repite sin pedírselo."
+    },
+    "E20": {
+      "en": "Say “the car is moving” during play and see if the child spontaneously repeats the phrase.",
+      "es": "Di «el carro corre» durante el juego y observa si repite la frase espontáneamente."
+    },
+    "F1": {
+      "en": "Place a favorite toy in sight and see if the child points to it to request it.",
+      "es": "Coloca su juguete favorito a la vista y observa si lo señala para pedirlo."
+    },
+    "F2": {
+      "en": "Put bubbles in front of the child and see if they look at you, point, and ask you to open them.",
+      "es": "Pon burbujas frente a él y observa si te mira, señala y pide que las abras."
+    },
+    "F3": {
+      "en": "Show a cookie and ask “what do you want?”; see if the child requests it.",
+      "es": "Muéstrale una galleta y pregunta «¿qué quieres?»; observa si la pide."
+    },
+    "F4": {
+      "en": "Ask “what do you want?” without showing objects and see if the child names what they want.",
+      "es": "Pregunta «¿qué quieres?» sin mostrar objetos y observa si nombra lo que desea."
+    },
+    "F5": {
+      "en": "Leave a favorite toy in sight and see if the child requests it without help.",
+      "es": "Deja un juguete favorito a la vista y observa si lo pide sin ayuda."
+    },
+    "F6": {
+      "en": "Put the child's favorite ball out of sight and see if they request it spontaneously.",
+      "es": "Guarda su pelota favorita fuera de la vista y observa si la pide espontáneamente."
+    },
+    "F7": {
+      "en": "Wait for the child to ask for water and see if they look at the adult while asking.",
+      "es": "Espera a que pida agua y observa si mira al adulto al hacerlo."
+    },
+    "F8": {
+      "en": "Give the child a closed jar and see if they ask “open it.”",
+      "es": "Dale un frasco cerrado y observa si pide «ábrelo»."
+    },
+    "F9": {
+      "en": "Give the child a coloring page without crayons and see if they ask for crayons.",
+      "es": "Dale una hoja para colorear sin crayones y observa si los pide."
+    },
+    "F10": {
+      "en": "Offer to continue or stop and see if the child answers yes or no with words or a head movement.",
+      "es": "Ofrécele continuar o terminar y observa si responde sí o no con la cabeza o palabras."
+    },
+    "F11": {
+      "en": "See if the child asks for “the red ball” instead of just saying “ball.”",
+      "es": "Observa si pide «quiero la pelota roja» en vez de decir solo «pelota»."
+    },
+    "F12": {
+      "en": "Give the child a hard-to-open box and see if they ask for help.",
+      "es": "Dale una caja difícil de abrir y observa si pide ayuda."
+    },
+    "F13": {
+      "en": "Introduce a new enjoyable activity and see if the child learns to request it with little teaching.",
+      "es": "Presenta una actividad nueva que le guste y observa si aprende a pedirla con poca enseñanza."
+    },
+    "F14": {
+      "en": "While you are busy, see if the child requests your attention appropriately.",
+      "es": "Cuando estés ocupado, observa si pide tu atención de manera apropiada."
+    },
+    "F15": {
+      "en": "Turn on music the child does not want and see if they ask you to “turn it off.”",
+      "es": "Enciende una música que no quiere y observa si pide «apágala»."
+    },
+    "F16": {
+      "en": "Put out two cars of different colors and see if the child asks for “the red one.”",
+      "es": "Coloca dos carros de distinto color y observa si pide «el rojo»."
+    },
+    "F17": {
+      "en": "Put a ball under the table and see if the child asks for “the one underneath.”",
+      "es": "Coloca la pelota debajo de la mesa y observa si pide «la de abajo»."
+    },
+    "F18": {
+      "en": "Talk about going to the park later and see if the child requests that future activity.",
+      "es": "Habla de ir al parque después y observa si pide esa actividad futura."
+    },
+    "F19": {
+      "en": "Show an unfamiliar object and see if the child asks “what is it?”",
+      "es": "Muéstrale un objeto desconocido y observa si pregunta «¿qué es?»."
+    },
+    "F20": {
+      "en": "Hide a toy and see if the child asks “where is it?”",
+      "es": "Esconde un juguete y observa si pregunta «¿dónde está?»."
+    },
+    "F21": {
+      "en": "Show someone else's backpack and see if the child asks “whose is it?”",
+      "es": "Muestra una mochila ajena y observa si pregunta «¿de quién es?»."
+    },
+    "F22": {
+      "en": "Offer to move a toy car and see if the child asks you to “make it go fast.”",
+      "es": "Ofrece mover un carrito y observa si pide «hazlo rápido»."
+    },
+    "F23": {
+      "en": "Put out items belonging to different people and see if the child requests “my cup” or “your pencil.”",
+      "es": "Coloca objetos de distintas personas y observa si pide «mi vaso» o «tu lápiz»."
+    },
+    "F24": {
+      "en": "Show two options and see if the child asks “which one?”",
+      "es": "Muéstrale dos opciones y observa si pregunta «¿cuál?»."
+    },
+    "F25": {
+      "en": "Announce a visitor and see if the child asks “when are they coming?”",
+      "es": "Anuncia una visita y observa si pregunta «¿cuándo viene?»."
+    },
+    "F26": {
+      "en": "Give the child a new toy and see if they ask “how does it work?”",
+      "es": "Dale un juguete nuevo y observa si pregunta «¿cómo funciona?»."
+    },
+    "F27": {
+      "en": "Before leaving, see if the child asks “can we go?”",
+      "es": "Antes de salir, observa si pregunta «¿podemos ir?»."
+    },
+    "F28": {
+      "en": "Change a routine and see if the child asks “why?”",
+      "es": "Cambia una rutina y observa si pregunta «¿por qué?»."
+    },
+    "F29": {
+      "en": "Throughout the day, see if the child spontaneously requests items, help, or information without being asked.",
+      "es": "Durante el día, observa si pide espontáneamente cosas, ayuda o información sin que se le pregunte."
+    },
+    "G1": {
+      "en": "Show a favorite toy and ask “what is it?”",
+      "es": "Muéstrale su juguete favorito y pregunta «¿qué es?»."
+    },
+    "G2": {
+      "en": "Show a cup, spoon, and ball; see if the child names them.",
+      "es": "Muéstrale una taza, una cuchara y una pelota; observa si las nombra."
+    },
+    "G3": {
+      "en": "Point to Mom or another familiar family member and ask “who is that?”",
+      "es": "Señala a mamá o a un familiar conocido y pregunta «¿quién es?»."
+    },
+    "G4": {
+      "en": "Show a picture of a dog and ask “what is it?”",
+      "es": "Muéstrale una foto de un perro y pregunta «¿qué es?»."
+    },
+    "G5": {
+      "en": "Point to the child's nose and hands and ask them to name those body parts.",
+      "es": "Señala su nariz y sus manos y pídele que las nombre."
+    },
+    "G6": {
+      "en": "Show shoes and a shirt; ask the child to name them.",
+      "es": "Muéstrale unos zapatos y una camiseta; pídele que los nombre."
+    },
+    "G7": {
+      "en": "While someone is jumping, ask “what are they doing?”",
+      "es": "Mientras alguien salta, pregunta «¿qué está haciendo?»."
+    },
+    "G8": {
+      "en": "Show a picture of someone eating and ask “what are they doing?”",
+      "es": "Muestra una foto de alguien comiendo y pregunta «¿qué hace?»."
+    },
+    "G9": {
+      "en": "Show several familiar pictures one after another and see if the child names them quickly.",
+      "es": "Muéstrale varias imágenes conocidas una tras otra y observa si las nombra rápidamente."
+    },
+    "G10": {
+      "en": "Teach the name of a new object and see if the child learns it without many repetitions.",
+      "es": "Enséñale el nombre de un objeto nuevo y observa si lo aprende sin muchas repeticiones."
+    },
+    "G11": {
+      "en": "Show a dog and see if the child says “it's a dog.”",
+      "es": "Muéstrale un perro y observa si dice «es un perro»."
+    },
+    "G12": {
+      "en": "Show a bicycle and ask the child to name a part, such as the wheel.",
+      "es": "Muéstrale una bicicleta y pregunta cómo se llama una de sus partes, como la rueda."
+    },
+    "G13": {
+      "en": "Show a large ball and a small ball; ask “what is this one like?”",
+      "es": "Muéstrale una pelota grande y una pequeña; pregunta «¿cómo es esta?»."
+    },
+    "G14": {
+      "en": "Show a shoe next to a foot and ask which objects go together.",
+      "es": "Muestra un zapato junto a un pie y pregunta qué objetos van juntos."
+    },
+    "G15": {
+      "en": "Say “we use it to cut paper” and see if the child answers “scissors.”",
+      "es": "Di «sirve para cortar papel» y observa si responde «tijeras»."
+    },
+    "G16": {
+      "en": "Say “it has wheels and pedals” and see if the child answers “bicycle.”",
+      "es": "Di «tiene ruedas y pedales» y observa si responde «bicicleta»."
+    },
+    "G17": {
+      "en": "Say “it's a fruit” and see if the child names a fruit.",
+      "es": "Di «es una fruta» y observa si nombra una fruta."
+    },
+    "G18": {
+      "en": "Show a cup and a plate and ask the child to name both.",
+      "es": "Muestra una taza y un plato y pídele que nombre ambos."
+    },
+    "G19": {
+      "en": "Show pictures of a dog and a cat and ask the child to name both.",
+      "es": "Muestra fotos de un perro y un gato y pídele que nombre los dos."
+    },
+    "G20": {
+      "en": "See if the child says “I see a dog and a cat” when naming two things.",
+      "es": "Observa si dice «veo un perro y un gato» al nombrar dos cosas."
+    },
+    "G21": {
+      "en": "Show a running child and see if the child says “boy running.”",
+      "es": "Muestra a un niño corriendo y observa si dice «niño corre»."
+    },
+    "G22": {
+      "en": "Show a red ball and see if the child says “red ball.”",
+      "es": "Muestra una pelota roja y observa si dice «pelota roja»."
+    },
+    "G23": {
+      "en": "Show a picture of a dog and ask “is it a cat?” so the child can answer yes or no.",
+      "es": "Muestra una foto de un perro y pregunta «¿es un gato?» para que responda sí o no."
+    },
+    "G24": {
+      "en": "Show scissors and ask “what are they for?”",
+      "es": "Muéstrale unas tijeras y pregunta «¿para qué sirven?»."
+    },
+    "G25": {
+      "en": "Show an apple and ask “what kind of thing is this?”",
+      "es": "Muéstrale una manzana y pregunta «¿qué tipo de cosa es?»."
+    },
+    "G26": {
+      "en": "Show a ball and alternate “what is it?”, “what color is it?”, and “what is it for?”",
+      "es": "Muéstrale una pelota y alterna «¿qué es?», «¿de qué color?» y «¿para qué sirve?»."
+    },
+    "G27": {
+      "en": "Show an apple, banana, and pear; ask “what are these?”",
+      "es": "Muestra una manzana, una banana y una pera; pregunta «¿qué son?»."
+    },
+    "G28": {
+      "en": "Show a car missing a wheel and ask “what is missing?”",
+      "es": "Muestra un carro sin una rueda y pregunta «¿qué le falta?»."
+    },
+    "G29": {
+      "en": "Show three animals and a chair; ask “which one doesn't belong?”",
+      "es": "Muestra tres animales y una silla; pregunta «¿cuál no pertenece?»."
+    },
+    "G30": {
+      "en": "Show a spilled cup and ask “what problem do you see?”",
+      "es": "Muestra un vaso derramado y pregunta «¿qué problema ves?»."
+    },
+    "G31": {
+      "en": "Show a photo of a firefighter and ask “who is that?”",
+      "es": "Muestra la foto de un bombero y pregunta «¿quién es?»."
+    },
+    "G32": {
+      "en": "Point to a car across the room and ask “what is that?”",
+      "es": "Señala un carro al otro lado del salón y pregunta «¿qué es eso?»."
+    },
+    "G33": {
+      "en": "Play a siren sound and ask “what is making that sound?”",
+      "es": "Reproduce el sonido de una sirena y pregunta «¿qué suena?»."
+    },
+    "G34": {
+      "en": "Show a boy jumping and see if the child says “the boy is jumping.”",
+      "es": "Muestra un niño saltando y observa si dice «el niño está saltando»."
+    },
+    "G35": {
+      "en": "Put a ball under a chair and ask “where is it?”",
+      "es": "Coloca una pelota debajo de una silla y pregunta «¿dónde está?»."
+    },
+    "G36": {
+      "en": "See if the child says “the ball is under the chair.”",
+      "es": "Observa si dice «la pelota está debajo de la silla»."
+    },
+    "G37": {
+      "en": "Show a picture of a girl and a boy and ask “who is running?”",
+      "es": "Muestra una foto de una niña y un niño y pregunta «¿quién está corriendo?»."
+    },
+    "G38": {
+      "en": "See if the child says “he is running” or “she is sitting.”",
+      "es": "Observa si dice «él está corriendo» o «ella está sentada»."
+    },
+    "G39": {
+      "en": "Show a park scene and ask the child to describe what is happening.",
+      "es": "Muestra una escena de parque y pide que describa qué ocurre."
+    },
+    "G40": {
+      "en": "Show a kitchen and ask “what is on the table?”",
+      "es": "Muestra una cocina y pregunta «¿qué hay sobre la mesa?»."
+    },
+    "G41": {
+      "en": "Show a boy walking slowly and ask “how is he walking?”",
+      "es": "Muestra un niño caminando despacio y pregunta «¿cómo camina?»."
+    },
+    "G42": {
+      "en": "Show a surprised face and ask “how does this person feel?”",
+      "es": "Muestra una cara sorprendida y pregunta «¿cómo se siente?»."
+    },
+    "G43": {
+      "en": "When the child says something hurts, see if they can name what they feel.",
+      "es": "Cuando diga que le duele algo, observa si puede nombrar lo que siente."
+    },
+    "G44": {
+      "en": "Show a small sleeping dog and see if the child says “small dog sleeping.”",
+      "es": "Muestra un perro pequeño durmiendo y observa si dice «perro pequeño duerme»."
+    },
+    "G45": {
+      "en": "See if the child says “I see a small dog sleeping.”",
+      "es": "Observa si dice «veo un perro pequeño durmiendo»."
+    },
+    "G46": {
+      "en": "Show two children sharing a toy and ask “what are they doing?”",
+      "es": "Muestra dos niños compartiendo un juguete y pregunta «¿qué hacen?»."
+    },
+    "G47": {
+      "en": "During a walk, see if the child spontaneously names things they see.",
+      "es": "Durante un paseo, observa si nombra espontáneamente cosas que ve."
+    },
+    "H1": {
+      "en": "Sing a familiar children's song and pause so the child can fill in the missing word.",
+      "es": "Canta «Los pollitos dicen pío, pío...» y deja que complete la palabra que falta."
+    },
+    "H2": {
+      "en": "Say “to play with bubbles, we need to...” and see if the child completes it with “blow.”",
+      "es": "Di «para jugar con burbujas hay que...» y observa si completa «soplar»."
+    },
+    "H3": {
+      "en": "If the child uses signs, ask a simple question and see if they respond with the appropriate sign.",
+      "es": "Si usa señas, haz una pregunta sencilla y observa si responde con la seña adecuada."
+    },
+    "H4": {
+      "en": "Ask “what sound does a cow make?”",
+      "es": "Pregunta «¿qué sonido hace una vaca?»."
+    },
+    "H5": {
+      "en": "Ask “what is your name?” or “how old are you?”",
+      "es": "Pregunta «¿cómo te llamas?» o «¿cuántos años tienes?»."
+    },
+    "H6": {
+      "en": "Say “before bed, I brush my...” and wait for “teeth.”",
+      "es": "Di «antes de dormir me lavo los...» y espera «dientes»."
+    },
+    "H7": {
+      "en": "Say “shoe and...” and see if the child answers “sock.”",
+      "es": "Di «zapato y...» y observa si responde «calcetín»."
+    },
+    "H8": {
+      "en": "Ask “what do we use to cut paper?”",
+      "es": "Pregunta «¿con qué cortamos papel?»."
+    },
+    "H9": {
+      "en": "Ask “what is a toothbrush used for?”",
+      "es": "Pregunta «¿para qué sirve un cepillo de dientes?»."
+    },
+    "H10": {
+      "en": "Ask “what do we have in the kitchen to keep food cold?”",
+      "es": "Pregunta «¿qué hay en la cocina para guardar comida fría?»."
+    },
+    "H11": {
+      "en": "Ask “what do we write with?”",
+      "es": "Pregunta «¿con qué escribimos?»."
+    },
+    "H12": {
+      "en": "Ask “where do we keep clothes?”",
+      "es": "Pregunta «¿dónde guardamos la ropa?»."
+    },
+    "H13": {
+      "en": "Ask “where do we wash our hands?”",
+      "es": "Pregunta «¿dónde nos lavamos las manos?»."
+    },
+    "H14": {
+      "en": "Say “an apple is a...” and wait for “fruit.”",
+      "es": "Di «una manzana es una...» y espera «fruta»."
+    },
+    "H15": {
+      "en": "Ask “name three animals.”",
+      "es": "Pregunta «dime tres animales»."
+    },
+    "H16": {
+      "en": "Ask “what does a bicycle have?”",
+      "es": "Pregunta «¿qué tiene una bicicleta?»."
+    },
+    "H17": {
+      "en": "Say “it has four legs and barks; what is it?”",
+      "es": "Di «tiene cuatro patas y ladra; ¿qué es?»."
+    },
+    "H18": {
+      "en": "Ask “what kind of thing is a banana?”",
+      "es": "Pregunta «¿qué clase de cosa es una banana?»."
+    },
+    "H19": {
+      "en": "After putting away three objects, ask “what things did you see?”",
+      "es": "Después de guardar tres objetos, pregunta «¿qué cosas viste?»."
+    },
+    "H20": {
+      "en": "After playing and cleaning up, ask “what did we do a moment ago?”",
+      "es": "Después de jugar y recoger, pregunta «¿qué hicimos hace un momento?»."
+    },
+    "H21": {
+      "en": "After a visit, ask “who came today?”",
+      "es": "Después de una visita, pregunta «¿quién vino hoy?»."
+    },
+    "H22": {
+      "en": "Show a picture of rain and ask “what could we use to stay dry?”",
+      "es": "Muestra un dibujo de lluvia y pregunta «¿qué podríamos usar para no mojarnos?»."
+    },
+    "H23": {
+      "en": "Ask “what can we find at a pharmacy?”",
+      "es": "Pregunta «¿qué encontramos en una farmacia?»."
+    },
+    "H24": {
+      "en": "Ask “what can we do at the park?”",
+      "es": "Pregunta «¿qué podemos hacer en el parque?»."
+    },
+    "H25": {
+      "en": "Ask “where do we buy bread?”",
+      "es": "Pregunta «¿dónde compramos pan?»."
+    },
+    "H26": {
+      "en": "Ask “name things you can find in a library.”",
+      "es": "Pregunta «dime cosas que hay en una biblioteca»."
+    },
+    "H27": {
+      "en": "Say “dog, cat, and horse” and ask “what are they?”",
+      "es": "Di «perro, gato y caballo» y pregunta «¿qué son?»."
+    },
+    "H28": {
+      "en": "Ask “who cuts your hair?” or “whose backpack is this?”",
+      "es": "Pregunta «¿quién te corta el pelo?» o «¿de quién es esta mochila?»."
+    },
+    "H29": {
+      "en": "Ask “when do we eat breakfast?”",
+      "es": "Pregunta «¿cuándo desayunamos?»."
+    },
+    "H30": {
+      "en": "With a ball, alternate “what is it?”, “where is it?”, and “what is it for?”",
+      "es": "Sobre una pelota, alterna «¿qué es?», «¿dónde está?» y «¿para qué sirve?»."
+    },
+    "H31": {
+      "en": "Ask “which of these objects is used for cutting?”",
+      "es": "Pregunta «¿cuál de estos objetos sirve para cortar?»."
+    },
+    "H32": {
+      "en": "Ask “how do you make a sandwich?”",
+      "es": "Pregunta «¿cómo haces un sándwich?»."
+    },
+    "H33": {
+      "en": "Ask “why do we use umbrellas when it rains?”",
+      "es": "Pregunta «¿por qué usamos paraguas cuando llueve?»."
+    },
+    "H34": {
+      "en": "Ask “what do you do first and next when washing your hands?”",
+      "es": "Pregunta «¿qué haces primero y después para lavarte las manos?»."
+    },
+    "H35": {
+      "en": "Say “you turn on the faucet, use soap, and dry off; what activity is that?”",
+      "es": "Di «abres el grifo, usas jabón y te secas; ¿qué actividad es?»."
+    },
+    "H36": {
+      "en": "Say “it's a long yellow fruit that you peel; what is it?”",
+      "es": "Di «es una fruta amarilla, larga y se pela; ¿qué es?»."
+    },
+    "H37": {
+      "en": "Ask “can a dog fly?” or “are you wearing shoes?”",
+      "es": "Pregunta «¿puede volar un perro?» o «¿tienes zapatos puestos?»."
+    },
+    "H38": {
+      "en": "Ask “what are two red things you can eat?”",
+      "es": "Pregunta «¿qué dos cosas rojas puedes comer?»."
+    },
+    "H39": {
+      "en": "Ask “which three animals have four legs?”",
+      "es": "Pregunta «¿qué tres animales tienen cuatro patas?»."
+    },
+    "H40": {
+      "en": "Ask “describe what a bicycle looks like.”",
+      "es": "Pregunta «descríbeme cómo es una bicicleta»."
+    },
+    "H41": {
+      "en": "Ask “what do you do before going to bed and after dinner?”",
+      "es": "Pregunta «¿qué haces antes de acostarte y después de cenar?»."
+    },
+    "H42": {
+      "en": "Ask “what did you do yesterday?” and “what will you do tomorrow?”",
+      "es": "Pregunta «¿qué hiciste ayer?» y «¿qué harás mañana?»."
+    },
+    "H43": {
+      "en": "Talk about a game and see if the child responds and adds something related.",
+      "es": "Habla sobre un juego y observa si responde y añade algo relacionado."
+    },
+    "H44": {
+      "en": "Ask a new question about a familiar object and see how the child responds.",
+      "es": "Haz una pregunta nueva sobre un objeto conocido y observa cómo responde."
+    },
+    "H45": {
+      "en": "Mention a recent classroom activity and ask what happened.",
+      "es": "Comenta una actividad reciente del salón y pregunta qué ocurrió."
+    },
+    "H46": {
+      "en": "Ask “what happened today and who took part?” to get several answers.",
+      "es": "Pregunta «¿qué pasó hoy y quién participó?» para obtener varias respuestas."
+    },
+    "H47": {
+      "en": "In a group conversation, ask the child to contribute more than one idea about the topic.",
+      "es": "En una conversación grupal, pide que aporte más de una idea sobre el tema."
+    },
+    "H48": {
+      "en": "Ask the child to tell you what they did during a visit to the park.",
+      "es": "Pídele que cuente qué hizo durante una visita al parque."
+    },
+    "H49": {
+      "en": "See if the child starts a conversation without the adult asking the first question.",
+      "es": "Observa si inicia una conversación sin que el adulto haga la primera pregunta."
+    },
+    "I1": {
+      "en": "Listen for recognizable sounds such as “ma,” “pa,” or “ba.”",
+      "es": "Escucha si produce sonidos reconocibles como «ma», «pa» o «ba»."
+    },
+    "I2": {
+      "en": "During play, see if the child spontaneously says “water” or an approximation.",
+      "es": "Durante el juego, observa si dice espontáneamente «agua» o una aproximación."
+    },
+    "I3": {
+      "en": "See if the child spontaneously says “want ball.”",
+      "es": "Observa si dice espontáneamente «quiero pelota»."
+    },
+    "I4": {
+      "en": "Sing a familiar song with the child and see if they follow your model.",
+      "es": "Canta una canción conocida junto a él y observa si sigue el modelo."
+    },
+    "I5": {
+      "en": "Start a familiar song and see if the child can sing it without you modeling it.",
+      "es": "Empieza una canción conocida y observa si puede cantarla sin que tú la modeles."
+    },
+    "I6": {
+      "en": "During play, see if the child repeats sounds or words without being asked.",
+      "es": "Mientras juegan, observa si repite sonidos o palabras sin que se le pida."
+    },
+    "I7": {
+      "en": "See if the child spontaneously asks for water or a toy.",
+      "es": "Observa si pide espontáneamente agua o un juguete."
+    },
+    "I8": {
+      "en": "During a walk, see if the child says “car” when they see one without being asked.",
+      "es": "Durante un paseo, observa si dice «carro» al verlo sin que se le pregunte."
+    },
+    "I9": {
+      "en": "See if the child starts a simple conversation about something that interests them.",
+      "es": "Observa si inicia una charla sencilla sobre algo que le interesa."
+    },
+    "K1": {
+      "en": "Put several toys within reach and see if the child explores them on their own.",
+      "es": "Pon varios juguetes al alcance y observa si los explora por iniciativa propia."
+    },
+    "K2": {
+      "en": "While the child plays with blocks, see if they allow another child to touch or move some blocks.",
+      "es": "Mientras juega con bloques, observa si permite que otro niño toque o mueva algunos."
+    },
+    "K3": {
+      "en": "At the playground, see if the child uses the swing or available play equipment independently.",
+      "es": "En el patio, observa si usa por su cuenta el columpio o los juegos disponibles."
+    },
+    "K4": {
+      "en": "At home, see if the child chooses and carries out a play activity without constant help.",
+      "es": "En casa, observa si elige y realiza una actividad de juego sin ayuda constante."
+    },
+    "K5": {
+      "en": "Give the child a toy car and see if they roll it instead of just holding it.",
+      "es": "Dale un carrito y observa si lo hace rodar en lugar de solo sostenerlo."
+    },
+    "K6": {
+      "en": "See if the child plays alone with toys and talks about what they are doing.",
+      "es": "Observa si juega solo con sus juguetes y comenta lo que está haciendo."
+    },
+    "K7": {
+      "en": "With a toy kitchen, see if the child pretends to prepare, serve, and put away food.",
+      "es": "Con una cocina de juguete, observa si prepara, sirve y recoge la comida imaginaria."
+    },
+    "K8": {
+      "en": "Give two children blocks and see if they build something together.",
+      "es": "Pon dos niños con bloques y observa si construyen algo juntos."
+    },
+    "K9": {
+      "en": "See if the child plays with different peers instead of always playing with the same one.",
+      "es": "Observa si juega con distintos compañeros, no siempre con el mismo."
+    },
+    "K10": {
+      "en": "During pretend restaurant play, see if the child acts as the cook while another child acts as the customer.",
+      "es": "Durante un juego de casita, observa si hace de cocinero mientras otro hace de cliente."
+    },
+    "K11": {
+      "en": "See if the child talks to another child while they build a tower together.",
+      "es": "Observa si habla con otro niño mientras construyen una torre."
+    },
+    "K12": {
+      "en": "Throw a ball to another child and see if the child participates in passing it back and forth.",
+      "es": "Lanza una pelota a otro niño y observa si participa en el intercambio."
+    },
+    "K13": {
+      "en": "During a building activity, see if the child coordinates with a peer about who places each block.",
+      "es": "Durante una construcción, observa si coordina con un compañero quién coloca cada bloque."
+    },
+    "K14": {
+      "en": "Suggest tag or “Simon Says” and see if the child follows the game with others.",
+      "es": "Propón jugar a perseguirse o a «Simón dice» y observa si sigue el juego con otros."
+    },
+    "K15": {
+      "en": "During a simple board game, see if the child follows turns and rules.",
+      "es": "Durante un juego de mesa sencillo, observa si sigue turnos y reglas."
+    },
+    "L1": {
+      "en": "See if the child stays near other children without interfering with their play.",
+      "es": "Observa si permanece cerca de otros niños sin interferir en su juego."
+    },
+    "L2": {
+      "en": "A peer offers a block; see if the child accepts it.",
+      "es": "Un compañero le ofrece un bloque; observa si lo acepta."
+    },
+    "L3": {
+      "en": "A peer gives the child a high five; see if the child responds appropriately.",
+      "es": "Un compañero le da un choque de manos; observa si responde de manera apropiada."
+    },
+    "L4": {
+      "en": "At recess, see if the child notices what other children are doing.",
+      "es": "Durante el recreo, observa si se fija en lo que hacen otros niños."
+    },
+    "L5": {
+      "en": "See if the child looks at a peer before trying to play with them.",
+      "es": "Observa si mira a un compañero antes de intentar jugar con él."
+    },
+    "L6": {
+      "en": "See if the child approaches another child and joins their activity.",
+      "es": "Observa si se acerca a un niño y comienza a participar en su actividad."
+    },
+    "L7": {
+      "en": "Before another child rolls a ball, see if the child looks at them in anticipation.",
+      "es": "Antes de que otro niño haga rodar una pelota, observa si lo mira esperando la acción."
+    },
+    "L8": {
+      "en": "A peer says “give me the ball”; see if the child responds to the request.",
+      "es": "Un compañero le dice «dame la pelota»; observa si responde a la petición."
+    },
+    "L9": {
+      "en": "A peer claps; see if the child imitates them.",
+      "es": "Un compañero aplaude; observa si el niño lo imita."
+    },
+    "L10": {
+      "en": "A peer says “hello”; see if the child returns the greeting.",
+      "es": "Un compañero le dice «hola»; observa si devuelve el saludo."
+    },
+    "L11": {
+      "en": "See if the child gently takes a peer's hand to invite them to play.",
+      "es": "Observa si toma suavemente la mano de un compañero para invitarlo a jugar."
+    },
+    "L12": {
+      "en": "A peer approaches to play; see if the child accepts the interaction.",
+      "es": "Un compañero se acerca para jugar; observa si acepta la interacción."
+    },
+    "L13": {
+      "en": "A peer asks for a block; see if the child can hand it over.",
+      "es": "Un compañero pide un bloque; observa si puede entregárselo."
+    },
+    "L14": {
+      "en": "Ask “where is Mom?” and see if the child tries to find her.",
+      "es": "Pregunta «¿dónde está mamá?» y observa si intenta encontrarla."
+    },
+    "L15": {
+      "en": "See if the child seeks a peer's attention to show them something.",
+      "es": "Observa si busca la atención de un compañero para mostrarle algo."
+    },
+    "L16": {
+      "en": "See if the child points to a picture and tells another child “look, a dog.”",
+      "es": "Observa si señala un dibujo y le dice a otro niño «mira, un perro»."
+    },
+    "L17": {
+      "en": "While talking to a peer, see if the child looks at them naturally.",
+      "es": "Mientras habla con un compañero, observa si lo mira de manera natural."
+    },
+    "L18": {
+      "en": "See if the child asks another child “can I have the ball?”",
+      "es": "Observa si pide a otro niño «¿me das la pelota?»."
+    },
+    "L19": {
+      "en": "See if the child asks “can I borrow a block?”",
+      "es": "Observa si pregunta «¿me prestas un bloque?»."
+    },
+    "L20": {
+      "en": "See if the child voluntarily offers another child a crayon.",
+      "es": "Observa si ofrece voluntariamente un crayón a otro niño."
+    },
+    "L21": {
+      "en": "When arriving in the classroom, see if the child greets a peer without being prompted.",
+      "es": "Al llegar al salón, observa si saluda a un compañero sin que se lo indiquen."
+    },
+    "L22": {
+      "en": "See if the child joins a block game that other children have already started.",
+      "es": "Observa si se incorpora a un juego de bloques que otros niños ya empezaron."
+    },
+    "L23": {
+      "en": "When others look at something interesting, see if the child looks there too.",
+      "es": "Cuando otros miran algo interesante, observa si también dirige allí su atención."
+    },
+    "L24": {
+      "en": "A peer smiles after receiving help; see if the child notices that reaction.",
+      "es": "Un compañero sonríe al recibir ayuda; observa si el niño se fija en esa reacción."
+    },
+    "L25": {
+      "en": "If a peer stops playing, see if the child adjusts their own participation.",
+      "es": "Si un compañero deja de jugar, observa si adapta su propia participación."
+    },
+    "L26": {
+      "en": "A peer cannot reach a toy; see if the child helps them participate.",
+      "es": "Un compañero no alcanza un juguete; observa si lo ayuda a participar."
+    },
+    "L27": {
+      "en": "Ask “what game does Anna like?” and see if the child can answer.",
+      "es": "Pregunta «¿qué juego le gusta a Ana?» y observa si puede responder."
+    },
+    "L28": {
+      "en": "See if the child calls a peer over to show them something they might like.",
+      "es": "Observa si llama a un compañero para mostrarle algo que podría interesarle."
+    },
+    "L29": {
+      "en": "After showing a drawing, see if the child looks at the peer's reaction.",
+      "es": "Después de enseñar un dibujo, observa si mira la reacción del compañero."
+    },
+    "L30": {
+      "en": "Ask the child to tell another adult “snack is ready.”",
+      "es": "Dile que comunique a otro adulto «la merienda está lista»."
+    },
+    "L31": {
+      "en": "While two people are talking, see if the child waits for a pause before joining in.",
+      "es": "Mientras dos personas hablan, observa si espera una pausa antes de intervenir."
+    },
+    "L32": {
+      "en": "See if the child maintains several exchanges about a game with a peer.",
+      "es": "Observa si mantiene varios intercambios sobre un juego con un compañero."
+    },
+    "L33": {
+      "en": "See if the child asks another child “where did you buy that toy?”",
+      "es": "Observa si pregunta a otro niño «¿dónde compraste ese juguete?»."
+    },
+    "L34": {
+      "en": "See if the child gets a peer's attention and keeps it while telling them something.",
+      "es": "Observa si consigue la atención de un compañero y la mantiene mientras le cuenta algo."
+    },
+    "M1": {
+      "en": "During a small-group activity, see if the child remains seated appropriately.",
+      "es": "Durante una actividad con pocos niños, observa si permanece sentado de forma apropiada."
+    },
+    "M2": {
+      "en": "During a large-group meeting, see if the child remains seated appropriately.",
+      "es": "Durante una reunión con muchos niños, observa si permanece sentado de forma apropiada."
+    },
+    "M3": {
+      "en": "While the teacher explains something to the group, see if the child pays attention.",
+      "es": "Mientras la maestra explica algo al grupo, observa si presta atención."
+    },
+    "M4": {
+      "en": "When a peer answers, see if the child listens.",
+      "es": "Cuando un compañero responde, observa si lo escucha."
+    },
+    "M5": {
+      "en": "The teacher says “everyone raise your hands”; see if the child follows the direction.",
+      "es": "La maestra dice «todos levanten las manos»; observa si sigue la instrucción."
+    },
+    "M6": {
+      "en": "The teacher says “everyone with a red card, stand up”; see if the child knows who should respond.",
+      "es": "La maestra dice «los que tienen una tarjeta roja, levántense»; observa si distingue a quién corresponde."
+    },
+    "M7": {
+      "en": "The teacher asks for volunteers to hand out papers; see if the child raises their hand.",
+      "es": "La maestra pide voluntarios para repartir hojas; observa si levanta la mano."
+    },
+    "M8": {
+      "en": "The teacher asks “what animal is this?”; see if the child raises their hand to answer.",
+      "es": "La maestra pregunta «¿qué animal es?»; observa si levanta la mano para responder."
+    },
+    "M9": {
+      "en": "The teacher shows a ball and asks its name; see if the child raises their hand and names it.",
+      "es": "La maestra muestra una pelota y pregunta su nombre; observa si levanta la mano y la nombra."
+    },
+    "M10": {
+      "en": "The teacher asks “where do fish live?”; see if the child raises their hand and answers.",
+      "es": "La maestra pregunta «¿dónde viven los peces?»; observa si levanta la mano y responde."
+    },
+    "M11": {
+      "en": "During a group activity, see if the child waits for their turn to participate.",
+      "es": "Durante una actividad grupal, observa si espera su turno para participar."
+    },
+    "M12": {
+      "en": "During group instruction, see if the child learns a new skill alongside other children.",
+      "es": "En una enseñanza grupal, observa si aprende una habilidad nueva junto a otros niños."
+    },
+    "N1": {
+      "en": "On arrival, see if the child puts away their backpack and follows the usual routine.",
+      "es": "Al llegar, observa si guarda su mochila y sigue la rutina habitual."
+    },
+    "N2": {
+      "en": "Give the child a familiar puzzle and see if they finish it without ongoing help.",
+      "es": "Dale un rompecabezas conocido y observa si lo completa sin ayuda continua."
+    },
+    "N3": {
+      "en": "After finishing an activity, see if the child waits while seated for the next direction.",
+      "es": "Cuando termina una actividad, observa si espera sentado la próxima indicación."
+    },
+    "N4": {
+      "en": "When told “we're going to the playground,” see if the child goes to the indicated place.",
+      "es": "Al anunciar «vamos al patio», observa si se traslada al lugar indicado."
+    },
+    "N5": {
+      "en": "Before washing hands, see if the child waits their turn in line.",
+      "es": "Antes de lavarse las manos, observa si espera su turno en la fila."
+    },
+    "N6": {
+      "en": "Say “get in line” and see if the child stands in the appropriate place.",
+      "es": "Dile «ponte en la fila» y observa si se coloca donde corresponde."
+    },
+    "N7": {
+      "en": "Give the child a familiar worksheet and see if they finish it independently.",
+      "es": "Dale una hoja de trabajo conocida y observa si la completa de manera independiente."
+    },
+    "N8": {
+      "en": "Ask the child to get their pencils and then put them back in their place.",
+      "es": "Pídele que busque sus lápices y después los devuelva a su lugar."
+    },
+    "N9": {
+      "en": "After an activity, see if the child turns in their work or puts away materials.",
+      "es": "Al terminar una actividad, observa si entrega el trabajo o guarda los materiales."
+    },
+    "N10": {
+      "en": "While waiting to enter the classroom, see if the child stands in the indicated place.",
+      "es": "Mientras espera para entrar al salón, observa si permanece de pie en el lugar indicado."
+    },
+    "P1": {
+      "en": "After learning “cup” with a red cup, see if the child recognizes other kinds of cups.",
+      "es": "Después de aprender «taza» con una taza roja, observa si reconoce otras tazas diferentes."
+    },
+    "P2": {
+      "en": "After learning a skill with you, see if the child can do it with another adult too.",
+      "es": "Después de aprender una habilidad contigo, observa si la hace también con otro adulto."
+    },
+    "P3": {
+      "en": "After learning to request water at home, see if the child also requests it elsewhere.",
+      "es": "Después de aprender a pedir agua en casa, observa si también la pide en otro lugar."
+    },
+    "P4": {
+      "en": "After practicing a response individually, see if the child uses it during a group activity.",
+      "es": "Después de practicar una respuesta individualmente, observa si la usa durante una actividad grupal."
+    },
+    "P5": {
+      "en": "If the child learned to ask for help by saying “help,” see if they can also ask in another appropriate way.",
+      "es": "Si aprendió a pedir ayuda diciendo «ayuda», observa si también puede pedirla de otra forma apropiada."
+    },
+    "P6": {
+      "en": "After learning “under” with a ball, see if the child uses that word with other objects.",
+      "es": "Después de aprender «debajo» con una pelota, observa si usa esa palabra con otros objetos."
+    },
+    "U1": {
+      "en": "Before using the bathroom, see if the child pulls their pants down and then back up.",
+      "es": "Antes de ir al baño, observa si baja sus pantalones y después los sube."
+    },
+    "U2": {
+      "en": "Give the child their shoes and see if they put them on and take them off.",
+      "es": "Dale sus zapatos y observa si se los pone y se los quita."
+    },
+    "U3": {
+      "en": "Give the child a shirt without buttons and see if they put it on and take it off.",
+      "es": "Dale una camiseta sin botones y observa si se la pone y se la quita."
+    },
+    "U4": {
+      "en": "Give the child a button-up shirt and see if they can put it on and take it off.",
+      "es": "Dale una camisa con botones y observa si puede ponérsela y quitársela."
+    },
+    "U5": {
+      "en": "Give the child a pair of pants and see if they put them on and take them off.",
+      "es": "Dale un pantalón y observa si se lo pone y se lo quita."
+    },
+    "U6": {
+      "en": "Give the child socks and see if they put them on and take them off.",
+      "es": "Dale un par de calcetines y observa si se los pone y se los quita."
+    },
+    "U7": {
+      "en": "Give the child a coat and see if they put it on and take it off.",
+      "es": "Dale un abrigo y observa si se lo pone y se lo quita."
+    },
+    "U8": {
+      "en": "Give the child a zipped-up jacket and see if they pull the zipper down.",
+      "es": "Dale una chaqueta cerrada y observa si baja la cremallera."
+    },
+    "U9": {
+      "en": "Give the child an open jacket and see if they connect the bottom of the zipper.",
+      "es": "Dale una chaqueta abierta y observa si engancha el inicio de la cremallera."
+    },
+    "U10": {
+      "en": "See if the child opens and closes the zipper on their clothing.",
+      "es": "Observa si abre y cierra la cremallera de su ropa."
+    },
+    "U11": {
+      "en": "Give the child a shirt and see if they fasten its buttons.",
+      "es": "Dale una camisa y observa si abrocha sus botones."
+    },
+    "U12": {
+      "en": "Give the child clothing with snap fasteners and see if they close them.",
+      "es": "Dale una prenda con broches de presión y observa si los cierra."
+    },
+    "U13": {
+      "en": "Give the child a belt with a buckle and see if they can fasten it.",
+      "es": "Dale un cinturón con hebilla y observa si puede ajustarlo."
+    },
+    "U14": {
+      "en": "If the child's shirt is twisted, see if they straighten it independently.",
+      "es": "Si su camiseta queda torcida, observa si la acomoda por sí mismo."
+    },
+    "U15": {
+      "en": "Give the child shoes with laces and see if they can tie them.",
+      "es": "Dale zapatos con cordones y observa si puede atarlos."
+    },
+    "V1": {
+      "en": "Give the child small pieces of fruit and see if they eat them with their fingers.",
+      "es": "Dale pequeños trozos de fruta y observa si los come con los dedos."
+    },
+    "V2": {
+      "en": "Give the child water with a straw and see if they drink through it.",
+      "es": "Dale agua con una pajita y observa si bebe por ella."
+    },
+    "V3": {
+      "en": "Give the child water in a cup and see if they drink without help.",
+      "es": "Dale agua en un vaso y observa si bebe sin ayuda."
+    },
+    "V4": {
+      "en": "Give the child yogurt with a spoon and solid food with a fork; see how they use both.",
+      "es": "Dale yogur con cuchara y comida sólida con tenedor; observa cómo usa ambos."
+    },
+    "V5": {
+      "en": "Give the child bread and an appropriate spreading knife; see if they spread the topping.",
+      "es": "Dale pan y un cuchillo apropiado para untar; observa si extiende la crema."
+    },
+    "V6": {
+      "en": "Give the child a small pitcher of water and see if they fill a cup.",
+      "es": "Dale una jarra pequeña con agua y observa si llena un vaso."
+    },
+    "V7": {
+      "en": "Give the child soft food and an appropriate knife; see if they cut it.",
+      "es": "Dale comida blanda y un cuchillo apropiado; observa si la corta."
+    },
+    "V8": {
+      "en": "Give the child their prepared lunch and see if they carry it to the table.",
+      "es": "Dale su almuerzo preparado y observa si lo lleva a la mesa."
+    },
+    "V9": {
+      "en": "After eating, see if the child clears their plate and cleans their place.",
+      "es": "Después de comer, observa si recoge su plato y limpia el lugar."
+    },
+    "V10": {
+      "en": "During a meal, see if the child tries to keep the table and their area clean.",
+      "es": "Durante la comida, observa si procura mantener limpia la mesa y su espacio."
+    },
+    "W1": {
+      "en": "After playing, see if the child washes their hands with soap and water.",
+      "es": "Después de jugar, observa si se lava las manos con agua y jabón."
+    },
+    "W2": {
+      "en": "After washing, see if the child dries their hands with a towel.",
+      "es": "Después de lavarse, observa si se seca las manos con una toalla."
+    },
+    "W3": {
+      "en": "At the sink, see if the child washes their face.",
+      "es": "Frente al lavabo, observa si se lava la cara."
+    },
+    "W4": {
+      "en": "After washing their face, see if the child dries it with a towel.",
+      "es": "Después de lavarse la cara, observa si se seca con una toalla."
+    },
+    "W5": {
+      "en": "Give the child a comb and see if they comb their hair.",
+      "es": "Dale un peine y observa si se arregla el cabello."
+    },
+    "W6": {
+      "en": "Give the child a toothbrush and toothpaste; see if they brush their teeth.",
+      "es": "Dale su cepillo y pasta dental; observa si se cepilla los dientes."
+    },
+    "W7": {
+      "en": "When the child has a runny nose, see if they use a tissue to blow their nose.",
+      "es": "Cuando tiene la nariz con mucosidad, observa si usa un pañuelo para sonarse."
+    },
+    "X1": {
+      "en": "During the bathroom routine, see if the child urinates in the toilet.",
+      "es": "Durante la rutina de baño, observa si orina en el inodoro."
+    },
+    "X2": {
+      "en": "With scheduled bathroom visits, see if the child keeps their clothing dry between visits.",
+      "es": "Con visitas programadas al baño, observa si mantiene la ropa seca entre visitas."
+    },
+    "X3": {
+      "en": "In a familiar bathroom, see if the child enters and completes the urination routine without help.",
+      "es": "En un baño conocido, observa si entra y realiza la rutina para orinar sin ayuda."
+    },
+    "X4": {
+      "en": "When the child needs to urinate, see if they ask to use the bathroom.",
+      "es": "Cuando necesita orinar, observa si pide ir al baño."
+    },
+    "X5": {
+      "en": "After urinating, see if the child wipes appropriately when needed.",
+      "es": "Después de orinar, observa si se limpia adecuadamente, cuando corresponda."
+    },
+    "X6": {
+      "en": "During the bathroom routine, see if the child has a bowel movement in the toilet.",
+      "es": "Durante la rutina de baño, observa si evacúa en el inodoro."
+    },
+    "X7": {
+      "en": "With scheduled bathroom visits, see if the child keeps their clothing clean between visits.",
+      "es": "Con visitas programadas al baño, observa si mantiene la ropa limpia entre visitas."
+    },
+    "X8": {
+      "en": "After a bowel movement, see if the child wipes appropriately.",
+      "es": "Después de evacuar, observa si se limpia adecuadamente."
+    },
+    "X9": {
+      "en": "In a familiar bathroom, see if the child completes the bowel movement routine independently.",
+      "es": "En un baño conocido, observa si realiza de forma independiente la rutina para evacuar."
+    },
+    "X10": {
+      "en": "See if the child uses the bathroom and completes all necessary steps without assistance.",
+      "es": "Observa si usa el baño y completa los pasos necesarios sin asistencia."
+    }
+  }
+}

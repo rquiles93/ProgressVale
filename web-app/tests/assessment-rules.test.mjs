@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import test from "node:test";
+import { assessmentSummaryHref, assessmentTaskHref, navigationAfterTaskSave } from "../lib/assessment-navigation.ts";
 
 const content = JSON.parse(readFileSync(new URL("../lib/ablls-content.v1.json", import.meta.url), "utf8"));
 const approved = new Set("ABCDEFGHIKLMNPUVWX".split(""));
@@ -24,6 +25,13 @@ test("imports all source tasks in canonical order", () => {
     const ids = content.tasks.filter((task) => task.sectionCode === section.code).map((task) => task.id);
     assert.deepEqual(ids, Array.from({ length: section.taskCount }, (_, index) => `${section.code}${index + 1}`));
   }
+});
+
+test("summary routes preserve the exact task and close without changing assessment state", () => {
+  assert.equal(assessmentSummaryHref("qa", "B15"), "/evaluacion/qa?task=B15&view=summary");
+  assert.equal(assessmentTaskHref("qa", "B15"), "/evaluacion/qa?task=B15");
+  assert.equal(assessmentSummaryHref("qa", "A7"), "/evaluacion/qa?task=A7&view=summary");
+  assert.equal(assessmentTaskHref("qa", "A7"), "/evaluacion/qa?task=A7");
 });
 
 test("preserves complete fields and task-specific score values", () => {
@@ -61,6 +69,14 @@ test("home-only transition skips service-locked M and N", () => {
   const enabled = new Set(availability(["HOME"]).filter((section) => section.enabled).map((section) => section.code));
   const afterL = content.sections.slice(content.sections.findIndex((section) => section.code === "L") + 1).find((section) => enabled.has(section.code));
   assert.equal(afterL.code, "P");
+});
+
+test("task-save navigation shows the shared completion transition at A to B and later boundaries", () => {
+  const ids = (code) => content.tasks.filter((task) => task.sectionCode === code).map((task) => task.id);
+  assert.equal(navigationAfterTaskSave("qa", "A18", "A", ids("A")), "/evaluacion/qa?task=A19");
+  assert.equal(navigationAfterTaskSave("qa", "A19", "A", ids("A")), "/evaluacion/qa?view=section-complete&section=A");
+  assert.equal(navigationAfterTaskSave("qa", "B27", "B", ids("B")), "/evaluacion/qa?view=section-complete&section=B");
+  assert.equal(navigationAfterTaskSave("qa", "L34", "L", ids("L")), "/evaluacion/qa?view=section-complete&section=L");
 });
 
 test("Section B image relationships were preserved", () => {

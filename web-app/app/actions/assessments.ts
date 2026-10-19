@@ -4,11 +4,15 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { Prisma } from "@/generated/prisma/client";
 import { requireUserId } from "@/lib/auth-session";
-import { initialSectionAvailability, PROTOCOL_VERSION, protocolSections, protocolTaskById, tasksForSection, type ServiceSettingValue } from "@/lib/ablls-content";
+import { initialSectionAvailability, PROTOCOL_VERSION, protocolSections, protocolTaskById, tasksForSection, type AssessmentLanguageValue, type ServiceSettingValue } from "@/lib/ablls-content";
+import { navigationAfterTaskSave } from "@/lib/assessment-navigation";
 import { prisma } from "@/lib/prisma";
 import { availableAssessmentColors, isAssessmentColor } from "@/lib/assessment-colors";
 
 export type AssessmentActionState = { status: "idle" | "success" | "error"; message: string; navigateTo?: string };
+
+const isLanguage = (value: string): value is AssessmentLanguageValue => value === "EN" || value === "ES";
+const message = (language: AssessmentLanguageValue, english: string, spanish: string) => language === "ES" ? spanish : english;
 
 async function ownedAssessment(assessmentId: string, ownerId: string) {
   return prisma.assessment.findFirst({ where: { id: assessmentId, ownerId }, include: { sections: true } });
@@ -18,6 +22,7 @@ export async function startAssessmentAction(formData: FormData) {
   const ownerId = await requireUserId();
   const clientId = String(formData.get("clientId") ?? "");
   const requestedColor = String(formData.get("trackingColor") ?? "").toUpperCase();
+  const requestedLanguage = String(formData.get("language") ?? "EN").toUpperCase();
   const client = await prisma.client.findFirst({ where: { id: clientId, ownerId }, select: { id: true, serviceSettings: true, assessments: { select: { id: true, status: true, trackingColor: true, sections: { select: { id: true }, take: 1 } } } } });
   if (!client) redirect("/clientes");
   if (client.serviceSettings.length === 0) redirect(`/clientes/${client.id}?settingRequired=1`);
@@ -32,6 +37,7 @@ export async function startAssessmentAction(formData: FormData) {
   }
   const availableColors = availableAssessmentColors(client.assessments.map((assessment) => assessment.trackingColor));
   if (!isAssessmentColor(requestedColor) || !availableColors.some((color) => color.value === requestedColor)) redirect(`/clientes/${client.id}?colorUnavailable=1`);
+  if (!isLanguage(requestedLanguage)) redirect(`/clientes/${client.id}`);
   let assessmentId: string;
   try {
     const assessment = await prisma.assessment.create({
@@ -43,6 +49,7 @@ export async function startAssessmentAction(formData: FormData) {
         protocolVersion: PROTOCOL_VERSION,
         serviceSettingsSnapshot: settings,
         trackingColor: requestedColor,
+        language: requestedLanguage,
         sections: { create: initialSectionAvailability(settings) },
       },
       select: { id: true },
@@ -67,13 +74,13 @@ export async function saveTaskAction(_previous: AssessmentActionState, formData:
   const score = Number(formData.get("score"));
   const note = String(formData.get("note") ?? "").trim();
   const task = protocolTaskById.get(taskId);
-  if (!task || !Number.isInteger(score) || !task.validScores.includes(score)) return { status: "error", message: "Selecciona una puntuación válida antes de continuar." };
-  if (note.length > 10000) return { status: "error", message: "Las notas no pueden superar 10,000 caracteres." };
-
   const assessment = await ownedAssessment(assessmentId, ownerId);
+  const language: AssessmentLanguageValue = assessment?.language ?? "EN";
+  if (!task || !Number.isInteger(score) || !task.validScores.includes(score)) return { status: "error", message: message(language, "Select a valid score before continuing.", "Selecciona una puntuación válida antes de continuar.") };
+  if (note.length > 10000) return { status: "error", message: message(language, "Notes cannot exceed 10,000 characters.", "Las notas no pueden superar 10,000 caracteres.") };
   const section = assessment?.sections.find((item) => item.sectionCode === task.sectionCode);
   if (!assessment || assessment.status !== "IN_PROGRESS" || !section?.enabled || !protocolSections.find((item) => item.code === task.sectionCode)?.assessmentApproved) {
-    return { status: "error", message: "Esta evaluación o sección no permite cambios." };
+    return { status: "error", message: message(language, "This assessment or section cannot be changed.", "Esta evaluación o sección no permite cambios.") };
   }
 
   try {
@@ -85,15 +92,25 @@ export async function saveTaskAction(_previous: AssessmentActionState, formData:
       else await transaction.assessmentNote.deleteMany({ where: { assessmentId, skillIdentifier: task.id } });
     });
   } catch {
-    return { status: "error", message: "No se pudieron guardar los cambios. Tu selección permanece en pantalla." };
+    return { status: "error", message: message(language, "Changes could not be saved. Your selection remains on screen.", "No se pudieron guardar los cambios. Tu selección permanece en pantalla.") };
   }
 
-  const sectionTasks = tasksForSection(task.sectionCode);
-  const position = sectionTasks.findIndex((item) => item.id === task.id);
-  const next = sectionTasks[position + 1];
-  const navigateTo = next ? `/evaluacion/${assessmentId}?task=${next.id}` : `/evaluacion/${assessmentId}?view=section-complete&section=${task.sectionCode}`;
+  const navigateTo = navigationAfterTaskSave(assessmentId, task.id, task.sectionCode, tasksForSection(task.sectionCode).map((item) => item.id));
+  if (!navigateTo) return { status: "error", message: message(language, "The next assessment screen could not be determined.", "No se pudo determinar la siguiente pantalla de la evaluación.") };
   revalidatePath(`/evaluacion/${assessmentId}`);
-  return { status: "success", message: "Puntuación y notas guardadas.", navigateTo };
+  return { status: "success", message: message(language, "Score and notes saved.", "Puntuación y notas guardadas."), navigateTo };
+}
+
+export async function updateAssessmentLanguageAction(assessmentId: string, language: AssessmentLanguageValue) {
+  const ownerId = await requireUserId();
+  if (!isLanguage(language)) return { status: "error" as const };
+  const assessment = await prisma.assessment.findFirst({ where: { id: assessmentId, ownerId }, select: { id: true, status: true, language: true } });
+  if (!assessment) return { status: "error" as const };
+  if (assessment.language !== language) {
+    await prisma.assessment.updateMany({ where: { id: assessmentId, ownerId }, data: { language } });
+    revalidatePath(`/evaluacion/${assessmentId}`);
+  }
+  return { status: "success" as const };
 }
 
 export async function toggleSectionAction(assessmentId: string, sectionCode: string, enabled: boolean): Promise<AssessmentActionState> {

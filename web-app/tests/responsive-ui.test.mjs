@@ -17,9 +17,11 @@ test("mobile dialogs keep their full content reachable inside the viewport", () 
   }
 });
 
-test("the questionnaire header uses compact language labels below the small breakpoint", () => {
-  assert.match(assessment, /<span className="sm:hidden">\{language\}<\/span>/);
-  assert.match(assessment, /<span className="hidden sm:inline">/);
+test("the questionnaire header uses compact language labels on phones and portrait tablets", () => {
+  assert.match(assessment, /<span className="language-label-short">\{language\}<\/span>/);
+  assert.match(assessment, /<span className="language-label-full">/);
+  assert.match(globalStyles, /@media \(min-width: 640px\)[\s\S]*\.language-label-short \{ display: none; \}[\s\S]*\.language-label-full \{ display: inline; \}/);
+  assert.match(globalStyles, /@media \(min-width: 768px\) and \(max-width: 1023px\) and \(orientation: portrait\)[\s\S]*\.language-label-short \{ display: inline; \}[\s\S]*\.language-label-full \{ display: none; \}/);
   assert.match(assessment, /aria-label=\{`\$\{labels\.language\}:/);
 });
 

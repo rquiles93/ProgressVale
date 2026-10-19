@@ -44,6 +44,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .scoring-mobile { display: grid; }
 .scoring-desktop { display: none; }
+.language-label-short { display: inline; }
+.language-label-full { display: none; }
+
+@media (min-width: 640px) {
+  .language-label-short { display: none; }
+  .language-label-full { display: inline; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  .language-label-short { display: inline; }
+  .language-label-full { display: none; }
+}
 
 @media (min-width: 768px) and (min-height: 500px) {
   .scoring-mobile { display: none; }

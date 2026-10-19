@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, Eye, EyeOff, LockKeyhole, Mail, UserRound } from "lucide-react";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { Logo } from "./ui";
@@ -11,11 +11,12 @@ function GoogleMark() {
   return <span className="grid size-5 place-items-center rounded-full border border-line bg-white text-xs font-bold text-[#4285F4]">G</span>;
 }
 
-export function AuthForm({ mode, googleEnabled }: { mode: "login" | "register"; googleEnabled: boolean }) {
+export function AuthForm({ mode, googleEnabled, oauthError = false }: { mode: "login" | "register"; googleEnabled: boolean; oauthError?: boolean }) {
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(oauthError ? "No se pudo completar el acceso con Google. Inténtalo de nuevo o usa tu correo y contraseña." : "");
   const [pending, setPending] = useState(false);
   const [resetNotice, setResetNotice] = useState(false);
+  const hydrated = useSyncExternalStore(() => () => {}, () => true, () => false);
   const router = useRouter();
   const isLogin = mode === "login";
 
@@ -86,7 +87,7 @@ export function AuthForm({ mode, googleEnabled }: { mode: "login" | "register"; 
 
           <div className="my-7 flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink/35"><span className="h-px flex-1 bg-line" /><span>o con tu correo</span><span className="h-px flex-1 bg-line" /></div>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form method="post" action={`/api/auth/${isLogin ? "sign-in" : "sign-up"}/email`} onSubmit={handleSubmit} className="space-y-5">
             {!isLogin && <label className="block"><span className="mb-2 block text-xs font-semibold text-navy">Nombre</span><span className="relative block"><UserRound className="absolute left-4 top-1/2 -translate-y-1/2 text-ink/35" size={18} /><input name="name" type="text" required minLength={2} maxLength={100} autoComplete="name" placeholder="Tu nombre" className="focus-ring h-12 w-full rounded-xl border border-line bg-white pl-11 pr-4 text-sm placeholder:text-ink/30" /></span></label>}
             <label className="block">
               <span className="mb-2 block text-xs font-semibold text-navy">Correo electrónico</span>
@@ -94,12 +95,13 @@ export function AuthForm({ mode, googleEnabled }: { mode: "login" | "register"; 
             </label>
             <div className="block">
               <div className="mb-2 flex items-center justify-between text-xs font-semibold text-navy"><label htmlFor="auth-password">Contraseña</label>{isLogin && <button type="button" onClick={() => setResetNotice(true)} className="focus-ring rounded font-medium text-rust">¿Olvidaste tu contraseña?</button>}</div>
-              <span className="relative block"><LockKeyhole className="absolute left-4 top-1/2 -translate-y-1/2 text-ink/35" size={18} /><input id="auth-password" name="password" type={showPassword ? "text" : "password"} required minLength={12} maxLength={128} autoComplete={isLogin ? "current-password" : "new-password"} placeholder={isLogin ? "Tu contraseña" : "Mínimo 12 caracteres"} className="focus-ring h-12 w-full rounded-xl border border-line bg-white pl-11 pr-12 text-sm placeholder:text-ink/30" /><button type="button" onClick={() => setShowPassword((value) => !value)} aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"} className="focus-ring absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1.5 text-ink/40 hover:text-navy">{showPassword ? <EyeOff size={17} /> : <Eye size={17} />}</button></span>
+              <span className="relative block"><LockKeyhole className="absolute left-4 top-1/2 -translate-y-1/2 text-ink/35" size={18} /><input id="auth-password" name="password" type={showPassword ? "text" : "password"} required minLength={12} maxLength={128} autoComplete={isLogin ? "current-password" : "new-password"} placeholder={isLogin ? "Tu contraseña" : "Mínimo 12 caracteres"} className="focus-ring h-12 w-full rounded-xl border border-line bg-white pl-11 pr-12 text-sm placeholder:text-ink/30" /><button type="button" disabled={!hydrated} onClick={() => setShowPassword((value) => !value)} aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"} className="focus-ring absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1.5 text-ink/40 hover:text-navy disabled:cursor-not-allowed disabled:opacity-50">{showPassword ? <EyeOff size={17} /> : <Eye size={17} />}</button></span>
             </div>
             {resetNotice && <p role="status" className="rounded-xl border border-line bg-cream px-4 py-3 text-xs leading-5 text-ink/60">La recuperación por correo todavía no está disponible porque no hay un servicio de envío configurado. Contacta al administrador antes de crear otra cuenta.</p>}
             {!isLogin && <p className="text-[11px] leading-5 text-ink/45">Al crear una cuenta aceptas los términos de uso y la política de privacidad.</p>}
             {error && <p role="alert" className="rounded-xl bg-rust-soft/60 px-4 py-3 text-xs text-rust-dark">{error}</p>}
-            <button type="submit" disabled={pending} className="focus-ring flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-rust text-sm font-semibold text-white shadow-[0_8px_20px_rgba(54,95,74,0.2)] transition hover:bg-rust-dark disabled:cursor-wait disabled:opacity-70">
+            <noscript><p role="alert" className="rounded-xl bg-rust-soft/60 px-4 py-3 text-xs text-rust-dark">Activa JavaScript para iniciar sesión de forma segura. El formulario no enviará tus credenciales sin JavaScript.</p></noscript>
+            <button type="submit" disabled={!hydrated || pending} className="focus-ring flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-rust text-sm font-semibold text-white shadow-[0_8px_20px_rgba(54,95,74,0.2)] transition hover:bg-rust-dark disabled:cursor-wait disabled:opacity-70">
               {pending ? "Procesando…" : isLogin ? "Iniciar sesión" : "Crear cuenta"} <ArrowRight size={17} />
             </button>
           </form>

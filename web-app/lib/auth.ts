@@ -4,12 +4,13 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { nextCookies } from "better-auth/next-js";
 import { prisma } from "@/lib/prisma";
+import { betterAuthBaseURL } from "@/lib/auth-origin";
 
 const googleEnabled = Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
 
 export const auth = betterAuth({
   appName: "ABLLS-R",
-  baseURL: process.env.BETTER_AUTH_URL,
+  baseURL: betterAuthBaseURL(),
   secret: process.env.BETTER_AUTH_SECRET,
   database: prismaAdapter(prisma, { provider: "postgresql" }),
   user: {

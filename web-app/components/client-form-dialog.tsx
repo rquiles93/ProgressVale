@@ -54,8 +54,8 @@ export function ClientFormDialog({ open, title, submitLabel, action, onClose, cl
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[80] grid place-items-center bg-navy/35 p-4 backdrop-blur-sm" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) closeDialog(); }}>
-      <section ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="client-dialog-title" className="w-full max-w-lg rounded-3xl border border-line bg-paper p-6 shadow-soft sm:p-8">
+    <div className="fixed inset-0 z-[80] grid place-items-center overflow-y-auto bg-navy/35 p-4 backdrop-blur-sm" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) closeDialog(); }}>
+      <section ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="client-dialog-title" className="my-auto max-h-[calc(100dvh-2rem)] w-full max-w-lg overflow-y-auto overscroll-contain rounded-3xl border border-line bg-paper p-6 shadow-soft sm:p-8">
         <div className="mb-7 flex items-start justify-between gap-4">
           <div><p className="text-[10px] font-bold uppercase tracking-[0.16em] text-rust">Datos básicos</p><h2 id="client-dialog-title" className="mt-2 font-serif text-3xl text-navy">{title}</h2></div>
           <button type="button" onClick={closeDialog} aria-label="Cerrar" className="focus-ring rounded-xl p-2 text-ink/45 hover:bg-cream hover:text-navy"><X size={18} /></button>

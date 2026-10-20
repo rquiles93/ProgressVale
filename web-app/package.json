@@ -10,7 +10,7 @@
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "test:pdf": "node --experimental-strip-types --test tests/pdf-reports.test.mjs tests/backup-safety.test.mjs",
     "test:integration": "node --test tests/database-integration.db.mjs",
-    "test:auth": "node --test tests/auth-integration.db.mjs",
+    "test:auth": "node tests/run-auth-integration.mjs",
     "test:pdf:integration": "node --test tests/pdf-access.db.mjs",
     "prisma:validate": "prisma validate",
     "prisma:generate": "prisma generate"

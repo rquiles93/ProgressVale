@@ -82,7 +82,7 @@ export function trackingPdfFilename(data: Pick<TrackingReportData, "clientName">
 }
 
 function createDocument(options: PDFKit.PDFDocumentOptions) {
-  const doc = new PDFDocument({ autoFirstPage: false, bufferPages: true, info: { Title: "ABLLS-R - Resumen de resultados", Author: "Aplicación ABLLS-R" }, ...options });
+  const doc = new PDFDocument({ autoFirstPage: false, bufferPages: true, info: { Title: "ABLLS-R - Resumen de resultados", Author: "ProgressVale" }, ...options });
   const chunks: Buffer[] = [];
   doc.on("data", (chunk: Buffer) => chunks.push(chunk));
   const completed = new Promise<Buffer>((resolve, reject) => {

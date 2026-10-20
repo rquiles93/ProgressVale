@@ -1,21 +1,28 @@
 import "server-only";
 
 import { betterAuth } from "better-auth";
+import { APIError } from "better-auth/api";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { nextCookies } from "better-auth/next-js";
 import { prisma } from "@/lib/prisma";
 import { betterAuthBaseURL } from "@/lib/auth-origin";
+import { googleOAuthConfigured, validateGoogleOAuthUserInfo } from "@/lib/google-auth-flow";
+import { sendOneTimeVerificationEmail, sendPasswordResetEmail } from "@/lib/auth-emails";
 
-const googleEnabled = Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
+const googleEnabled = googleOAuthConfigured(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET);
 
 export const auth = betterAuth({
-  appName: "ABLLS-R",
+  appName: "ProgressVale",
   baseURL: betterAuthBaseURL(),
   secret: process.env.BETTER_AUTH_SECRET,
   database: prismaAdapter(prisma, { provider: "postgresql" }),
   user: {
     modelName: "User",
     fields: { name: "displayName" },
+    validateUserInfo: validateGoogleOAuthUserInfo,
+    additionalFields: {
+      emailVerificationRequired: { type: "boolean", defaultValue: false, input: false },
+    },
   },
   account: {
     modelName: "AuthIdentity",
@@ -39,6 +46,7 @@ export const auth = betterAuth({
       disableDefaultScope: true,
       scope: ["openid", "email", "profile"],
       includeGrantedScopes: false,
+      prompt: "select_account",
     },
   } : undefined,
   session: {
@@ -47,11 +55,38 @@ export const auth = betterAuth({
     updateAge: 60 * 60 * 24,
   },
   verification: { modelName: "Verification" },
+  emailVerification: {
+    sendOnSignUp: true,
+    expiresIn: 60 * 60,
+    sendVerificationEmail: async ({ user }, request) => sendOneTimeVerificationEmail(user, request),
+  },
   emailAndPassword: {
     enabled: true,
     minPasswordLength: 12,
     maxPasswordLength: 128,
-    autoSignIn: true,
+    autoSignIn: false,
+    resetPasswordTokenExpiresIn: 15 * 60,
+    revokeSessionsOnPasswordReset: true,
+    sendResetPassword: sendPasswordResetEmail,
+  },
+  databaseHooks: {
+    user: {
+      create: {
+        before: async (user, context) => context?.path === "/sign-up/email"
+          ? { data: { ...user, emailVerificationRequired: true } }
+          : undefined,
+      },
+    },
+    session: {
+      create: {
+        before: async (session) => {
+          const user = await prisma.user.findUnique({ where: { id: session.userId }, select: { emailVerified: true, emailVerificationRequired: true } });
+          if (user?.emailVerificationRequired && !user.emailVerified) {
+            throw new APIError("FORBIDDEN", { code: "EMAIL_NOT_VERIFIED", message: "Email verification is required." });
+          }
+        },
+      },
+    },
   },
   rateLimit: {
     enabled: true,
@@ -62,6 +97,9 @@ export const auth = betterAuth({
     customRules: {
       "/sign-in/email": { window: 60, max: 5 },
       "/sign-up/email": { window: 300, max: 5 },
+      "/send-verification-email": { window: 60, max: 5 },
+      "/request-password-reset": { window: 60, max: 5 },
+      "/reset-password": { window: 300, max: 5 },
     },
   },
   advanced: {

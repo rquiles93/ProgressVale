@@ -5,8 +5,8 @@ import { LogoutButton } from "./logout-button";
 export function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link href="/clientes" className={`focus-ring inline-flex flex-none items-baseline gap-1.5 whitespace-nowrap rounded-sm sm:gap-2 ${light ? "text-white" : "text-navy"}`}>
-      <span className="font-serif text-[23px] tracking-tight sm:text-[28px]">ABLLS-R</span>
-      <span className={`hidden text-[8px] font-semibold uppercase tracking-[0.18em] min-[360px]:inline sm:text-[9px] sm:tracking-[0.22em] ${light ? "text-white/55" : "text-rust"}`}>Evaluación</span>
+      <span className="font-serif text-[23px] tracking-tight sm:text-[28px]">ProgressVale</span>
+      <span className={`hidden text-[8px] font-semibold uppercase tracking-[0.18em] min-[360px]:inline sm:text-[9px] sm:tracking-[0.22em] ${light ? "text-white/55" : "text-rust"}`}>Evaluation &amp; Tracking</span>
     </Link>
   );
 }

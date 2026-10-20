@@ -35,7 +35,7 @@ export function trackingXlsxFilename(data: Pick<TrackingReportData, "clientName"
 }
 
 export async function generateTrackingXlsx(data: TrackingReportData) {
-  const workbook = new ExcelJS.Workbook(); workbook.creator = "Aplicación ABLLS-R"; workbook.created = new Date();
+  const workbook = new ExcelJS.Workbook(); workbook.creator = "ProgressVale"; workbook.created = new Date();
   const model = buildTrackingGrid(data.sections, data.assessments); const groups = Array.from({ length: Math.ceil(model.sections.length / 5) }, (_, index) => model.sections.slice(index * 5, (index + 1) * 5));
   const excludedHeaderColor = TRACKING_EXCLUDED_SECTION_HEADER_COLOR;
   for (const [pageIndex, sections] of groups.entries()) {

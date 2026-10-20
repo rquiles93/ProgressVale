@@ -31,6 +31,8 @@ model User {
   email         String         @unique
   displayName   String
   emailVerified Boolean        @default(false)
+  // False is the permanent legacy cohort; new credential signups are set true server-side.
+  emailVerificationRequired Boolean @default(false)
   image         String?
   identities    AuthIdentity[]
   sessions      Session[]
@@ -90,6 +92,14 @@ model RateLimit {
   key         String @unique
   count       Int
   lastRequest BigInt
+}
+
+model EmailActionThrottle {
+  key             String   @id
+  count           Int
+  windowStartedAt DateTime
+  lastAttemptAt   DateTime
+  updatedAt       DateTime @updatedAt
 }
 
 model Client {

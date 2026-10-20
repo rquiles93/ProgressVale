@@ -18,7 +18,8 @@ const publicSources = [
 
 test("public authentication UI uses ProgressVale branding and English-only copy", () => {
   assert.match(source("components/ui.tsx"), /ProgressVale/);
-  assert.match(source("components/ui.tsx"), /Evaluation &amp; Tracking/);
+  assert.match(source("components/ui.tsx"), /"Evaluation & Tracking", "Evaluación y seguimiento"/);
+  assert.match(source("components/ui.tsx"), /language = "EN"/);
   assert.match(source("app/layout.tsx"), /ProgressVale — Evaluation & Tracking/);
   assert.match(source("lib/auth.ts"), /appName: "ProgressVale"/);
   assert.doesNotMatch(publicSources, /ABLLS-R|Español|Correo|Contraseña|Iniciar sesión|Verifica tu|Recuperar contraseña|Restablecer/);

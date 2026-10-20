@@ -22,7 +22,8 @@ export async function startAssessmentAction(formData: FormData) {
   const ownerId = await requireUserId();
   const clientId = String(formData.get("clientId") ?? "");
   const requestedColor = String(formData.get("trackingColor") ?? "").toUpperCase();
-  const requestedLanguage = String(formData.get("language") ?? "EN").toUpperCase();
+  const user = await prisma.user.findUnique({ where: { id: ownerId }, select: { language: true } });
+  const requestedLanguage: AssessmentLanguageValue = user?.language ?? "EN";
   const client = await prisma.client.findFirst({ where: { id: clientId, ownerId }, select: { id: true, serviceSettings: true, assessments: { select: { id: true, status: true, trackingColor: true, sections: { select: { id: true }, take: 1 } } } } });
   if (!client) redirect("/clientes");
   if (client.serviceSettings.length === 0) redirect(`/clientes/${client.id}?settingRequired=1`);
@@ -37,7 +38,6 @@ export async function startAssessmentAction(formData: FormData) {
   }
   const availableColors = availableAssessmentColors(client.assessments.map((assessment) => assessment.trackingColor));
   if (!isAssessmentColor(requestedColor) || !availableColors.some((color) => color.value === requestedColor)) redirect(`/clientes/${client.id}?colorUnavailable=1`);
-  if (!isLanguage(requestedLanguage)) redirect(`/clientes/${client.id}`);
   let assessmentId: string;
   try {
     const assessment = await prisma.assessment.create({
@@ -107,8 +107,14 @@ export async function updateAssessmentLanguageAction(assessmentId: string, langu
   const assessment = await prisma.assessment.findFirst({ where: { id: assessmentId, ownerId }, select: { id: true, status: true, language: true } });
   if (!assessment) return { status: "error" as const };
   if (assessment.language !== language) {
-    await prisma.assessment.updateMany({ where: { id: assessmentId, ownerId }, data: { language } });
+    await prisma.$transaction([
+      prisma.user.update({ where: { id: ownerId }, data: { language } }),
+      prisma.assessment.updateMany({ where: { id: assessmentId, ownerId }, data: { language } }),
+    ]);
     revalidatePath(`/evaluacion/${assessmentId}`);
+    revalidatePath("/clientes", "layout");
+  } else {
+    await prisma.user.update({ where: { id: ownerId }, data: { language } });
   }
   return { status: "success" as const };
 }
@@ -116,8 +122,9 @@ export async function updateAssessmentLanguageAction(assessmentId: string, langu
 export async function toggleSectionAction(assessmentId: string, sectionCode: string, enabled: boolean): Promise<AssessmentActionState> {
   const ownerId = await requireUserId();
   const assessment = await ownedAssessment(assessmentId, ownerId);
+  const language: AssessmentLanguageValue = assessment?.language ?? "EN";
   const section = assessment?.sections.find((item) => item.sectionCode === sectionCode);
-  if (!assessment || assessment.status !== "IN_PROGRESS" || !section || section.lockReason !== "SERVICE_SETTING") return { status: "error", message: "Esta sección no se puede modificar." };
+  if (!assessment || assessment.status !== "IN_PROGRESS" || !section || section.lockReason !== "SERVICE_SETTING") return { status: "error", message: message(language, "This section cannot be changed.", "Esta sección no se puede modificar.") };
   try {
     await prisma.$transaction(async (transaction) => {
       const writable = await transaction.assessment.updateMany({ where: { id: assessmentId, ownerId, status: "IN_PROGRESS" }, data: { updatedAt: new Date() } });
@@ -125,10 +132,10 @@ export async function toggleSectionAction(assessmentId: string, sectionCode: str
       await transaction.assessmentSection.update({ where: { assessmentId_sectionCode: { assessmentId, sectionCode } }, data: { enabled } });
     });
   } catch {
-    return { status: "error", message: "Esta sección no se puede modificar." };
+    return { status: "error", message: message(language, "This section cannot be changed.", "Esta sección no se puede modificar.") };
   }
   revalidatePath(`/evaluacion/${assessmentId}`);
-  return { status: "success", message: enabled ? "Sección habilitada." : "Sección bloqueada." };
+  return { status: "success", message: enabled ? message(language, "Section enabled.", "Sección habilitada.") : message(language, "Section locked.", "Sección bloqueada.") };
 }
 
 export async function finalizeAssessmentAction(formData: FormData) {

@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import { requireSession } from "@/lib/auth-session";
 import { prisma } from "@/lib/prisma";
+import { appLanguage, text } from "@/lib/language";
 
 export type EmailAuthState = { status: "idle" | "success" | "error"; message: string };
 
@@ -34,12 +35,13 @@ export async function requestPasswordResetAction(_: EmailAuthState, formData: Fo
 
 export async function resendOwnVerificationAction(_: EmailAuthState): Promise<EmailAuthState> {
   const session = await requireSession();
-  const user = await prisma.user.findUnique({ where: { id: session.user.id }, select: { email: true, emailVerified: true } });
-  if (!user || user.emailVerified) return { status: "success", message: "El correo ya está verificado. / Email is already verified." };
+  const user = await prisma.user.findUnique({ where: { id: session.user.id }, select: { email: true, emailVerified: true, language: true } });
+  const language = appLanguage(user?.language);
+  if (!user || user.emailVerified) return { status: "success", message: text(language, "Email is already verified.", "El correo ya está verificado.") };
   try {
     await auth.api.sendVerificationEmail({ body: { email: user.email, callbackURL: "/perfil" }, headers: await headers() });
-    return { status: "success", message: "Enlace solicitado. Revisa tu correo. / Link requested. Check your email." };
+    return { status: "success", message: text(language, "Link requested. Check your email.", "Enlace solicitado. Revisa tu correo.") };
   } catch {
-    return { status: "error", message: "No se pudo enviar el enlace. Inténtalo más tarde. / The link could not be sent. Try again later." };
+    return { status: "error", message: text(language, "The link could not be sent. Try again later.", "No se pudo enviar el enlace. Inténtalo más tarde.") };
   }
 }

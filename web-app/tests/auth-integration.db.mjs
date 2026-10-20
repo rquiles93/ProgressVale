@@ -45,12 +45,18 @@ test("isolated verification and legacy authentication lifecycle", async () => {
     assert.equal((await db.query(`SELECT "emailVerified" FROM "User" WHERE email=$1`, [otherEmail])).rows[0].emailVerified, false);
     const replay = await fetch(verificationURL); assert.match(await replay.text(), /ya fue usado|already been used/);
 
+    await db.query(`UPDATE "User" SET language='ES' WHERE id=$1`, [user.id]);
+    const spanishLogin = await request("/api/auth/sign-in/email", { body: { email, password: passwordOne }, ip: "198.51.100.24" });
+    const spanishSession = await (await request("/api/auth/get-session", { cookie: cookie(spanishLogin), ip: "198.51.100.24" })).json();
+    assert.equal(spanishSession.user.language, "ES");
+
     const expiredToken = await createVerificationToken(db, user.id, { expired: true });
     const expired = await fetch(`${baseURL}/verificar-correo?token=${expiredToken}`); assert.match(await expired.text(), /expir[oó]|expired/i);
 
     await request("/api/auth/sign-up/email", { body: { name: "Legacy QA", email: legacyEmail, password: passwordOne }, ip: "198.51.100.22" });
     const legacyId = (await db.query(`UPDATE "User" SET "emailVerificationRequired"=false WHERE email=$1 RETURNING id`, [legacyEmail])).rows[0].id;
     const legacyLogin = await request("/api/auth/sign-in/email", { body: { email: legacyEmail, password: passwordOne }, ip: "198.51.100.23" }); assert.equal(legacyLogin.status, 200);
+    const legacySession = await (await request("/api/auth/get-session", { cookie: cookie(legacyLogin), ip: "198.51.100.23" })).json(); assert.equal(legacySession.user.language, "EN");
     const legacy = (await db.query(`SELECT id,"emailVerified","emailVerificationRequired" FROM "User" WHERE email=$1`, [legacyEmail])).rows[0];
     assert.deepEqual(legacy, { id: legacyId, emailVerified: false, emailVerificationRequired: false });
   } finally { await db.end(); }

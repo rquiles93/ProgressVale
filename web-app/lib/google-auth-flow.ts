@@ -47,20 +47,21 @@ export function requiresGoogleAccountLink(error: string | undefined, requested =
   return requested || error === GOOGLE_ACCOUNT_NOT_LINKED;
 }
 
-export function googleOAuthErrorMessage(error: string | undefined) {
+export function googleOAuthErrorMessage(error: string | undefined, language: "EN" | "ES" = "EN") {
+  const localized = (english: string, spanish: string) => language === "ES" ? spanish : english;
   switch (error) {
     case "access_denied":
-      return "You cancelled Google sign-in. No changes were made.";
+      return localized("You cancelled Google sign-in. No changes were made.", "Cancelaste el acceso con Google. No se realizó ningún cambio.");
     case GOOGLE_UNVERIFIED_EMAIL:
     case "email_not_verified":
-      return "Google must verify your email before it can be used to sign in.";
+      return localized("Google must verify your email before it can be used to sign in.", "Google debe verificar tu correo antes de que pueda usarse para iniciar sesión.");
     case "account_already_linked_to_different_user":
-      return "This Google identity is already linked to another account.";
+      return localized("This Google identity is already linked to another account.", "Esta identidad de Google ya está vinculada a otra cuenta.");
     case "email_does_not_match":
-      return "The Google email does not match this account.";
+      return localized("The Google email does not match this account.", "El correo de Google no coincide con esta cuenta.");
     case undefined:
       return "";
     default:
-      return "Google sign-in could not be completed. Please try again.";
+      return localized("Google sign-in could not be completed. Please try again.", "No se pudo completar el acceso con Google. Inténtalo de nuevo.");
   }
 }

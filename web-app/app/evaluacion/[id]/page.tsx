@@ -4,6 +4,7 @@ import { requireSession } from "@/lib/auth-session";
 import { localizedSection, localizedTask, nextAvailableSection, protocolSections, protocolTaskById, protocolTasks, tasksForSection, type AssessmentLanguageValue } from "@/lib/ablls-content";
 import { prisma } from "@/lib/prisma";
 import { firstUnansweredTaskId } from "@/lib/progress";
+import { appLanguage } from "@/lib/language";
 
 export default async function AssessmentPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ task?: string; view?: string; section?: string }> }) {
   const session = await requireSession();
@@ -14,7 +15,7 @@ export default async function AssessmentPage({ params, searchParams }: { params:
     include: { client: true, sections: true, scores: true, notes: true },
   });
   if (!assessment) notFound();
-  const language: AssessmentLanguageValue = assessment.language ?? "EN";
+  const language: AssessmentLanguageValue = appLanguage(session.user.language);
   if (assessment.sections.length === 0) redirect(`/clientes/${assessment.clientId}`);
 
   const enabledCodes = new Set(assessment.sections.filter((section) => section.enabled).map((section) => section.sectionCode));

@@ -33,6 +33,7 @@ model User {
   emailVerified Boolean        @default(false)
   // False is the permanent legacy cohort; new credential signups are set true server-side.
   emailVerificationRequired Boolean @default(false)
+  language      AssessmentLanguage @default(EN)
   image         String?
   identities    AuthIdentity[]
   sessions      Session[]

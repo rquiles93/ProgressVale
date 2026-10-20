@@ -22,6 +22,7 @@ export const auth = betterAuth({
     validateUserInfo: validateGoogleOAuthUserInfo,
     additionalFields: {
       emailVerificationRequired: { type: "boolean", defaultValue: false, input: false },
+      language: { type: "string", defaultValue: "EN", input: false },
     },
   },
   account: {

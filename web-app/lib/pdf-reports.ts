@@ -51,6 +51,14 @@ export type TrackingReportData = {
   assessments: TrackingAssessment[];
 };
 
+export function trackingInformationRows(data: Pick<TrackingReportData, "assessments">) {
+  return buildTrackingGrid([], data.assessments).legend.slice(-4).map((item) => ({
+    assessmentId: item.assessment.id,
+    date: item.assessment.evaluationCompletedAt ?? item.assessment.createdAt,
+    color: item.color,
+  }));
+}
+
 const statusLabels: Record<string, string> = {
   DRAFT: "Borrador",
   IN_PROGRESS: "En progreso",
@@ -214,7 +222,30 @@ export async function generateAssessmentPdf(data: AssessmentReportData) {
 }
 
 export function trackingPdfTaskLabel(taskId: string) {
-  return `${taskId} -`;
+  return taskId;
+}
+
+function addTrackingInformationBox(doc: PDFKit.PDFDocument, data: TrackingReportData, x: number, y: number, width: number) {
+  const rows = trackingInformationRows(data);
+  const height = 82;
+  const padding = 7;
+  const labelWidth = 48;
+  const dateX = x + 70;
+  const colorX = x + width - 60;
+  doc.rect(x, y, width, height).strokeColor("#AAB2AA").lineWidth(0.6).stroke();
+  doc.font("Helvetica").fontSize(7.5).fillColor(INK).text("Learner:", x + padding, y + 7, { width: labelWidth, lineBreak: false });
+  doc.text(data.clientName, x + 48, y + 7, { width: width - 55, lineBreak: false, ellipsis: true });
+  doc.text("Assessor", x + padding, y + 22, { width: labelWidth, lineBreak: false });
+  doc.text("Date", dateX, y + 22, { width: 55, align: "center", lineBreak: false });
+  doc.text("Color", colorX, y + 22, { width: 52, align: "center", lineBreak: false });
+  for (let index = 0; index < 4; index += 1) {
+    const row = rows[index];
+    const rowY = y + 36 + index * 10.5;
+    doc.moveTo(x + padding, rowY + 7).lineTo(x + 55, rowY + 7).strokeColor("#727A72").lineWidth(0.45).stroke();
+    if (row) doc.font("Helvetica").fontSize(6.8).fillColor(INK).text(formatDate(row.date), dateX - 5, rowY, { width: 67, align: "center", lineBreak: false, ellipsis: true });
+    else doc.moveTo(dateX, rowY + 7).lineTo(dateX + 55, rowY + 7).strokeColor("#727A72").lineWidth(0.45).stroke();
+    doc.rect(colorX, rowY - 1, 52, 9).fillAndStroke(row ? row.color : "#FFFFFF", "#172B42");
+  }
 }
 
 export function trackingPdfSectionPresentation(status: string) {
@@ -226,37 +257,38 @@ export function trackingPdfSectionPresentation(status: string) {
   };
 }
 
+export const TRACKING_PDF_FULL_PAGE = { width: 841.89, height: 1190.55 } as const;
+
+export function trackingPdfPageGeometry(pageIndex: number, taskCounts: number[]) {
+  const informationY = 96;
+  const informationHeight = 82;
+  const metadataClearance = 18;
+  const bottomReserve = 82;
+  const minimumPageHeight = 560;
+  const tallestSection = Math.max(...taskCounts, 1);
+  const bibliographyRowHeight = (TRACKING_PDF_FULL_PAGE.height - bottomReserve - informationY) / 57;
+  const rowHeight = [0, 1, 2, 5].includes(pageIndex) && tallestSection >= 30 ? bibliographyRowHeight : 14;
+  const gridStart = [3, 4].includes(pageIndex) ? informationY + informationHeight + metadataClearance : informationY;
+  const requiredHeight = gridStart + tallestSection * rowHeight + bottomReserve;
+  const pageHeight = pageIndex === 0 ? TRACKING_PDF_FULL_PAGE.height : Math.min(TRACKING_PDF_FULL_PAGE.height, Math.max(minimumPageHeight, requiredHeight));
+  return { pageHeight, gridBottom: pageHeight - bottomReserve, rowHeight, gridStart };
+}
+
 export async function generateTrackingPdf(data: TrackingReportData) {
   const model = buildTrackingGrid(data.sections, data.assessments);
   const { doc, completed } = createDocument({ size: "A3", layout: "portrait", margins: { top: 44, right: 28, bottom: 36, left: 28 } });
   const sectionGroups = [["A", "B", "C", "D"], ["E", "F", "G", "H"], ["I", "J", "K", "L"], ["M", "N", "P", "Q"], ["R", "S", "T", "U"], ["V", "W", "X", "Y", "Z"]];
-  const inlineLegendLimit = 24;
-  const useSeparateLegend = model.legend.length > inlineLegendLimit;
-  if (useSeparateLegend) {
-    const legendPerPage = 28;
-    for (let legendPage = 0; legendPage < Math.ceil(model.legend.length / legendPerPage); legendPage += 1) {
-      doc.addPage(); addPageBrand(doc, "Skills Tracking - leyenda de evaluaciones");
-      doc.font("Times-Roman").fontSize(18).fillColor(NAVY).text(`Leyenda de evaluaciones - ${data.clientName}`, 28, 58, { width: doc.page.width - 56 });
-      const entries = model.legend.slice(legendPage * legendPerPage, (legendPage + 1) * legendPerPage);
-      entries.forEach((item, index) => {
-        const y = 94 + index * 22;
-        doc.font("Helvetica-Bold").fontSize(9).fillColor(NAVY).text(`#${legendPage * legendPerPage + index + 1}`, 28, y + 3, { width: 30, lineBreak: false });
-        doc.rect(64, y, 14, 14).fill(item.color);
-        doc.font(item.provisional ? "Helvetica-BoldOblique" : "Helvetica").fontSize(9).fillColor(INK).text(`${formatDate(item.assessment.evaluationCompletedAt ?? item.assessment.createdAt)}${item.provisional ? "  ·  PROVISIONAL" : ""}`, 88, y + 3, { width: doc.page.width - 116, lineBreak: false, ellipsis: true });
-      });
-    }
-  }
   for (const [pageIndex, sectionCodes] of sectionGroups.entries()) {
-    doc.addPage(); addPageBrand(doc, "Skills Tracking");
+    const pageSections = sectionCodes.map((code) => model.sections.find((section) => section.code === code)).filter((section): section is NonNullable<typeof section> => Boolean(section));
+    const geometry = trackingPdfPageGeometry(pageIndex, pageSections.map((section) => section.rowsTopToBottom.length));
+    if (pageIndex === 0) doc.addPage();
+    else doc.addPage({ size: [TRACKING_PDF_FULL_PAGE.width, geometry.pageHeight], margins: { top: 44, right: 28, bottom: 36, left: 28 } });
+    addPageBrand(doc, "Skills Tracking");
     doc.font("Times-Roman").fontSize(21).fillColor(NAVY).text(`Skills Tracking - ${data.clientName}`, 28, 54, { width: doc.page.width - 56 });
     if (data.clientIdentifier) doc.font("Helvetica").fontSize(8.5).fillColor(MUTED).text(`ID: ${data.clientIdentifier}`, 28, 80, { width: doc.page.width - 56 });
-    const legendY = 96;
-    const inlineLegend = useSeparateLegend ? [] : model.legend;
-    inlineLegend.forEach((item, index) => { const y = legendY + index * 15; doc.font("Helvetica-Bold").fontSize(9).fillColor(NAVY).text(`#${index + 1}`, 28, y + 1.5, { width: 28, lineBreak: false }); doc.rect(61, y, 12, 12).fill(item.color); doc.font(item.provisional ? "Helvetica-BoldOblique" : "Helvetica").fontSize(9).fillColor(INK).text(`${formatDate(item.assessment.evaluationCompletedAt ?? item.assessment.createdAt)}${item.provisional ? "  ·  PROVISIONAL" : ""}`, 82, y + 1.5, { width: doc.page.width - 110, lineBreak: false, ellipsis: true }); });
-    if (useSeparateLegend) doc.font("Helvetica").fontSize(8.5).fillColor(MUTED).text("La leyenda de evaluaciones aparece en las páginas iniciales.", 28, legendY + 2, { width: doc.page.width - 56 });
-    const gridTop = legendY + (inlineLegend.length ? inlineLegend.length * 15 : 0) + 18;
-    const gridBottom = doc.page.height - 82;
-    const pageSections = sectionCodes.map((code) => model.sections.find((section) => section.code === code)).filter((section): section is NonNullable<typeof section> => Boolean(section));
+    const informationY = 96;
+    addTrackingInformationBox(doc, data, 28, informationY, 220);
+    const gridBottom = geometry.gridBottom;
     const finalPage = pageSections.length === 5;
     const columnWidth = finalPage ? 136 : 164;
     const gap = finalPage ? 12 : 18;
@@ -266,7 +298,7 @@ export async function generateTrackingPdf(data: TrackingReportData) {
       const x = groupLeft + columnIndex * (columnWidth + gap);
       const labelWidth = finalPage ? 38 : 44;
       const boxWidth = columnWidth - labelWidth;
-      const rowHeight = Math.min(14, (gridBottom - gridTop) / Math.max(section.rowsTopToBottom.length, 1));
+      const rowHeight = geometry.rowHeight;
       const sectionTop = gridBottom - rowHeight * section.rowsTopToBottom.length;
       const presentation = trackingPdfSectionPresentation(section.latestSectionStatus);
       const sectionUnavailable = !presentation.showScoreColors;

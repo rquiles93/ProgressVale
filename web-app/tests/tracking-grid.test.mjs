@@ -2,13 +2,14 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync } from "node:fs";
 import { assessmentColor, buildTrackingGrid, verifyTrackingGrid } from "../lib/tracking-grid.ts";
-import { generateTrackingXlsx } from "../lib/tracking-xlsx.ts";
+import { generateTrackingXlsx, trackingXlsxTaskLabel } from "../lib/tracking-xlsx.ts";
 import { ASSESSMENT_COLOR_PALETTE, availableAssessmentColors, TRACKING_EXCLUDED_SECTION_HEADER_COLOR } from "../lib/assessment-colors.ts";
 import ExcelJS from "exceljs";
 
 const tasks = [1, 2, 4].map((maxScore, index) => ({ id: `A${index + 1}`, sectionCode: "A", taskName: `Tarea ${index + 1}`, maxScore }));
 const sections = [{ code: "A", name: "Sección A", tasks }];
 const content = JSON.parse(readFileSync(new URL("../lib/ablls-content.v1.json", import.meta.url), "utf8"));
+const spanish = JSON.parse(readFileSync(new URL("../lib/ablls-content.es.v1.json", import.meta.url), "utf8"));
 const reportSections = content.sections.map((section) => ({ ...section, tasks: content.tasks.filter((task) => task.sectionCode === section.code) }));
 const assessment = (index, values, enabled = true) => ({ id: `assessment-${index}`, createdAt: new Date(Date.UTC(2026, 0, index + 1)), evaluationCompletedAt: new Date(Date.UTC(2026, 0, index + 1)), sections: [{ sectionCode: "A", enabled }], scores: values.map((score, taskIndex) => ({ skillIdentifier: `A${taskIndex + 1}`, score, maxScore: tasks[taskIndex].maxScore })) });
 
@@ -98,24 +99,66 @@ test("XLSX export contains five real-cell grid sheets with fills and merged vari
   assert.equal(buffer.subarray(0, 2).toString(), "PK");
   const workbook = new ExcelJS.Workbook(); await workbook.xlsx.load(buffer);
   assert.deepEqual(workbook.worksheets.map((sheet) => sheet.name), ["Rejilla 1", "Rejilla 2", "Rejilla 3", "Rejilla 4", "Rejilla 5"]);
-  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("B62").value, "A · Cooperation and Reinforcer Effectiveness");
-  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("B62").fill.fgColor.argb, "FF365F4A", "regular section headers use institutional green");
-  assert.equal(workbook.getWorksheet("Rejilla 2").getCell("B54").value, "F · Requests");
-  assert.equal(workbook.getWorksheet("Rejilla 3").getCell("B39").value, "K · Play and Leisure Skills");
-  assert.equal(workbook.getWorksheet("Rejilla 4").getCell("B34").value, "Q · Reading Skills");
-  assert.equal(workbook.getWorksheet("Rejilla 5").getCell("B35").value, "V · Eating Skills");
-  assert.equal(workbook.getWorksheet("Rejilla 1").getRow(62).height, 36);
-  assert.ok(workbook.getWorksheet("Rejilla 1").getCell("B62").font.size < 10, "the longest section name must shrink to fit");
-  assert.equal(workbook.getWorksheet("Rejilla 2").getCell("B54").font.size, 10, "short section names retain the standard font size");
-  assert.ok(workbook.getWorksheet("Rejilla 1").model.merges.includes("B62:E62"), "headers must align to the narrower scoring area");
-  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("A3").value, "#1");
-  assert.ok(workbook.getWorksheet("Rejilla 1").getCell("B3").fill.fgColor.argb);
-  assert.match(String(workbook.getWorksheet("Rejilla 1").getCell("C3").value), /2 ene 2026/);
-  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("A61").value.startsWith("A1"), true, "task 1 must share the bottom baseline");
+  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("B68").value, "A · Cooperation and Reinforcer Effectiveness");
+  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("B68").fill.fgColor.argb, "FF365F4A", "regular section headers use institutional green");
+  assert.equal(workbook.getWorksheet("Rejilla 2").getCell("B60").value, "F · Requests");
+  assert.equal(workbook.getWorksheet("Rejilla 3").getCell("B45").value, "K · Play and Leisure Skills");
+  assert.equal(workbook.getWorksheet("Rejilla 4").getCell("B40").value, "Q · Reading Skills");
+  assert.equal(workbook.getWorksheet("Rejilla 5").getCell("B41").value, "V · Eating Skills");
+  assert.equal(workbook.getWorksheet("Rejilla 1").getRow(68).height, 36);
+  assert.ok(workbook.getWorksheet("Rejilla 1").getCell("B68").font.size < 10, "the longest section name must shrink to fit");
+  assert.equal(workbook.getWorksheet("Rejilla 2").getCell("B60").font.size, 10, "short section names retain the standard font size");
+  assert.ok(workbook.getWorksheet("Rejilla 1").model.merges.includes("B68:E68"), "headers must align to the narrower scoring area");
+  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("A3").value, null, "the standalone numbered legend must be removed");
+  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("B3").value, null);
+  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("C3").value, null);
+  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("A67").value, "A1", "task 1 must use only its original code on the bottom baseline");
+  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("U3").value, "Learner:");
+  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("W3").value, "Cliente XLSX ficticio");
+  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("U4").value, "Assessor");
+  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("W4").value, null);
+  assert.equal(workbook.getWorksheet("Rejilla 1").getCell("U6").value.toISOString(), "2026-01-02T00:00:00.000Z");
+  assert.equal(workbook.getWorksheet("Rejilla 1").sheetProtection, undefined);
+  assert.match(workbook.getWorksheet("Rejilla 1").getCell("A1").value, /QA-XLSX/);
   assert.ok(workbook.getWorksheet("Rejilla 1").model.merges.length > 3, "1- and 2-point task boxes should use merged cells");
 });
 
-test("XLSX export preserves every verified task, geometry, legend, print setup, and safe values", async () => {
+test("XLSX export localizes section names without changing task codes or client data", async () => {
+  const report = { clientName: "Cliente Name Unchanged", clientIdentifier: "PV-QA1234", sections: reportSections, assessments: [] };
+  const english = new ExcelJS.Workbook(); await english.xlsx.load(await generateTrackingXlsx(report, "EN"));
+  const spanishSections = reportSections.map((section) => ({ ...section, name: spanish.sections[section.code] ?? section.name, tasks: section.tasks.map((task) => ({ ...task, taskName: spanish.tasks[task.id]?.taskName ?? task.taskName })) }));
+  const spanishWorkbook = new ExcelJS.Workbook(); await spanishWorkbook.xlsx.load(await generateTrackingXlsx({ ...report, sections: spanishSections }, "ES"));
+  assert.equal(english.getWorksheet("Rejilla 1").getCell("A67").value, "A1");
+  assert.equal(spanishWorkbook.getWorksheet("Rejilla 1").getCell("A67").value, "A1");
+  assert.equal(english.getWorksheet("Rejilla 1").getCell("B68").value, `A · ${content.sections.find((section) => section.code === "A").name}`);
+  assert.equal(spanishWorkbook.getWorksheet("Rejilla 1").getCell("B68").value, `A · ${spanish.sections.A}`);
+  assert.match(english.getWorksheet("Rejilla 1").getCell("A1").value, /Cliente Name Unchanged · PV-QA1234/);
+  assert.match(spanishWorkbook.getWorksheet("Rejilla 1").getCell("A1").value, /Cliente Name Unchanged · PV-QA1234/);
+});
+
+test("XLSX information box keeps a blank assessor and the chronological latest four date/color pairs", async () => {
+  const assessments = Array.from({ length: 6 }, (_, index) => ({
+    id: `xlsx-info-${index + 1}`,
+    status: "FINALIZED",
+    trackingColor: `#00000${index + 1}`,
+    createdAt: new Date(Date.UTC(2026, 0, index + 1)),
+    evaluationCompletedAt: new Date(Date.UTC(2026, 1, index + 1)),
+    sections: [], scores: [],
+  }));
+  const workbook = new ExcelJS.Workbook(); await workbook.xlsx.load(await generateTrackingXlsx({ clientName: "Fictional Learner", clientIdentifier: null, sections: reportSections, assessments }));
+  const sheet = workbook.getWorksheet("Rejilla 1");
+  assert.equal(sheet.getCell("W3").value, "Fictional Learner");
+  assert.equal(sheet.getCell("W4").value, null);
+  for (let index = 0; index < 4; index += 1) {
+    assert.equal(sheet.getCell(6 + index, 21).value.toISOString(), assessments[index + 2].evaluationCompletedAt.toISOString());
+    assert.equal(sheet.getCell(6 + index, 26).fill.fgColor.argb, argbForTest(assessments[index + 2].trackingColor));
+  }
+  const shorter = new ExcelJS.Workbook(); await shorter.xlsx.load(await generateTrackingXlsx({ clientName: "Fictional Learner", clientIdentifier: null, sections: reportSections, assessments: assessments.slice(0, 2) }));
+  assert.equal(shorter.getWorksheet("Rejilla 1").getCell("U8").value, null);
+  assert.equal(shorter.getWorksheet("Rejilla 1").getCell("U9").value, null);
+});
+
+test("XLSX export preserves every verified task, geometry, information box, print setup, and safe values", async () => {
   const assessments = Array.from({ length: 20 }, (_, assessmentIndex) => ({
     id: `history-${String(assessmentIndex + 1).padStart(2, "0")}`,
     createdAt: new Date(Date.UTC(2025, assessmentIndex, 1)),
@@ -145,7 +188,7 @@ test("XLSX export preserves every verified task, geometry, legend, print setup, 
     assert.equal(sheet.views[0].state, "frozen");
 
     const pageSections = expectedModel.sections.slice(pageIndex * 5, (pageIndex + 1) * 5);
-    const firstGridRow = expectedModel.legend.length + 4;
+    const firstGridRow = 11;
     const maxRows = Math.max(...pageSections.map((section) => section.rowsTopToBottom.length));
     const gridBottomRow = firstGridRow + maxRows - 1;
     const headerRow = gridBottomRow + 1;
@@ -156,13 +199,11 @@ test("XLSX export preserves every verified task, geometry, legend, print setup, 
       assert.equal(sheet.getCell(headerRow, start + 1).fill.fgColor.argb, argbForTest(unavailable ? TRACKING_EXCLUDED_SECTION_HEADER_COLOR : "#365F4A"));
       assert.ok(sheet.getCell(headerRow, start + 1).font.size <= 10 && sheet.getCell(headerRow, start + 1).font.size >= 6, `${section.code} header font must stay within the deterministic fitting range`);
       assert.ok(sheet.model.merges.includes(`${sheet.getCell(headerRow, start + 1).address}:${sheet.getCell(headerRow, start + 4).address}`), `${section.code} header must occupy only its scoring area`);
-      for (let column = start; column <= start + 4; column += 1) assert.equal(sheet.getCell(headerRow, column).protection?.locked ?? true, true, `${section.code} header must be protected`);
       const firstTaskRow = gridBottomRow - section.rowsTopToBottom.length + 1;
       section.rowsTopToBottom.forEach((row, rowIndex) => {
         const excelRow = firstTaskRow + rowIndex;
         const label = String(sheet.getCell(excelRow, start).value);
-        assert.equal(label, `${row.task.id} -`, `${row.task.id} must use the standard task-label format`);
-        assert.equal(sheet.getCell(excelRow, start).protection?.locked ?? true, unavailable, `${row.task.id} label protection must match availability`);
+        assert.equal(label, row.task.id, `${row.task.id} must use only its original task code`);
         actualTaskIds.push(row.task.id);
         assert.equal(sheet.getRow(excelRow).height, 12);
         const span = 4 / row.task.maxScore;
@@ -177,7 +218,6 @@ test("XLSX export preserves every verified task, geometry, legend, print setup, 
           assert.equal(cell.border.bottom?.style, "thin", `${row.task.id} level ${boxIndex + 1} must retain its bottom border`);
           if (unavailable) assert.equal(cell.fill.fgColor.argb.replace(/^FF/, ""), "F8F4EC", `${row.task.id} unavailable score cells must use the neutral grid fill`);
           assert.equal(cell.formula, undefined);
-          assert.equal(cell.protection?.locked ?? true, unavailable, `${row.task.id} protection must match availability`);
           if (to > from) {
             const range = `${sheet.getCell(excelRow, from).address}:${sheet.getCell(excelRow, to).address}`;
             assert.ok(sheet.model.merges.includes(range), `${row.task.id} must merge ${range}`);
@@ -186,8 +226,7 @@ test("XLSX export preserves every verified task, geometry, legend, print setup, 
       });
       assert.ok(String(sheet.getCell(gridBottomRow, start).value).startsWith(`${section.code}1`), `${section.code}1 must be on the shared bottom baseline`);
     });
-    assert.ok(sheet.sheetProtection, `${sheet.name} must carry sheet protection`);
-    assert.equal(sheet.sheetProtection.formatCells ?? false, false, `${sheet.name} must prevent formatting changes to protected excluded cells`);
+    assert.equal(sheet.sheetProtection, undefined, `${sheet.name} must be unprotected and editable`);
     for (const merge of sheet.model.merges) {
       assert.equal(seenMerges.has(`${sheet.name}!${merge}`), false, `duplicate merge ${merge}`);
       seenMerges.add(`${sheet.name}!${merge}`);
@@ -203,13 +242,16 @@ test("XLSX export preserves every verified task, geometry, legend, print setup, 
     assert.ok(section.rowsTopToBottom.every((row) => row.latestStatus === "excluded" && row.boxes.every((box) => box === null)), `${excluded} must remain complete and uncolored`);
   }
   const expectedFaded = argbForTest(TRACKING_EXCLUDED_SECTION_HEADER_COLOR);
-  assert.equal(workbook.getWorksheet("Rejilla 4").getCell(`B${expectedModel.legend.length + 4 + 29}`).fill.fgColor.argb, expectedFaded);
+  assert.equal(workbook.getWorksheet("Rejilla 4").getCell(`B${11 + 29}`).fill.fgColor.argb, expectedFaded);
   const blockedM = expectedModel.sections.find((section) => section.code === "M");
   const blockedMPage = workbook.getWorksheet("Rejilla 3");
-  const blockedMHeaderRow = expectedModel.legend.length + 4 + Math.max(...expectedModel.sections.slice(10, 15).map((section) => section.rowsTopToBottom.length));
+  const blockedMHeaderRow = 11 + Math.max(...expectedModel.sections.slice(10, 15).map((section) => section.rowsTopToBottom.length));
   assert.equal(blockedM.latestSectionStatus, "locked");
   assert.equal(blockedMPage.getCell(`N${blockedMHeaderRow}`).value, "M · Group Instruction");
   assert.equal(blockedMPage.getCell(`N${blockedMHeaderRow}`).fill.fgColor.argb, expectedFaded);
+  const workbookText = workbook.worksheets.flatMap((sheet) => sheet.getSheetValues().flat()).filter((value) => typeof value === "string").join("\n");
+  assert.doesNotMatch(workbookText, /\b(?:Locked|Blocked|Bloquead[ao])\b/i);
+  assert.doesNotMatch(workbookText, /^X$/m);
 });
 
 function argbForTest(color) { return `FF${color.replace("#", "").toUpperCase()}`; }

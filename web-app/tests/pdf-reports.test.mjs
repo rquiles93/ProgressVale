@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync } from "node:fs";
-import { generateAssessmentPdf, generateTrackingPdf, REPORT_COLORS, trackingPdfSectionPresentation, trackingPdfTaskLabel } from "../lib/pdf-reports.ts";
+import { generateAssessmentPdf, generateTrackingPdf, REPORT_COLORS, TRACKING_PDF_FULL_PAGE, trackingInformationRows, trackingPdfPageGeometry, trackingPdfSectionPresentation, trackingPdfTaskLabel } from "../lib/pdf-reports.ts";
 import { HISTORY_COLORS } from "../lib/progress.ts";
 import { TRACKING_EXCLUDED_SECTION_HEADER_COLOR, TRACKING_SECTION_HEADER_COLOR } from "../lib/assessment-colors.ts";
 
@@ -15,6 +15,10 @@ const completeSections = content.sections.map((section) => ({ ...section, tasks:
 
 function pageCount(buffer) {
   return (buffer.toString("latin1").match(/\/Type\s*\/Page\b/g) ?? []).length;
+}
+
+function pageSizes(buffer) {
+  return [...buffer.toString("latin1").matchAll(/\/MediaBox\s*\[\s*0\s+0\s+([\d.]+)\s+([\d.]+)/g)].map((match) => [Number(match[1]), Number(match[2])]);
 }
 
 test("assessment PDF renders all supported sections with overflow-safe long notes", async () => {
@@ -63,12 +67,12 @@ test("finalized assessment PDF preserves explicit zero separately from unanswere
 });
 
 test("tracking PDF renders all 25 complete sections on six portrait grid pages with many assessments and regression", async () => {
-  const assessments = Array.from({ length: 19 }, (_, index) => ({
+  const assessments = Array.from({ length: 30 }, (_, index) => ({
     id: `assessment-${index}`,
-    trackingColor: index === 18 ? "#B04A6F" : null,
+    trackingColor: index === 29 ? "#B04A6F" : null,
     createdAt: new Date(Date.UTC(2024, index % 12, 1)),
     evaluationCompletedAt: new Date(Date.UTC(2024 + Math.floor(index / 12), index % 12, 2)),
-    sections: completeSections.map((section) => ({ sectionCode: section.code, enabled: section.assessmentApproved && !(index === 18 && ["M", "N"].includes(section.code)), lockReason: section.permanentlyExcluded ? "PERMANENT" : index === 18 && ["M", "N"].includes(section.code) ? "SERVICE_SETTING" : null })),
+    sections: completeSections.map((section) => ({ sectionCode: section.code, enabled: section.assessmentApproved && !(index === 29 && ["M", "N"].includes(section.code)), lockReason: section.permanentlyExcluded ? "PERMANENT" : index === 29 && ["M", "N"].includes(section.code) ? "SERVICE_SETTING" : null })),
     scores: [
       { skillIdentifier: "A1", score: index === 0 ? 2 : index === 1 ? 0 : index % 3, maxScore: 2 },
       { skillIdentifier: "A2", score: index % 2 ? null : 1, maxScore: 3 },
@@ -81,11 +85,12 @@ test("tracking PDF renders all 25 complete sections on six portrait grid pages w
   assert.equal(TRACKING_SECTION_HEADER_COLOR, "#365F4A");
   assert.notEqual(TRACKING_EXCLUDED_SECTION_HEADER_COLOR, assessments.at(-1).trackingColor);
   assert.equal(pageCount(buffer), 6, "25 complete sections use the approved four/four/four/four/four/five distribution on six A3 portrait pages");
+  assert.deepEqual(pageSizes(buffer).map(([width, height]) => [Number(width.toFixed(2)), Number(height.toFixed(2))]), [[841.89,1190.55],[841.89,1048.44],[841.89,781.98],[841.89,560],[841.89,684],[841.89,710.92]]);
   assert.ok(buffer.length > 10_000);
 });
 
 test("tracking PDF standardizes labels and neutralizes blocked and excluded sections", () => {
-  for (const id of ["A1", "A19", "B1", "B27", "M1", "N10", "Q14"]) assert.equal(trackingPdfTaskLabel(id), `${id} -`);
+  for (const id of ["A1", "A19", "B1", "B27", "M1", "N10", "Q14"]) assert.equal(trackingPdfTaskLabel(id), id);
   const regular = trackingPdfSectionPresentation("available");
   const blocked = trackingPdfSectionPresentation("locked");
   const excluded = trackingPdfSectionPresentation("excluded");
@@ -94,4 +99,45 @@ test("tracking PDF standardizes labels and neutralizes blocked and excluded sect
   assert.equal(regular.showScoreColors, true);
   assert.equal(blocked.headerColor, TRACKING_EXCLUDED_SECTION_HEADER_COLOR);
   assert.equal(blocked.showScoreColors, false);
+});
+
+test("tracking information box uses the latest four evaluations in chronological order with matching colors", () => {
+  const assessments = Array.from({ length: 6 }, (_, index) => ({
+    id: `info-${index + 1}`,
+    status: "FINALIZED",
+    trackingColor: `#00000${index + 1}`,
+    createdAt: new Date(Date.UTC(2026, 0, index + 1)),
+    evaluationCompletedAt: new Date(Date.UTC(2026, 1, index + 1)),
+    sections: [], scores: [],
+  }));
+  assert.deepEqual(trackingInformationRows({ assessments }).map((row) => [row.assessmentId, row.date.toISOString(), row.color]), [
+    ["info-3", "2026-02-03T00:00:00.000Z", "#000003"],
+    ["info-4", "2026-02-04T00:00:00.000Z", "#000004"],
+    ["info-5", "2026-02-05T00:00:00.000Z", "#000005"],
+    ["info-6", "2026-02-06T00:00:00.000Z", "#000006"],
+  ]);
+  assert.equal(trackingInformationRows({ assessments: assessments.slice(0, 2) }).length, 2);
+});
+
+test("first tracking page starts Section C beside the information box while all grids share the bottom baseline", () => {
+  const taskCounts = [19, 27, 57, 27];
+  const geometry = trackingPdfPageGeometry(0, taskCounts);
+  assert.equal(geometry.pageHeight, TRACKING_PDF_FULL_PAGE.height);
+  assert.equal(geometry.gridBottom - geometry.rowHeight * Math.max(...taskCounts), 96);
+  for (const count of taskCounts) assert.equal((geometry.gridBottom - geometry.rowHeight * count) + geometry.rowHeight * count, geometry.gridBottom);
+});
+
+test("pages 2 through 6 calculate shorter media boxes while preserving row geometry and metadata clearance", () => {
+  const pageOne = trackingPdfPageGeometry(0, [19, 27, 57, 27]);
+  const pageTaskCounts = [[20, 29, 47, 49], [9, 20, 15, 34], [12, 10, 6, 17], [29, 10, 7, 15], [10, 7, 10, 30, 28]];
+  const expectedHeights = [1048.438, 781.977, 560, 684, 710.921];
+  for (let pageIndex = 1; pageIndex < 6; pageIndex += 1) {
+    const counts = pageTaskCounts[pageIndex - 1];
+    const geometry = trackingPdfPageGeometry(pageIndex, counts);
+    assert.ok(Math.abs(geometry.pageHeight - expectedHeights[pageIndex - 1]) < 0.01);
+    assert.ok(geometry.pageHeight < TRACKING_PDF_FULL_PAGE.height);
+    assert.equal(geometry.rowHeight, [1, 2, 5].includes(pageIndex) ? pageOne.rowHeight : 14);
+    const tallestTop = geometry.gridBottom - geometry.rowHeight * Math.max(...counts);
+    assert.ok(tallestTop >= geometry.gridStart, `page ${pageIndex + 1} must preserve metadata clearance`);
+  }
 });

@@ -1,6 +1,6 @@
 import "server-only";
 
-import { protocolSections, tasksForSection } from "@/lib/ablls-content";
+import { localizedSection, localizedTask, protocolSections, tasksForSection, type AssessmentLanguageValue } from "@/lib/ablls-content";
 import { prisma } from "@/lib/prisma";
 import type { AssessmentReportData, ReportSection, TrackingReportData } from "@/lib/pdf-reports";
 
@@ -12,12 +12,12 @@ const assessmentReportSections: ReportSection[] = protocolSections
     tasks: tasksForSection(section.code).map((task) => ({ id: task.id, sectionCode: task.sectionCode, taskName: task.taskName, maxScore: task.maxScore })),
   }));
 
-const trackingReportSections: ReportSection[] = protocolSections.map((section) => ({
+const trackingReportSections = (language: AssessmentLanguageValue): ReportSection[] => protocolSections.map((section) => ({
   code: section.code,
-  name: section.name,
+  name: localizedSection(section, language).name,
   assessmentApproved: section.assessmentApproved,
   permanentlyExcluded: section.permanentlyExcluded,
-  tasks: tasksForSection(section.code).map((task) => ({ id: task.id, sectionCode: task.sectionCode, taskName: task.taskName, maxScore: task.maxScore })),
+  tasks: tasksForSection(section.code).map((task) => ({ id: task.id, sectionCode: task.sectionCode, taskName: localizedTask(task, language).taskName, maxScore: task.maxScore })),
 }));
 
 export async function getOwnedAssessmentReport(assessmentId: string, ownerId: string): Promise<AssessmentReportData | null> {
@@ -42,7 +42,7 @@ export async function getOwnedAssessmentReport(assessmentId: string, ownerId: st
   };
 }
 
-export async function getOwnedTrackingReport(clientId: string, ownerId: string): Promise<TrackingReportData | null> {
+export async function getOwnedTrackingReport(clientId: string, ownerId: string, language: AssessmentLanguageValue = "EN"): Promise<TrackingReportData | null> {
   const client = await prisma.client.findFirst({
     where: { id: clientId, ownerId },
     include: {
@@ -54,5 +54,5 @@ export async function getOwnedTrackingReport(clientId: string, ownerId: string):
     },
   });
   if (!client) return null;
-  return { clientName: client.name, clientIdentifier: client.identifier, sections: trackingReportSections, assessments: client.assessments };
+  return { clientName: client.name, clientIdentifier: client.identifier, sections: trackingReportSections(language), assessments: client.assessments };
 }

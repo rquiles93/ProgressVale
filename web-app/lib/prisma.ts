@@ -9,7 +9,7 @@ if (!connectionString) {
   throw new Error("DATABASE_URL no está configurada.");
 }
 
-const prismaSchemaVersion = "20261020090000-user-language";
+const prismaSchemaVersion = "20261020150000-client-identifiers";
 
 const globalForPrisma = globalThis as unknown as {
   prisma?: PrismaClient;

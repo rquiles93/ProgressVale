@@ -46,7 +46,7 @@ test("dashboard and assessment consume the authenticated user language", () => {
   assert.match(dashboard, /Workspace/);
   assert.match(dashboard, /My Clients/);
   assert.match(dashboard, /Search by name or identifier/);
-  assert.match(dashboard, /No internal ID/);
+  assert.match(dashboard, /ID: \{client\.identifier\}/);
   assert.match(assessmentPage, /appLanguage\(session\.user\.language\)/);
   assert.match(assessmentAction, /prisma\.user\.update/);
 });

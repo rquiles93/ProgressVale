@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { requireUserId } from "@/lib/auth-session";
 import type { ServiceSettingValue } from "@/lib/ablls-content";
 import { appLanguage, text, type AppLanguage } from "@/lib/language";
+import { ClientIdentifierGenerationError, createWithGeneratedClientIdentifier } from "@/lib/client-identifier";
 
 export type ClientActionState = {
   status: "idle" | "success" | "error";
@@ -14,22 +15,17 @@ export type ClientActionState = {
 
 const validSettings = new Set<ServiceSettingValue>(["HOME", "SCHOOL", "CLINIC_BASED"]);
 
-function validateClient(formData: FormData, language: AppLanguage): { ok: true; name: string; identifier: string | null; serviceSettings: ServiceSettingValue[] } | { ok: false; error: string } {
+function validateClient(formData: FormData, language: AppLanguage): { ok: true; name: string; serviceSettings: ServiceSettingValue[] } | { ok: false; error: string } {
   const name = String(formData.get("name") ?? "").trim().replace(/\s+/g, " ");
-  const rawIdentifier = String(formData.get("identifier") ?? "").trim();
-  const identifier = rawIdentifier ? rawIdentifier.toUpperCase() : null;
   const serviceSettings = [...new Set(formData.getAll("serviceSettings").map(String))].filter((value): value is ServiceSettingValue => validSettings.has(value as ServiceSettingValue));
 
   if (!name || name.length > 100 || /[\u0000-\u001F\u007F]/.test(name)) {
     return { ok: false, error: text(language, "Enter a valid name up to 100 characters.", "Escribe un nombre válido de hasta 100 caracteres.") };
   }
-  if (identifier && (identifier.length > 50 || /[\u0000-\u001F\u007F]/.test(identifier))) {
-    return { ok: false, error: text(language, "The identifier must contain no more than 50 valid characters.", "El identificador debe tener hasta 50 caracteres válidos.") };
-  }
   if (serviceSettings.length === 0) {
     return { ok: false, error: text(language, "Select at least one Service Setting.", "Selecciona al menos un Service Setting.") };
   }
-  return { ok: true, name, identifier, serviceSettings };
+  return { ok: true, name, serviceSettings };
 }
 
 function clientError(error: unknown, language: AppLanguage): ClientActionState {
@@ -48,10 +44,16 @@ export async function createClientAction(_state: ClientActionState, formData: Fo
   if (!input.ok) return { status: "error", message: input.error };
 
   try {
-    await prisma.client.create({ data: { name: input.name, identifier: input.identifier, serviceSettings: input.serviceSettings, ownerId } });
+    await createWithGeneratedClientIdentifier(
+      (identifier) => prisma.client.create({ data: { name: input.name, identifier, serviceSettings: input.serviceSettings, ownerId } }),
+      (error) => error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2002",
+    );
     revalidatePath("/clientes");
     return { status: "success", message: text(language, "Client created.", "Cliente creado.") };
   } catch (error) {
+    if (error instanceof ClientIdentifierGenerationError) {
+      return { status: "error", message: text(language, "A unique client ID could not be generated. Try again.", "No se pudo generar un identificador único. Inténtalo de nuevo.") };
+    }
     return clientError(error, language);
   }
 }
@@ -68,7 +70,7 @@ export async function updateClientAction(_state: ClientActionState, formData: Fo
   try {
     await prisma.client.update({
       where: { id_ownerId: { id: clientId, ownerId } },
-      data: { name: input.name, identifier: input.identifier, serviceSettings: input.serviceSettings },
+      data: { name: input.name, serviceSettings: input.serviceSettings },
     });
     revalidatePath("/clientes");
     revalidatePath(`/clientes/${clientId}`);

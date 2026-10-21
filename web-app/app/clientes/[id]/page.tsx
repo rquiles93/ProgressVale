@@ -64,7 +64,7 @@ export default async function ClientDetailPage({ params, searchParams }: { param
         <div className="mb-5 flex flex-col gap-5 border-b border-line pb-6 md:flex-row md:items-end md:justify-between xl:mb-6 xl:pb-7">
           <div className="flex items-center gap-5">
             <span className="grid size-16 place-items-center rounded-2xl bg-rust-soft text-lg font-bold text-navy">{initials(client.name)}</span>
-            <div><div className="mb-2 flex items-center gap-3"><StatusPill status={overallStatus} /><span className="text-xs text-ink/40">{client.identifier ? `ID: ${client.identifier}` : text(language, "No internal ID", "Sin identificador interno")}</span></div><h1 className="font-serif text-4xl tracking-tight text-navy sm:text-5xl">{client.name}</h1></div>
+            <div><div className="mb-2 flex items-center gap-3"><StatusPill status={overallStatus} /><span className="text-xs text-ink/40">ID: {client.identifier}</span></div><h1 className="font-serif text-4xl tracking-tight text-navy sm:text-5xl">{client.name}</h1></div>
           </div>
           <ClientDetailActions client={{ id: client.id, name: client.name, identifier: client.identifier, serviceSettings: client.serviceSettings as ServiceSettingValue[] }} assessmentAction={assessmentAction} onAssessment={startAssessmentAction} hasActiveAssessment={Boolean(active)} availableColors={selectableColors} colorError={query.colorUnavailable === "1"} language={language} />
         </div>

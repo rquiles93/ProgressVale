@@ -14,7 +14,7 @@ type ClientFormDialogProps = {
   submitLabel: string;
   action: (state: ClientActionState, formData: FormData) => Promise<ClientActionState>;
   onClose: () => void;
-  client?: { id: string; name: string; identifier: string | null; serviceSettings: ServiceSettingValue[] };
+  client?: { id: string; name: string; identifier: string; serviceSettings: ServiceSettingValue[] };
   language: AppLanguage;
 };
 
@@ -65,7 +65,7 @@ export function ClientFormDialog({ open, title, submitLabel, action, onClose, cl
         <form action={formAction} className="space-y-5">
           {client && <input type="hidden" name="clientId" value={client.id} />}
           <label className="block"><span className="mb-2 block text-xs font-semibold text-navy">{text(language, "Name", "Nombre")} <span className="text-rust">*</span></span><input name="name" required maxLength={100} defaultValue={client?.name} autoFocus className="focus-ring h-12 w-full rounded-xl border border-line bg-white px-4 text-sm" /></label>
-          <label className="block"><span className="mb-2 block text-xs font-semibold text-navy">{text(language, "Internal identifier", "Identificador interno")} <span className="font-normal text-ink/40">({text(language, "optional", "opcional")})</span></span><input name="identifier" maxLength={50} defaultValue={client?.identifier ?? ""} placeholder={text(language, "E.g. CL-001", "Ej. CL-001")} className="focus-ring h-12 w-full rounded-xl border border-line bg-white px-4 text-sm placeholder:text-ink/30" /><span className="mt-2 block text-[11px] leading-4 text-ink/45">{text(language, "For your practice's internal organization only.", "Sólo para la organización interna de tu práctica.")}</span></label>
+          <div><p className="mb-2 text-xs font-semibold text-navy">{text(language, "Internal ID", "Identificador interno")}</p><div className="flex h-12 items-center rounded-xl border border-line bg-cream px-4 text-sm font-semibold text-ink/60">{client?.identifier ?? text(language, "Automatically generated when you create the client.", "Se genera automáticamente al crear el cliente.")}</div></div>
           <fieldset>
             <legend className="mb-2 text-xs font-semibold text-navy">{text(language, "Service Setting", "Entorno de servicio")} <span className="text-rust">*</span></legend>
             <div className="grid gap-2 sm:grid-cols-3">

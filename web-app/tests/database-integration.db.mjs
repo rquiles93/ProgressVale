@@ -36,6 +36,8 @@ test("assessment persistence, ownership, snapshots, locks, history, and finaliza
     const assessmentSchool = `itest-assessment-school-${token}`;
     const assessmentClinic = `itest-assessment-clinic-${token}`;
     const assessmentMixed = `itest-assessment-mixed-${token}`;
+    const identifierA = `PV-${token.replaceAll("-", "").slice(0, 6).toUpperCase()}`;
+    const identifierB = `PV-${token.replaceAll("-", "").slice(6, 12).toUpperCase()}`;
     const now = new Date();
 
     await client.query(
@@ -46,10 +48,24 @@ test("assessment persistence, ownership, snapshots, locks, history, and finaliza
     );
     await client.query(
       `INSERT INTO "Client" (id, "ownerId", name, identifier, "serviceSettings", "createdAt", "updatedAt") VALUES
-       ($1, $2, 'Cliente ficticio A', 'IT-A', ARRAY['HOME']::"ServiceSetting"[], $5, $5),
-       ($3, $4, 'Cliente ficticio B', 'IT-B', ARRAY['SCHOOL']::"ServiceSetting"[], $5, $5)`,
-      [clientA, ownerA, clientB, ownerB, now],
+       ($1, $2, 'Cliente ficticio A', $6, ARRAY['HOME']::"ServiceSetting"[], $5, $5),
+       ($3, $4, 'Cliente ficticio B', $7, ARRAY['SCHOOL']::"ServiceSetting"[], $5, $5)`,
+      [clientA, ownerA, clientB, ownerB, now, identifierA, identifierB],
     );
+
+    await client.query("SAVEPOINT duplicate_client_identifier");
+    await assert.rejects(
+      client.query(
+        `INSERT INTO "Client" (id, "ownerId", name, identifier, "createdAt", "updatedAt") VALUES ($1, $2, 'Duplicate fictitious ID', $3, $4, $4)`,
+        [`itest-client-duplicate-${token}`, ownerB, identifierA, now],
+      ),
+      (error) => error.code === "23505",
+    );
+    await client.query("ROLLBACK TO SAVEPOINT duplicate_client_identifier");
+
+    await client.query(`UPDATE "Client" SET name = 'Renamed fictitious client' WHERE id = $1 AND "ownerId" = $2`, [clientA, ownerA]);
+    const identifierAfterRename = await client.query(`SELECT identifier FROM "Client" WHERE id = $1 AND "ownerId" = $2`, [clientA, ownerA]);
+    assert.equal(identifierAfterRename.rows[0].identifier, identifierA);
 
     const cases = [
       [assessmentHome, ["HOME"], "IN_PROGRESS", "#C67A5A"],

@@ -11,7 +11,7 @@ import { text, type AppLanguage } from "@/lib/language";
 export type ClientListItem = {
   id: string;
   name: string;
-  identifier: string | null;
+  identifier: string;
   initials: string;
   status: "IN_PROGRESS" | "NOT_STARTED" | "COMPLETED";
   lastActivity: string;
@@ -24,7 +24,7 @@ export function ClientList({ clients, language }: { clients: ClientListItem[]; l
   const filteredClients = useMemo(() => {
     const normalized = query.trim().toLocaleLowerCase(language === "ES" ? "es" : "en");
     if (!normalized) return clients;
-    return clients.filter((client) => `${client.name} ${client.identifier ?? ""}`.toLocaleLowerCase(language === "ES" ? "es" : "en").includes(normalized));
+    return clients.filter((client) => `${client.name} ${client.identifier}`.toLocaleLowerCase(language === "ES" ? "es" : "en-US").includes(normalized));
   }, [clients, language, query]);
   const status = (value: ClientListItem["status"]) => value === "IN_PROGRESS" ? text(language, "In Progress", "En progreso") : value === "COMPLETED" ? text(language, "Completed", "Completada") : text(language, "Not Started", "Sin iniciar");
 
@@ -51,7 +51,7 @@ export function ClientList({ clients, language }: { clients: ClientListItem[]; l
             const action = client.status === "IN_PROGRESS" ? text(language, "Continue Assessment", "Continuar evaluación") : client.status === "NOT_STARTED" ? text(language, "Start Assessment", "Iniciar evaluación") : text(language, "New Assessment", "Nueva evaluación");
             return (
               <article key={client.id} className="grid gap-5 px-5 py-5 transition hover:bg-cream/35 sm:px-6 lg:grid-cols-[1.55fr_0.85fr_0.8fr_1fr_180px] lg:items-center lg:gap-4">
-                <Link href={`/clientes/${client.id}`} className="focus-ring flex items-center gap-4 rounded-lg"><span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-rust-soft text-xs font-bold text-navy">{client.initials}</span><span><span className="block text-sm font-semibold text-navy">{client.name}</span><span className="mt-1 block text-[11px] text-ink/45">{client.identifier ? `ID: ${client.identifier}` : text(language, "No internal ID", "Sin identificador interno")}</span></span></Link>
+                <Link href={`/clientes/${client.id}`} className="focus-ring flex items-center gap-4 rounded-lg"><span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-rust-soft text-xs font-bold text-navy">{client.initials}</span><span><span className="block text-sm font-semibold text-navy">{client.name}</span><span className="mt-1 block text-[11px] text-ink/45">ID: {client.identifier}</span></span></Link>
                 <div><StatusPill status={status(client.status)} /></div>
                 <div>{client.progress === null ? <span className="text-xs text-ink/35">—</span> : <div className="flex items-center gap-3"><div className="h-1.5 w-20 overflow-hidden rounded-full bg-line"><div style={{ width: `${client.progress}%` }} className="h-full rounded-full bg-sage" /></div><span className="text-xs font-semibold text-ink/60">{client.progress}%</span></div>}</div>
                 <span className="text-xs text-ink/50">{client.lastActivity}</span>

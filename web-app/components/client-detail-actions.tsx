@@ -10,7 +10,7 @@ import { text, type AppLanguage } from "@/lib/language";
 
 type AvailableColor = { value: AssessmentColor; label: string };
 
-export function ClientDetailActions({ client, assessmentAction, onAssessment, hasActiveAssessment, availableColors, colorError, language }: { client: { id: string; name: string; identifier: string | null; serviceSettings: ServiceSettingValue[] }; assessmentAction: string; onAssessment: (formData: FormData) => Promise<void>; hasActiveAssessment: boolean; availableColors: AvailableColor[]; colorError?: boolean; language: AppLanguage }) {
+export function ClientDetailActions({ client, assessmentAction, onAssessment, hasActiveAssessment, availableColors, colorError, language }: { client: { id: string; name: string; identifier: string; serviceSettings: ServiceSettingValue[] }; assessmentAction: string; onAssessment: (formData: FormData) => Promise<void>; hasActiveAssessment: boolean; availableColors: AvailableColor[]; colorError?: boolean; language: AppLanguage }) {
   const [editing, setEditing] = useState(false);
   const [choosingColor, setChoosingColor] = useState(false);
   const noSettings = client.serviceSettings.length === 0;
